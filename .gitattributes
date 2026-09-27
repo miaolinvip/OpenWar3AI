@@ -1,0 +1,12 @@
+# Windows 脚本一律 CRLF：从 GitHub 下 ZIP / 在别的系统上检出时换行被改成 LF，cmd 跑 .bat 会出怪问题
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# 二进制（prebuilt\ 的运行时、截图）：不做换行转换
+*.dll   binary
+*.exe   binary
+*.png   binary
+*.jpg   binary
+*.ico   binary
+*.zip   binary

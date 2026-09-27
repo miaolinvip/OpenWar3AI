@@ -1,0 +1,2207 @@
+{
+ "schema": "war3-enemy-ai/race@1",
+ "race": "nightelf",
+ "race_jass": "RACE_NIGHTELF",
+ "source": {
+  "file": "War3x.mpq__elf.ai",
+  "mpq": "War3x.mpq",
+  "说明": "1.27 的 War3Patch.mpq 没有覆盖四族 .ai，实机跑的就是这份。所有 line 指这个文件的行号。"
+ },
+ "hero": {
+  "pool": [
+   {
+    "i": 1,
+    "name": "DEMON_HUNTER",
+    "code": "Edem"
+   },
+   {
+    "i": 2,
+    "name": "KEEPER",
+    "code": "Ekee"
+   },
+   {
+    "i": 3,
+    "name": "MOON_BABE",
+    "code": "Emoo"
+   },
+   {
+    "i": 4,
+    "name": "WARDEN",
+    "code": "Ewar"
+   }
+  ],
+  "pick": "common.ai:2565-2579 三次 GetRandomInt 不重复抽 -> hero_id / hero_id2 / hero_id3，开局定死",
+  "learn_tables": [
+   {
+    "hero": "MOON_CHICK",
+    "hero_code": "Emoo",
+    "hero_slot": 1,
+    "line": 73,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 2,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 3,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 4,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 5,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 6,
+      "ability": "STARFALL",
+      "code": "AEsf"
+     },
+     {
+      "level": 7,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 8,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 9,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 10,
+      "ability": "SCOUT",
+      "code": "AEst"
+     }
+    ],
+    "order_names": [
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "STARFALL",
+     "TRUESHOT",
+     "SCOUT",
+     "SCOUT",
+     "SCOUT"
+    ]
+   },
+   {
+    "hero": "MOON_BABE",
+    "hero_code": "Emoo",
+    "hero_slot": 2,
+    "line": 74,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 2,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 3,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 4,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 5,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 6,
+      "ability": "STARFALL",
+      "code": "AEsf"
+     },
+     {
+      "level": 7,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 8,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 9,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 10,
+      "ability": "SCOUT",
+      "code": "AEst"
+     }
+    ],
+    "order_names": [
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "STARFALL",
+     "TRUESHOT",
+     "SCOUT",
+     "SCOUT",
+     "SCOUT"
+    ]
+   },
+   {
+    "hero": "MOON_HONEY",
+    "hero_code": "Emoo",
+    "hero_slot": 3,
+    "line": 75,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 2,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 3,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 4,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 5,
+      "ability": "SEARING_ARROWS",
+      "code": "AHfa"
+     },
+     {
+      "level": 6,
+      "ability": "STARFALL",
+      "code": "AEsf"
+     },
+     {
+      "level": 7,
+      "ability": "TRUESHOT",
+      "code": "AEar"
+     },
+     {
+      "level": 8,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 9,
+      "ability": "SCOUT",
+      "code": "AEst"
+     },
+     {
+      "level": 10,
+      "ability": "SCOUT",
+      "code": "AEst"
+     }
+    ],
+    "order_names": [
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "TRUESHOT",
+     "SEARING_ARROWS",
+     "STARFALL",
+     "TRUESHOT",
+     "SCOUT",
+     "SCOUT",
+     "SCOUT"
+    ]
+   },
+   {
+    "hero": "KEEPER",
+    "hero_code": "Ekee",
+    "hero_slot": 1,
+    "line": 88,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 2,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 3,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 4,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 5,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 6,
+      "ability": "TRANQUILITY",
+      "code": "AEtq"
+     },
+     {
+      "level": 7,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 8,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 9,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 10,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     }
+    ],
+    "order_names": [
+     "FORCE_NATURE",
+     "ENT_ROOTS",
+     "FORCE_NATURE",
+     "ENT_ROOTS",
+     "FORCE_NATURE",
+     "TRANQUILITY",
+     "ENT_ROOTS",
+     "THORNS_AURA",
+     "THORNS_AURA",
+     "THORNS_AURA"
+    ]
+   },
+   {
+    "hero": "KEEPER",
+    "hero_code": "Ekee",
+    "hero_slot": 2,
+    "line": 101,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 2,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 3,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 4,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 5,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 6,
+      "ability": "TRANQUILITY",
+      "code": "AEtq"
+     },
+     {
+      "level": 7,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 8,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 9,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 10,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     }
+    ],
+    "order_names": [
+     "ENT_ROOTS",
+     "THORNS_AURA",
+     "ENT_ROOTS",
+     "THORNS_AURA",
+     "ENT_ROOTS",
+     "TRANQUILITY",
+     "THORNS_AURA",
+     "FORCE_NATURE",
+     "FORCE_NATURE",
+     "FORCE_NATURE"
+    ]
+   },
+   {
+    "hero": "KEEPER",
+    "hero_code": "Ekee",
+    "hero_slot": 3,
+    "line": 102,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 2,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 3,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 4,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 5,
+      "ability": "ENT_ROOTS",
+      "code": "AEer"
+     },
+     {
+      "level": 6,
+      "ability": "TRANQUILITY",
+      "code": "AEtq"
+     },
+     {
+      "level": 7,
+      "ability": "THORNS_AURA",
+      "code": "AEah"
+     },
+     {
+      "level": 8,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 9,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     },
+     {
+      "level": 10,
+      "ability": "FORCE_NATURE",
+      "code": "AEfn"
+     }
+    ],
+    "order_names": [
+     "ENT_ROOTS",
+     "THORNS_AURA",
+     "ENT_ROOTS",
+     "THORNS_AURA",
+     "ENT_ROOTS",
+     "TRANQUILITY",
+     "THORNS_AURA",
+     "FORCE_NATURE",
+     "FORCE_NATURE",
+     "FORCE_NATURE"
+    ]
+   },
+   {
+    "hero": "DEMON_HUNTER",
+    "hero_code": "Edem",
+    "hero_slot": 1,
+    "line": 115,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 2,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 3,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 4,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 5,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 6,
+      "ability": "METAMORPHOSIS",
+      "code": "AEme"
+     },
+     {
+      "level": 7,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 8,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 9,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 10,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     }
+    ],
+    "order_names": [
+     "IMMOLATION",
+     "MANA_BURN",
+     "EVASION",
+     "MANA_BURN",
+     "EVASION",
+     "METAMORPHOSIS",
+     "MANA_BURN",
+     "EVASION",
+     "IMMOLATION",
+     "IMMOLATION"
+    ]
+   },
+   {
+    "hero": "DEMON_HUNTER",
+    "hero_code": "Edem",
+    "hero_slot": 2,
+    "line": 128,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 2,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 3,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 4,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 5,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 6,
+      "ability": "METAMORPHOSIS",
+      "code": "AEme"
+     },
+     {
+      "level": 7,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 8,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 9,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 10,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     }
+    ],
+    "order_names": [
+     "MANA_BURN",
+     "EVASION",
+     "MANA_BURN",
+     "EVASION",
+     "MANA_BURN",
+     "METAMORPHOSIS",
+     "EVASION",
+     "IMMOLATION",
+     "IMMOLATION",
+     "IMMOLATION"
+    ]
+   },
+   {
+    "hero": "DEMON_HUNTER",
+    "hero_code": "Edem",
+    "hero_slot": 3,
+    "line": 129,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 2,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 3,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 4,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 5,
+      "ability": "MANA_BURN",
+      "code": "AEmb"
+     },
+     {
+      "level": 6,
+      "ability": "METAMORPHOSIS",
+      "code": "AEme"
+     },
+     {
+      "level": 7,
+      "ability": "EVASION",
+      "code": "AEev"
+     },
+     {
+      "level": 8,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 9,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     },
+     {
+      "level": 10,
+      "ability": "IMMOLATION",
+      "code": "AEim"
+     }
+    ],
+    "order_names": [
+     "MANA_BURN",
+     "EVASION",
+     "MANA_BURN",
+     "EVASION",
+     "MANA_BURN",
+     "METAMORPHOSIS",
+     "EVASION",
+     "IMMOLATION",
+     "IMMOLATION",
+     "IMMOLATION"
+    ]
+   },
+   {
+    "hero": "WARDEN",
+    "hero_code": "Ewar",
+    "hero_slot": 1,
+    "line": 142,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 2,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 3,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 4,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 5,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 6,
+      "ability": "VENGEANCE",
+      "code": "AEsv"
+     },
+     {
+      "level": 7,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 8,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 9,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 10,
+      "ability": "BLINK",
+      "code": "AEbl"
+     }
+    ],
+    "order_names": [
+     "FAN_KNIVES",
+     "SHADOW_TOUCH",
+     "FAN_KNIVES",
+     "BLINK",
+     "FAN_KNIVES",
+     "VENGEANCE",
+     "SHADOW_TOUCH",
+     "BLINK",
+     "SHADOW_TOUCH",
+     "BLINK"
+    ]
+   },
+   {
+    "hero": "WARDEN",
+    "hero_code": "Ewar",
+    "hero_slot": 2,
+    "line": 143,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 2,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 3,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 4,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 5,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 6,
+      "ability": "VENGEANCE",
+      "code": "AEsv"
+     },
+     {
+      "level": 7,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 8,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 9,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 10,
+      "ability": "BLINK",
+      "code": "AEbl"
+     }
+    ],
+    "order_names": [
+     "FAN_KNIVES",
+     "SHADOW_TOUCH",
+     "FAN_KNIVES",
+     "BLINK",
+     "FAN_KNIVES",
+     "VENGEANCE",
+     "SHADOW_TOUCH",
+     "BLINK",
+     "SHADOW_TOUCH",
+     "BLINK"
+    ]
+   },
+   {
+    "hero": "WARDEN",
+    "hero_code": "Ewar",
+    "hero_slot": 3,
+    "line": 144,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 2,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 3,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 4,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 5,
+      "ability": "FAN_KNIVES",
+      "code": "AEfk"
+     },
+     {
+      "level": 6,
+      "ability": "VENGEANCE",
+      "code": "AEsv"
+     },
+     {
+      "level": 7,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 8,
+      "ability": "BLINK",
+      "code": "AEbl"
+     },
+     {
+      "level": 9,
+      "ability": "SHADOW_TOUCH",
+      "code": "AEsh"
+     },
+     {
+      "level": 10,
+      "ability": "BLINK",
+      "code": "AEbl"
+     }
+    ],
+    "order_names": [
+     "FAN_KNIVES",
+     "SHADOW_TOUCH",
+     "FAN_KNIVES",
+     "BLINK",
+     "FAN_KNIVES",
+     "VENGEANCE",
+     "SHADOW_TOUCH",
+     "BLINK",
+     "SHADOW_TOUCH",
+     "BLINK"
+    ]
+   }
+  ],
+  "二英雄条件": "MeleeDifficulty() != MELEE_NEWBIE；简单电脑永远只有一个英雄"
+ },
+ "attack": {
+  "first_wave_gate": {
+   "src": "c_hero1_done > 0 and c_archer_done >= 2",
+   "line": 202
+  },
+  "newbie_first_delay_s": 240,
+  "newbie_between_waves_s": 60,
+  "normal_insane_between_waves_s": "无固定冷却；重组时间 0~72 秒（见 common.json.attack_loop）",
+  "melee_group": [
+   {
+    "unit": "hero_id",
+    "code": null,
+    "line": 154
+   },
+   {
+    "unit": "hero_id2",
+    "code": null,
+    "line": 155
+   },
+   {
+    "unit": "hero_id3",
+    "code": null,
+    "line": 156
+   },
+   {
+    "unit": "ARCHER",
+    "code": "earc",
+    "line": 157
+   },
+   {
+    "unit": "HUNTRESS",
+    "code": "esen",
+    "line": 158
+   },
+   {
+    "unit": "DRUID_TALON",
+    "code": "edot",
+    "line": 159
+   },
+   {
+    "unit": "DRUID_CLAW",
+    "code": "edoc",
+    "line": 160
+   },
+   {
+    "unit": "DRYAD",
+    "code": "edry",
+    "line": 161
+   },
+   {
+    "unit": "CHIMAERA",
+    "code": "echm",
+    "line": 162
+   },
+   {
+    "unit": "MOUNTAIN_GIANT",
+    "code": "emtg",
+    "line": 163
+   },
+   {
+    "unit": "FAERIE_DRAGON",
+    "code": "efdr",
+    "line": 164
+   },
+   {
+    "unit": "HIPPO",
+    "code": "ehip",
+    "line": 167
+   },
+   {
+    "unit": "HIPPO_RIDER",
+    "code": "ehpr",
+    "line": 171
+   }
+  ],
+  "force_level": {
+   "base": 4,
+   "terms": [
+    {
+     "line": 182,
+     "src": "set level = level +      c_dragon_done + c_talon_done"
+    },
+    {
+     "line": 183,
+     "src": "set level = level + 2 *  c_archer_done / 3"
+    },
+    {
+     "line": 184,
+     "src": "set level = level + 2 *  c_dryad_done"
+    },
+    {
+     "line": 185,
+     "src": "set level = level + 3 *  c_huntress_done"
+    },
+    {
+     "line": 186,
+     "src": "set level = level + 4 * (c_chimaera_done + c_bear_done)"
+    },
+    {
+     "line": 187,
+     "src": "set level = level + 5 *  c_hero3_done"
+    },
+    {
+     "line": 188,
+     "src": "set level = level + 6 * (c_hero2_done + c_mtn_giant_done)"
+    }
+   ],
+   "用途": "max_creeps = level*4/5，min_creeps = max(0, max_creeps-10)，以及 needs_exp/has_siege 的门槛"
+  },
+  "flags": [
+   {
+    "line": 234,
+    "src": "set needs_exp        = take_exp and (level >= 9 or c_gold_owned < 2000)"
+   },
+   {
+    "line": 235,
+    "src": "set has_siege        = level >= 40 or c_ballista_done > 0 or c_chimaera_done > 0 or c_mtn_giant_done > 0"
+   },
+   {
+    "line": 236,
+    "src": "set air_units        = c_chimaera_done > 0 or c_dragon_done > 0"
+   },
+   {
+    "line": 237,
+    "src": "set allow_air_creeps = air_units or c_archer_done > 3"
+   }
+  ],
+  "extra_gate": [
+   {
+    "line": 217,
+    "src": "set wave = wave + 1"
+   },
+   {
+    "line": 220,
+    "src": "exitwhen c_archer_done >= 4"
+   }
+  ]
+ },
+ "opening_build": [
+  {
+   "line": 463,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TREE_LIFE",
+   "code": "etol"
+  },
+  {
+   "line": 464,
+   "call": "SetBuildUnit",
+   "qty": "5",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 465,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ELF_ALTAR",
+   "code": "eate"
+  },
+  {
+   "line": 466,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 467,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "MOON_WELL",
+   "code": "emow"
+  },
+  {
+   "line": 468,
+   "call": "SetBuildUnit",
+   "qty": "8",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 469,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_WAR",
+   "code": "eaom"
+  },
+  {
+   "line": 470,
+   "call": "SetBuildUnit",
+   "qty": "9",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 471,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>"
+  },
+  {
+   "line": 472,
+   "call": "SetBuildUnit",
+   "qty": "10",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 473,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "MOON_WELL",
+   "code": "emow"
+  },
+  {
+   "line": 474,
+   "call": "basics"
+  },
+  {
+   "line": 475,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "DEN_OF_WONDERS",
+   "code": "eden"
+  },
+  {
+   "line": 476,
+   "call": "basics"
+  },
+  {
+   "line": 477,
+   "call": "SetBuildUnit",
+   "qty": "11",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 478,
+   "call": "basics"
+  },
+  {
+   "line": 479,
+   "call": "SetBuildUnit",
+   "qty": "12",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 480,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HUNTERS_HALL",
+   "code": "edob"
+  },
+  {
+   "line": 481,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "MOON_WELL",
+   "code": "emow"
+  },
+  {
+   "line": 482,
+   "call": "SetBuildUnit",
+   "qty": "13",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 483,
+   "call": "basics"
+  },
+  {
+   "line": 484,
+   "call": "SetBuildUnit",
+   "qty": "14",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 485,
+   "call": "basics"
+  },
+  {
+   "line": 486,
+   "call": "SetBuildUnit",
+   "qty": "15",
+   "unit": "WISP",
+   "code": "ewsp"
+  },
+  {
+   "line": 487,
+   "call": "basics"
+  },
+  {
+   "line": 489,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TREE_AGES",
+   "code": "etoa"
+  },
+  {
+   "line": 491,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TREE_LIFE",
+   "code": "etol"
+  },
+  {
+   "line": 493,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_STR_MOON",
+   "code": "Resm"
+  },
+  {
+   "line": 494,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MOON_ARMOR",
+   "code": "Rema"
+  },
+  {
+   "line": 495,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "MOON_WELL",
+   "code": "emow"
+  },
+  {
+   "line": 498,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  }
+ ],
+ "steady_build": [
+  {
+   "line": 505,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TREE_LIFE",
+   "code": "etol",
+   "town": "0",
+   "conditions": [
+    "c_tree_life < 1 and c_wisp_done > 0"
+   ]
+  },
+  {
+   "line": 506,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TREE_LIFE",
+   "code": "etol",
+   "town": "1",
+   "conditions": [
+    "c_tree_life < 1 and c_wisp_done > 0"
+   ]
+  },
+  {
+   "line": 507,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TREE_LIFE",
+   "code": "etol",
+   "town": "2",
+   "conditions": [
+    "c_tree_life < 1 and c_wisp_done > 0"
+   ]
+  },
+  {
+   "line": 511,
+   "call": "set",
+   "src": "set wisps = 6 - GetWood() / 200",
+   "conditions": [
+    "c_tree_life_done > 0"
+   ]
+  },
+  {
+   "line": 513,
+   "call": "set",
+   "src": "set wisps = 3",
+   "conditions": [
+    "c_tree_life_done > 0",
+    "wisps < 3"
+   ]
+  },
+  {
+   "line": 516,
+   "call": "set",
+   "src": "set wisps = wisps + 5",
+   "conditions": [
+    "c_tree_life_done > 0",
+    "c_mines < 2 or c_tree_life_done < 2"
+   ]
+  },
+  {
+   "line": 518,
+   "call": "set",
+   "src": "set wisps = wisps + 10",
+   "conditions": [
+    "c_tree_life_done > 0",
+    "NOT(c_mines < 2 or c_tree_life_done < 2)"
+   ]
+  },
+  {
+   "line": 521,
+   "call": "set",
+   "src": "set wisps = 15",
+   "conditions": [
+    "c_tree_life_done > 0",
+    "wisps > 15"
+   ]
+  },
+  {
+   "line": 523,
+   "call": "SetBuildNext",
+   "qty": "wisps",
+   "unit": "WISP",
+   "code": "ewsp",
+   "conditions": [
+    "c_tree_life_done > 0"
+   ]
+  },
+  {
+   "line": 527,
+   "call": "SetBuildNext",
+   "qty": "15",
+   "unit": "WISP",
+   "code": "ewsp",
+   "conditions": [
+    "c_gold > 500 and GetWood() < 100"
+   ]
+  },
+  {
+   "line": 533,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TREE_LIFE",
+   "code": "etol",
+   "conditions": [
+    "c_gold_owned < 2000"
+   ]
+  },
+  {
+   "line": 535,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 536,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 543,
+   "call": "SetBuildUnit",
+   "qty": "c_moon_well_done + 1",
+   "unit": "MOON_WELL",
+   "code": "emow",
+   "conditions": [
+    "c_food_used + 7 > c_food_made"
+   ]
+  },
+  {
+   "line": 551,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 553,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "NOT(b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE)"
+   ]
+  },
+  {
+   "line": 556,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ELF_ALTAR",
+   "code": "eate",
+   "conditions": [
+    "NOT(c_altar_done >= 1)"
+   ]
+  },
+  {
+   "line": 561,
+   "call": "set",
+   "src": "set primary_melee = c_lore_done >= 1 and c_wonders_done >= 1 and c_tree_ages_done >= 1"
+  },
+  {
+   "line": 563,
+   "call": "SetBuildNext",
+   "qty": "1",
+   "unit": "MOUNTAIN_GIANT",
+   "code": "emtg",
+   "conditions": [
+    "primary_melee"
+   ]
+  },
+  {
+   "line": 568,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_WAR",
+   "code": "eaom",
+   "conditions": [
+    "NOT(primary_melee)"
+   ]
+  },
+  {
+   "line": 569,
+   "call": "SetBuildNext",
+   "qty": "3",
+   "unit": "HUNTRESS",
+   "code": "esen",
+   "conditions": [
+    "NOT(primary_melee)"
+   ]
+  },
+  {
+   "line": 575,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "DRYAD",
+   "code": "edry",
+   "conditions": [
+    "c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 580,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_WAR",
+   "code": "eaom",
+   "conditions": [
+    "NOT(c_lore_done >= 1)"
+   ]
+  },
+  {
+   "line": 581,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "ARCHER",
+   "code": "earc",
+   "conditions": [
+    "NOT(c_lore_done >= 1)"
+   ]
+  },
+  {
+   "line": 587,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "CHIMAERA",
+   "code": "echm",
+   "conditions": [
+    "b_acid_breath and c_roost_done >= 1"
+   ]
+  },
+  {
+   "line": 589,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "BALLISTA",
+   "code": "ebal",
+   "conditions": [
+    "NOT(prev) and c_mtn_giant < 1"
+   ]
+  },
+  {
+   "line": 597,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 598,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 601,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_WAR",
+   "code": "eaom",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 602,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HUNTERS_HALL",
+   "code": "edob",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 603,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TREE_AGES",
+   "code": "etoa",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 604,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "DEN_OF_WONDERS",
+   "code": "eden",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 605,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_LORE",
+   "code": "eaoe",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 606,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TREE_ETERNITY",
+   "code": "etoe",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 607,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ANCIENT_WIND",
+   "code": "eaow",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 608,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CHIMAERA_ROOST",
+   "code": "edos",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 610,
+   "call": "do_upgrades",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 613,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "ANCIENT_LORE",
+   "code": "eaoe",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 614,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "ANCIENT_WAR",
+   "code": "eaom",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 615,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "CHIMAERA_ROOST",
+   "code": "edos",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 616,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "ANCIENT_WIND",
+   "code": "eaow",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 620,
+   "call": "do_upgrades",
+   "conditions": [
+    "NOT(prev) and c_food_used >= UPKEEP_TIER1"
+   ]
+  },
+  {
+   "line": 623,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TREE_LIFE",
+   "code": "etol"
+  },
+  {
+   "line": 625,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 626,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 636,
+   "call": "SetBuildNext",
+   "qty": "3",
+   "unit": "MOUNTAIN_GIANT",
+   "code": "emtg",
+   "conditions": [
+    "primary_melee"
+   ]
+  },
+  {
+   "line": 638,
+   "call": "SetBuildNext",
+   "qty": "7",
+   "unit": "HUNTRESS",
+   "code": "esen",
+   "conditions": [
+    "NOT(primary_melee)"
+   ]
+  },
+  {
+   "line": 642,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "DRYAD",
+   "code": "edry",
+   "conditions": [
+    "c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 644,
+   "call": "SetBuildNext",
+   "qty": "6",
+   "unit": "ARCHER",
+   "code": "earc",
+   "conditions": [
+    "NOT(c_lore_done >= 1)"
+   ]
+  },
+  {
+   "line": 649,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id3",
+   "code": "<随机英雄 hero_id3>",
+   "conditions": [
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1 and c_altar_done >= 1 and MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 653,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "DRUID_CLAW",
+   "code": "edoc",
+   "conditions": [
+    "c_tree_ages_done >= 1",
+    "c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 659,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "FAERIE_DRAGON",
+   "code": "efdr",
+   "conditions": [
+    "c_wind_done >= 1",
+    "c_wonders_done >= 1"
+   ]
+  },
+  {
+   "line": 662,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "DRUID_TALON",
+   "code": "edot",
+   "conditions": [
+    "c_wind_done >= 1"
+   ]
+  },
+  {
+   "line": 666,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 3",
+   "unit": "TREE_LIFE",
+   "code": "etol",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 668,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 669,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ANCIENT_PROTECT",
+   "code": "etrp",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 674,
+   "call": "GetZeppelin",
+   "conditions": [
+    "c_food_used >= 60 and c_zeps < 3"
+   ]
+  }
+ ],
+ "upgrade_rules": [
+  {
+   "line": 356,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_WELL_SPRING",
+   "code": "Rews",
+   "conditions": [
+    "c_tree_etern_done >= 1 and c_hunt_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 360,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ABOLISH",
+   "code": "Resi",
+   "conditions": [
+    "c_dryad >= 1 and c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 364,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CHIM_ACID",
+   "code": "Recb",
+   "conditions": [
+    "c_roost_done >= 1"
+   ]
+  },
+  {
+   "line": 371,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_STR_MOON",
+   "code": "Resm",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3"
+   ]
+  },
+  {
+   "line": 372,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MOON_ARMOR",
+   "code": "Rema",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3"
+   ]
+  },
+  {
+   "line": 375,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_STR_MOON",
+   "code": "Resm",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3",
+    "c_tree_ages_done >= 1"
+   ]
+  },
+  {
+   "line": 376,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_MOON_ARMOR",
+   "code": "Rema",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3",
+    "c_tree_ages_done >= 1"
+   ]
+  },
+  {
+   "line": 379,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_STR_MOON",
+   "code": "Resm",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3",
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 380,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_MOON_ARMOR",
+   "code": "Rema",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_archer + c_huntress + c_ballista >= 3",
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 387,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_STR_WILD",
+   "code": "Resw",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3"
+   ]
+  },
+  {
+   "line": 388,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_HIDES",
+   "code": "Rerh",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3"
+   ]
+  },
+  {
+   "line": 391,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_STR_WILD",
+   "code": "Resw",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3",
+    "c_tree_ages_done >= 1"
+   ]
+  },
+  {
+   "line": 392,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_HIDES",
+   "code": "Rerh",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3",
+    "c_tree_ages_done >= 1"
+   ]
+  },
+  {
+   "line": 395,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_STR_WILD",
+   "code": "Resw",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3",
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 396,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_HIDES",
+   "code": "Rerh",
+   "conditions": [
+    "c_hunt_hall_done >= 1",
+    "c_dryad + c_mtn_giant + c_chimaera >= 3",
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 403,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_HARD_SKIN",
+   "code": "Rehs",
+   "conditions": [
+    "c_mtn_giant >= 1 and c_tree_etern_done >= 1 and c_wonders_done >= 1 and c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 404,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_RESIST_SKIN",
+   "code": "Rers",
+   "conditions": [
+    "c_mtn_giant >= 1 and c_tree_etern_done >= 1 and c_wonders_done >= 1 and c_lore_done >= 1"
+   ]
+  },
+  {
+   "line": 410,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_GLAIVE",
+   "code": "Remg",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_huntress >= 3 and c_tree_etern_done >= 1 and c_hunt_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 411,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_SCOUT",
+   "code": "Resc",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_huntress >= 3 and c_tree_etern_done >= 1 and c_hunt_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 416,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BOWS",
+   "code": "Reib",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_archer >= 3",
+    "c_tree_ages_done >= 1"
+   ]
+  },
+  {
+   "line": 419,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MARKSMAN",
+   "code": "Remk",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_archer >= 3",
+    "c_tree_ages_done >= 1",
+    "c_tree_etern_done >= 1 and c_hunt_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 424,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ULTRAVISION",
+   "code": "Reuv",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_ballista >= 1"
+   ]
+  },
+  {
+   "line": 425,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BOLT",
+   "code": "Repd",
+   "conditions": [
+    "c_war_done >= 1",
+    "c_ballista >= 1"
+   ]
+  },
+  {
+   "line": 433,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_DRUID_CLAW",
+   "code": "Redc",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_bear >= 1"
+   ]
+  },
+  {
+   "line": 436,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_DRUID_CLAW",
+   "code": "Redc",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_bear >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 437,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MARK_CLAW",
+   "code": "Reeb",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_bear >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 443,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_DRUID_TALON",
+   "code": "Redt",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_talon >= 1"
+   ]
+  },
+  {
+   "line": 446,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_DRUID_TALON",
+   "code": "Redt",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_talon >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  },
+  {
+   "line": 447,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MARK_TALON",
+   "code": "Reec",
+   "conditions": [
+    "c_lore_done >= 1",
+    "c_talon >= 1",
+    "c_tree_etern_done >= 1"
+   ]
+  }
+ ],
+ "workers": {
+  "src": [
+   {
+    "line": 686,
+    "src": "set T = TownWithMine()"
+   },
+   {
+    "line": 688,
+    "src": "call HarvestGold(T,4)"
+   },
+   {
+    "line": 689,
+    "src": "call HarvestWood(0,1)"
+   },
+   {
+    "line": 690,
+    "src": "call HarvestGold(T,1)"
+   },
+   {
+    "line": 691,
+    "src": "call HarvestWood(0,2)"
+   },
+   {
+    "line": 694,
+    "src": "call HarvestGold(T+1,5)"
+   },
+   {
+    "line": 697,
+    "src": "call HarvestWood(0,20)"
+   }
+  ],
+  "说明": "HarvestGold(town, n) / HarvestWood(town, n) 是累加式配额；每 1~3 秒 ClearHarvestAI 后重下一遍"
+ },
+ "basic_opening_exit": [
+  {
+   "line": 298,
+   "src": "if basic_opening then"
+  },
+  {
+   "line": 301,
+   "src": "set basic_opening = false"
+  }
+ ],
+ "ranges": {
+  "build_sequence": [
+   456,
+   676
+  ],
+  "attack_sequence": [
+   195,
+   245
+  ],
+  "init_vars": [
+   250,
+   308
+  ],
+  "do_upgrades": [
+   353,
+   451
+  ],
+  "set_skills": [
+   60,
+   145
+  ],
+  "force_level": [
+   180,
+   190
+  ],
+  "setup_force": [
+   150,
+   175
+  ],
+  "peon_assignment": [
+   681,
+   702
+  ]
+ }
+}

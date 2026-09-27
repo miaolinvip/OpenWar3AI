@@ -1,0 +1,66 @@
+# ── 本机配置（从 openwar3.example.json 复制）──
+/openwar3.json
+
+# ── 注入运行时源码不开源（09-26 定）：只发 prebuilt\ 里的二进制，start.bat 按 manifest.json 核对后同步到 bin\ ──
+/native/
+
+# ── 本机保留、不开源的东西（09-26 定）：本机开发笔记和开发工具、复盘 / 实验记录、
+#    发布清单、内测打包脚本（private/tools/release.py）。里面有什么见 private/README_ZH.md
+/private/
+
+# ── 本机开发工具的配置（有本机路径、个人工作习惯）──
+/.claude/
+CLAUDE.md
+
+# ── war3ai.com 服务器端（Go 服务、Caddy、发布工具，含服务器主机名和目录结构）：只在开发机上，不公开 ──
+/server/
+
+# ── 搁置的研究（贴图高清化 / 大地址），工具里有本机路径 ──
+/tools/hdtex/
+
+# ── 构建产物与运行期目录（实例数据、日志、start.bat 下的私有 Python / Node 都在 bin\ 下）──
+/bin/
+*.obj
+*.exe
+*.dll
+*.exp
+*.lib
+*.ilk
+*.pdb
+*.map
+!/prebuilt/*.dll
+!/prebuilt/*.exe
+
+# ── 暴雪游戏数据：不能随代码分发，每人用 data\tools\extract_game_data.py 从自己的游戏里提取 ──
+/data/game/
+
+# ── AMAI 衍生数据：AMAI 是自定义许可（third_party/AMAI/LICENSE），不随本仓库分发 ──
+#    用 brains\xwar3\strategy\tools\amai_import.py --amai <AMAI 源码目录> 重新生成
+/brains/xwar3/strategy/brain/amai_data/
+
+# ── AI 方案库：自己写的和从别人那导入的都是个人内容（分享走「导出 zip」/ 以后的方案网站）──
+/schemes/mine/
+/schemes/installed/
+
+# ── 网页前端 ──
+#    console/web/dist/（编好的网页）**进 git**（09-26）：普通用户不用装 Node.js。改了网页源码要 npm run build 再一起提交，
+#    start.bat 按 dist/.source-hash（源码指纹，console/server/webstamp.py）核对，对不上才重编。
+/console/web/node_modules/
+/console/cache/
+/console/settings.json
+
+# ── 官网 war3ai.com（website/，Astro 静态站）：单独维护、本机发布，不进这个仓库 ──
+/website/
+
+# ── 运行期产物 ──
+__pycache__/
+*.pyc
+*.log
+*.out
+*.err
+*.hist
+/director/director/
+/speech/speak_api.out
+/speech/speak_api.json
+/brains/xwar3/strategy/tuning/
+/third_party/

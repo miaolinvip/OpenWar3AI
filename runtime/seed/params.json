@@ -1,0 +1,11 @@
+{
+ "expandUrgency": 1.0,
+ "creepRatioThin": 2.0,
+ "creepRatio": 1.4,
+ "supplyGapBase": 4.0,
+ "workerPerMine": 5.0,
+ "workerChop": 10.0,
+ "barracksMax": 4.0,
+ "attackMinHeroLevel": 2.0,
+ "attackNeedEco": 1.0
+}

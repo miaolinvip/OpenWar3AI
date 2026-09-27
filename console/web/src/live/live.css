@@ -1,0 +1,203 @@
+/* 直播页样式：照搬 8777 旧页（war3-analytics/streamlog.html）的版式和那些踩过坑的写法，
+   只把「底座」那行换成「局势」（新大脑此刻的双方强度、在干嘛）。 */
+:root {
+  /* 底色和不透明度分开：改透明度只动 --alpha（?alpha=0.6 也行）。文字不跟着透明 ——
+     半透明的字在直播二次编码后会糊，所以 alpha 只加在底色上，不用 body{opacity}。 */
+  --bg-rgb: 7, 9, 12;
+  --alpha: 0.8;
+  --panel: #0d1219;
+  --line: #1a2029;
+  --dim: #5c6470;
+  --text: #c9d4e2;
+  --hot: #ffffff;
+  --build: #7fd1ff;
+  --army: #ffb454;
+  --fight: #ff6b6b;
+  --econ: #8ce99a;
+  --tech: #c8a2ff;
+  --ai: #4de2c0;
+  --big: #ffd479;
+  --win: #6ee7a0;
+  /* 字号系数（右上角可调）。⚠ 和 main.ts 里的兜底值必须一致，否则首帧闪一下 */
+  --size: 2.5;
+  --rows: 3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+/* 高度跟着内容走：顶栏 + 三行简报 + N 行日志，底色 #back 也只铺这么高 */
+html, body { height: auto; }
+/* ★ 底色不能挂 body：OBS 浏览器源默认注入 body{background-color:rgba(0,0,0,0)}。
+   也不能 html 和 #back 各铺一层 —— 两层 80% 叠起来是 96%，半透明会累加。
+   所以唯一的底色层是 #back（OBS 那段 CSS 碰不到它），html/body 一律透明。 */
+html { background: transparent; color-scheme: dark; }
+#back { position: absolute; inset: 0; z-index: -1; background: rgba(var(--bg-rgb), var(--alpha)); }
+body {
+  background: transparent;
+  color: var(--text);
+  font-family: "Microsoft YaHei", "PingFang SC", -apple-system, "Segoe UI", sans-serif;
+  /* 字号跟着视口走再乘系数：OBS 里把源拉多大字就多大 */
+  font-size: clamp(12px, calc(var(--size) * 1vw), 34px);
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 0.45em 0.9em 0.5em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶栏固定两行高（09-16：直播间里给这块留的高度是固定的，顶栏高度来回变会打乱画面布局）。
+   旧页靠自动折行，徽章一多「后台调参」就被挤到第三行裁掉；现在两行各自排：
+   第一行 这页在看谁 / 游戏时间 / 倍速，第二行 战绩 / 大脑版本 / 调参，勾选和字号排在第二行最后，放不下就从右边截掉 */
+header {
+  display: flex; flex-direction: column; gap: .2em;
+  line-height: 1.25;
+  height: 2.9em; overflow: hidden;
+  padding-bottom: .3em; margin-bottom: .35em;
+  border-bottom: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+.hrow { display: flex; align-items: center; gap: .6em; flex-wrap: nowrap; overflow: hidden; min-height: 1.25em; }
+body.nocontrols #filters, body.nocontrols #size { display: none; }
+h1 { font-size: .92em; font-weight: 600; letter-spacing: .16em; color: var(--dim); flex: 0 0 auto; }
+#clock { color: var(--big); font-weight: 600; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+.badge {
+  flex: 0 0 auto; font-size: .66em; line-height: 1;
+  padding: .4em .6em; border-radius: .4em;
+  border: 1px solid var(--line); color: var(--dim);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.badge:empty { display: none; }
+.badge b { color: var(--hot); font-weight: 700; }
+.badge i { font-style: normal; color: var(--win); font-weight: 700; }
+.badge .up { color: var(--win); font-weight: 700; }
+.badge .down { color: var(--fight); font-weight: 700; }
+/* 倍速：观众得知道「它跑得比正常快」，否则会觉得这 AI 手速不真实 */
+#spd { border-color: var(--ai); color: var(--ai); }
+#src { border-color: var(--ai); color: var(--ai); }
+#src.review { border-color: var(--big); color: var(--big); }
+#src.stale { border-color: var(--fight); color: var(--fight); }
+#games { background: var(--panel); }
+#games b { color: var(--big); }
+/* 版本：节目的主线不是「这局打得好不好」，是「它到底在不在变强」。样本少时变灰 —— 不可靠的结论比没有结论更糟 */
+#kern { border-color: var(--econ); color: var(--econ); }
+#kern.thin { border-color: var(--line); color: var(--dim); }
+/* 后台调参：「它正在自己试新参数」和「结果变好了」分开颜色，混成一种会让人以为每次调参都是成果 */
+#tune { border-radius: 999px; }
+#tune b { color: var(--build); }
+#pick { flex: 0 1 auto; font-size: .58em; background: var(--panel); color: var(--text);
+        border: 1px solid var(--line); border-radius: .3em; padding: .2em .3em; max-width: 18em; }
+body.clean #pick { display: none; }
+#scrubBox { display: none; align-items: center; gap: .4em; font-size: .58em; color: var(--dim); }
+#scrubBox.on { display: inline-flex; }
+#scrub { width: 14em; accent-color: var(--big); }
+#scrubVal { color: var(--big); font-variant-numeric: tabular-nums; }
+
+/* ── 简报：局势 / 上一局 / 战斗（两行）。整页高度固定：每行永远占位，没数据只是看不见，不收起 ── */
+#brief {
+  flex: 0 0 auto; margin-bottom: .35em;
+  border: 1px solid var(--line); border-left: 3px solid var(--big);
+  background: var(--panel); border-radius: .3em;
+  padding: .3em .8em;
+  display: flex; flex-direction: column; gap: .08em;
+  line-height: 1.3;
+}
+.brow { display: flex; align-items: center; gap: .6em; flex-wrap: nowrap; white-space: nowrap; overflow: hidden;
+        height: 1.15em; flex: 0 0 auto; }
+.brow.off > :not(.bt) { visibility: hidden; }
+.brow .bt { font-size: .62em; letter-spacing: .14em; color: var(--big); font-weight: 700; flex: 0 0 auto; min-width: 2.6em; }
+#nowLine, #briefLine, #ecoLine { font-size: .74em; min-width: 0; overflow: hidden; text-overflow: ellipsis; display: flex;
+                      align-items: center; gap: .5em; }
+/* 资源：两行，我方在上、敌方在下（09-22 改成上下两行对齐显示）。
+   两行的格子放进同一个 grid，列宽共用 —— 金对金、木对木；对面囤着 1000 金以上高亮（攒钱多半是要憋一波） */
+body.noeco #ecoRow { display: none; }
+#ecoRow { height: 2.05em; align-items: flex-start; }
+#ecoLine { display: grid; grid-template-columns: repeat(7, max-content); column-gap: .9em; row-gap: .1em;
+           line-height: 1.3; font-variant-numeric: tabular-nums; }
+#ecoLine > span { white-space: nowrap; }
+#ecoLine .own { color: var(--win); font-weight: 700; }
+#ecoLine .foe { color: var(--fight); font-weight: 700; }
+#ecoLine b { color: var(--hot); }
+#ecoLine b.rich { color: var(--big); }
+#ecoLine .rate, #ecoLine .none { color: var(--dim); }
+#briefLine b, #nowLine b { color: var(--big); }
+#briefLine .lose { color: var(--fight); }
+#briefLine .win { color: var(--win); }
+#nowLine .own { color: var(--win); font-weight: 700; font-variant-numeric: tabular-nums; }
+#nowLine .foe { color: var(--fight); font-weight: 700; font-variant-numeric: tabular-nums; }
+#nowLine .doing { color: var(--ai); }
+#nowLine .sub { color: var(--dim); }
+#briefLine .dot { color: var(--dim); }
+/* 双方强度拔河条：绿 = 我方占比 */
+.tug { display: inline-flex; flex: 0 0 5em; height: .42em; border-radius: .21em; background: rgba(255, 107, 107, .75); overflow: hidden; }
+.tug i { display: block; height: 100%; background: var(--win); transition: width .6s ease; }
+/* 战斗：固定两行（09-16：战斗日志太长，默认最多显示两行），一场一行，超出省略号 */
+#fightRow { height: 1.8em; align-items: flex-start; }
+#fightLine { font-size: .66em; color: var(--text); display: flex; flex-direction: column; gap: .12em;
+             height: calc(2 * 1.3em + .12em); overflow: hidden; flex: 1 1 auto; min-width: 0; }
+#fightLine > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#fightLine .w { color: var(--win); }
+#fightLine .l { color: var(--fight); }
+
+/* 分类勾选 */
+#filters { display: flex; gap: .35em; flex-wrap: nowrap; margin-left: .4em; flex: 0 0 auto; }
+.chip {
+  display: inline-flex; align-items: center; gap: .3em;
+  font-size: .72em; line-height: 1;
+  padding: .42em .7em; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--panel);
+  color: var(--dim); cursor: pointer; user-select: none;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.chip .dot { width: .55em; height: .55em; border-radius: 50%; background: currentColor; opacity: .45; }
+.chip.on { color: var(--c); border-color: currentColor; background: #111823; }
+.chip.on .dot { opacity: 1; }
+
+#size { margin-left: auto; display: flex; align-items: center; gap: .45em; font-size: .72em; color: var(--dim); flex: 0 0 auto; }
+#size button { width: 1.9em; height: 1.9em; line-height: 1; border: 1px solid var(--line); background: var(--panel); color: var(--text);
+               border-radius: .35em; cursor: pointer; font-size: 1em; }
+#size button:hover { border-color: var(--dim); }
+#sizeVal { min-width: 2.6em; text-align: center; font-variant-numeric: tabular-nums; }
+#at { color: var(--dim); font-size: .72em; font-variant-numeric: tabular-nums; margin-left: auto; flex: 0 0 auto; }
+
+/* 日志框：固定 --rows 行高（09-16：滚动信息框保持三行左右滚动就够用） */
+#feed {
+  flex: 0 0 auto;
+  height: calc(var(--rows) * 1.5em + (var(--rows) - 1) * .14em);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  gap: .14em; overflow: hidden;
+}
+.row {
+  display: flex; gap: .6em; align-items: baseline;
+  white-space: nowrap; overflow: hidden;
+  /* 新行入场：淡入 + 轻微上移；旧行上滑用 FLIP（main.ts 的 appendOne）—— 两者动的是不同的元素，不冲突 */
+  animation: in .28s ease-out;
+  will-change: transform;
+}
+@keyframes in { from { opacity: 0; transform: translateY(.5em); } to { opacity: 1; transform: none; } }
+.t { color: var(--dim); font-size: .72em; flex: 0 0 auto; font-variant-numeric: tabular-nums; min-width: 2.8em; text-align: right; }
+/* 直播会二次编码，小字容易糊：加一点描边 */
+.m { overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 2px rgba(0, 0, 0, .85); }
+/* 次数：一行对应一个实物的事件（清掉营地、折了一个兵）合并时显示 ×N，意图类不显示（数的是日志行不是实物） */
+.x { flex: 0 0 auto; font-size: .7em; color: var(--dim); border: 1px solid var(--line); border-radius: .6em;
+     padding: .05em .45em; line-height: 1.5; }
+.row:nth-last-child(1) .m { color: var(--hot); }
+.build .m { color: var(--build); }
+.army .m { color: var(--army); }
+.fight .m { color: var(--fight); }
+.econ .m { color: var(--econ); }
+.tech .m { color: var(--tech); }
+.ai .m { color: var(--ai); }
+.big .m { color: var(--big); font-weight: 600; }
+/* 场记（开局分隔、本局大脑版本）：刻意比正文轻，但要能一眼认出「这是新的一把」 */
+.sep .m { color: var(--dim); letter-spacing: .06em; }
+.sep .t { opacity: .5; }
+
+/* 「AI 停了」必须一眼能看见：横幅压在最上面、会呼吸（旧页的教训：右下角一行小字一次都没被注意到） */
+#dead {
+  display: none; flex: 0 0 auto; order: -1; margin-bottom: .6em;
+  padding: .55em .9em; border-radius: .3em;
+  border: 1px solid var(--fight); background: rgba(255, 107, 107, .13);
+  color: var(--fight); font-size: .95em; font-weight: 700; letter-spacing: .04em;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { #dead { animation: none; } }

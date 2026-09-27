@@ -1,0 +1,970 @@
+{
+ "made": "2026-09-18T22:22:32",
+ "source": [
+  "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+  "1481530917_Yumiko_TH000_Echo Isles.nwg"
+ ],
+ "baseR": 1300.0,
+ "mirror": {
+  "EchoIsles": {
+   "axis": "x",
+   "c": -512
+  }
+ },
+ "spawns": {
+  "4672,2944": {
+   "map": "EchoIsles",
+   "from": [
+    "1477992386_Yumiko_LawLiet_Echo Isles.nwg 虎牙Yumiko（人族）",
+    "1481530917_Yumiko_TH000_Echo Isles.nwg 普通话补丁（暗夜）"
+   ],
+   "spots": {
+    "hbar": [
+     [
+      4096.0,
+      3200.0
+     ]
+    ],
+    "halt": [
+     [
+      4704.0,
+      2400.0
+     ]
+    ],
+    "hhou": [
+     [
+      4352.0,
+      3008.0
+     ],
+     [
+      5504.0,
+      3584.0
+     ],
+     [
+      4800.0,
+      2624.0
+     ],
+     [
+      4672.0,
+      2624.0
+     ],
+     [
+      4544.0,
+      2624.0
+     ],
+     [
+      5632.0,
+      2496.0
+     ],
+     [
+      5568.0,
+      3328.0
+     ]
+    ],
+    "hwtw": [
+     [
+      4992.0,
+      2880.0
+     ]
+    ],
+    "hlum": [
+     [
+      5024.0,
+      2464.0
+     ]
+    ],
+    "hars": [
+     [
+      5248.0,
+      3072.0
+     ],
+     [
+      4672.0,
+      3392.0
+     ]
+    ],
+    "harm": [
+     [
+      4288.0,
+      2368.0
+     ]
+    ],
+    "eate": [
+     [
+      4256.0,
+      3104.0
+     ]
+    ],
+    "emow": [
+     [
+      4704.0,
+      2400.0
+     ],
+     [
+      4768.0,
+      2592.0
+     ],
+     [
+      5280.0,
+      3232.0
+     ],
+     [
+      4704.0,
+      2016.0
+     ],
+     [
+      4384.0,
+      2528.0
+     ],
+     [
+      4448.0,
+      2272.0
+     ]
+    ],
+    "eden": [
+     [
+      4288.0,
+      2688.0
+     ],
+     [
+      4416.0,
+      2624.0
+     ]
+    ],
+    "edob": [
+     [
+      4864.0,
+      2624.0
+     ]
+    ],
+    "eaoe": [
+     [
+      4416.0,
+      2176.0
+     ]
+    ]
+   }
+  },
+  "-5184,2944": {
+   "map": "EchoIsles",
+   "from": [
+    "1477992386_Yumiko_LawLiet_Echo Isles.nwg 月馒头（暗夜）",
+    "1481530917_Yumiko_TH000_Echo Isles.nwg 虎牙Yumiko（人族）"
+   ],
+   "spots": {
+    "eate": [
+     [
+      -5216.0,
+      2272.0
+     ]
+    ],
+    "emow": [
+     [
+      -4832.0,
+      2464.0
+     ],
+     [
+      -4448.0,
+      3040.0
+     ],
+     [
+      -4384.0,
+      2272.0
+     ],
+     [
+      -5280.0,
+      1824.0
+     ]
+    ],
+    "edob": [
+     [
+      -5248.0,
+      3584.0
+     ]
+    ],
+    "eaoe": [
+     [
+      -4800.0,
+      3136.0
+     ],
+     [
+      -5184.0,
+      2624.0
+     ]
+    ],
+    "eaow": [
+     [
+      -4352.0,
+      2688.0
+     ]
+    ],
+    "edos": [
+     [
+      -5632.0,
+      3136.0
+     ]
+    ],
+    "hbar": [
+     [
+      -4608.0,
+      3136.0
+     ]
+    ],
+    "halt": [
+     [
+      -5408.0,
+      2400.0
+     ]
+    ],
+    "hhou": [
+     [
+      -4864.0,
+      3008.0
+     ],
+     [
+      -4864.0,
+      3136.0
+     ],
+     [
+      -5248.0,
+      2624.0
+     ],
+     [
+      -6080.0,
+      2816.0
+     ],
+     [
+      -6080.0,
+      3200.0
+     ],
+     [
+      -6336.0,
+      3008.0
+     ]
+    ],
+    "hwtw": [
+     [
+      -5504.0,
+      3008.0
+     ]
+    ],
+    "hvlt": [
+     [
+      -4928.0,
+      2496.0
+     ]
+    ],
+    "hlum": [
+     [
+      -5792.0,
+      2592.0
+     ]
+    ],
+    "hbla": [
+     [
+      -5120.0,
+      2048.0
+     ]
+    ],
+    "hars": [
+     [
+      -5056.0,
+      3456.0
+     ],
+     [
+      -5824.0,
+      3072.0
+     ]
+    ],
+    "harm": [
+     [
+      -4736.0,
+      2112.0
+     ]
+    ]
+   }
+  }
+ },
+ "skipped": [
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 40,
+   "code": "hhou",
+   "x": 2304.0,
+   "y": 3008.0,
+   "dist": 2368,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 40,
+   "code": "hhou",
+   "x": 2368.0,
+   "y": 3008.0,
+   "dist": 2304,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 41,
+   "code": "hhou",
+   "x": 2432.0,
+   "y": 3072.0,
+   "dist": 2243,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 90,
+   "code": "hhou",
+   "x": -128.0,
+   "y": 1792.0,
+   "dist": 4936,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 90,
+   "code": "hhou",
+   "x": 0.0,
+   "y": 1792.0,
+   "dist": 4811,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 91,
+   "code": "hhou",
+   "x": -192.0,
+   "y": 1792.0,
+   "dist": 4998,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 93,
+   "code": "hhou",
+   "x": -192.0,
+   "y": 1792.0,
+   "dist": 4998,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 138,
+   "code": "hhou",
+   "x": -896.0,
+   "y": 64.0,
+   "dist": 6268,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 183,
+   "code": "hwtw",
+   "x": 4032.0,
+   "y": -2880.0,
+   "dist": 5859,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 184,
+   "code": "hwtw",
+   "x": 4096.0,
+   "y": -2752.0,
+   "dist": 5725,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 185,
+   "code": "hwtw",
+   "x": 4096.0,
+   "y": -2816.0,
+   "dist": 5788,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 199,
+   "code": "htow",
+   "x": 4032.0,
+   "y": -2496.0,
+   "dist": 5477,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 342,
+   "code": "hvlt",
+   "x": 3840.0,
+   "y": -3072.0,
+   "dist": 6073,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 343,
+   "code": "hvlt",
+   "x": 3840.0,
+   "y": -3072.0,
+   "dist": 6073,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 426,
+   "code": "hhou",
+   "x": 3968.0,
+   "y": -2816.0,
+   "dist": 5802,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 440,
+   "code": "hbla",
+   "x": 4160.0,
+   "y": -2112.0,
+   "dist": 5081,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 491,
+   "code": "hhou",
+   "x": 3968.0,
+   "y": -2176.0,
+   "dist": 5168,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 494,
+   "code": "hhou",
+   "x": 4416.0,
+   "y": -2368.0,
+   "dist": 5318,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 496,
+   "code": "hhou",
+   "x": 4416.0,
+   "y": -2624.0,
+   "dist": 5573,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 713,
+   "code": "harm",
+   "x": 4672.0,
+   "y": -2688.0,
+   "dist": 5632,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 1304,
+   "code": "hhou",
+   "x": 4928.0,
+   "y": -3328.0,
+   "dist": 6277,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 27,
+   "code": "eaom",
+   "x": -4992.0,
+   "y": -1024.0,
+   "dist": 3972,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 188,
+   "code": "emow",
+   "x": -5408.0,
+   "y": 1504.0,
+   "dist": 1457,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 285,
+   "code": "etol",
+   "x": -5120.0,
+   "y": -1152.0,
+   "dist": 4096,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 432,
+   "code": "eden",
+   "x": -4672.0,
+   "y": 1280.0,
+   "dist": 1740,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 605,
+   "code": "emow",
+   "x": -4704.0,
+   "y": -2272.0,
+   "dist": 5238,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 610,
+   "code": "emow",
+   "x": -5024.0,
+   "y": -2592.0,
+   "dist": 5538,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 1231,
+   "code": "emow",
+   "x": 32.0,
+   "y": -3104.0,
+   "dist": 7986,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 1234,
+   "code": "eden",
+   "x": 192.0,
+   "y": -2048.0,
+   "dist": 7336,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 1270,
+   "code": "emow",
+   "x": -544.0,
+   "y": -2720.0,
+   "dist": 7321,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 1464,
+   "code": "emow",
+   "x": -5024.0,
+   "y": -2400.0,
+   "dist": 5346,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "who": "月馒头",
+   "t": 1465,
+   "code": "emow",
+   "x": -4960.0,
+   "y": -2848.0,
+   "dist": 5796,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 67,
+   "code": "hhou",
+   "x": -3136.0,
+   "y": 3328.0,
+   "dist": 2083,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 67,
+   "code": "hhou",
+   "x": -3136.0,
+   "y": 3392.0,
+   "dist": 2096,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 68,
+   "code": "hhou",
+   "x": -3136.0,
+   "y": 3392.0,
+   "dist": 2096,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 120,
+   "code": "hhou",
+   "x": -192.0,
+   "y": 2048.0,
+   "dist": 5071,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 121,
+   "code": "hhou",
+   "x": -64.0,
+   "y": 1984.0,
+   "dist": 5209,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 123,
+   "code": "hhou",
+   "x": 0.0,
+   "y": 1920.0,
+   "dist": 5284,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 243,
+   "code": "hwtw",
+   "x": -4736.0,
+   "y": -2816.0,
+   "dist": 5777,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 253,
+   "code": "htow",
+   "x": -4800.0,
+   "y": -2432.0,
+   "dist": 5389,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 454,
+   "code": "hwtw",
+   "x": -4992.0,
+   "y": -2816.0,
+   "dist": 5763,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 455,
+   "code": "hwtw",
+   "x": -5120.0,
+   "y": -2496.0,
+   "dist": 5440,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 641,
+   "code": "hhou",
+   "x": -4544.0,
+   "y": -3072.0,
+   "dist": 6049,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 641,
+   "code": "hhou",
+   "x": -4544.0,
+   "y": -2880.0,
+   "dist": 5859,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 642,
+   "code": "hhou",
+   "x": -4736.0,
+   "y": -1984.0,
+   "dist": 4948,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 753,
+   "code": "hhou",
+   "x": -5312.0,
+   "y": -2432.0,
+   "dist": 5377,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 796,
+   "code": "hwtw",
+   "x": -4672.0,
+   "y": -2752.0,
+   "dist": 5718,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 817,
+   "code": "hwtw",
+   "x": -4480.0,
+   "y": -2432.0,
+   "dist": 5421,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 821,
+   "code": "hwtw",
+   "x": -4416.0,
+   "y": -3072.0,
+   "dist": 6064,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 886,
+   "code": "hwtw",
+   "x": -4416.0,
+   "y": -2432.0,
+   "dist": 5430,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 918,
+   "code": "hwtw",
+   "x": -4416.0,
+   "y": -2048.0,
+   "dist": 5050,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 938,
+   "code": "hvlt",
+   "x": -3968.0,
+   "y": -2816.0,
+   "dist": 5886,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 939,
+   "code": "hvlt",
+   "x": -3968.0,
+   "y": -2688.0,
+   "dist": 5761,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 1116,
+   "code": "harm",
+   "x": -3840.0,
+   "y": -2304.0,
+   "dist": 5417,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 1117,
+   "code": "harm",
+   "x": -4096.0,
+   "y": -3136.0,
+   "dist": 6176,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "虎牙Yumiko",
+   "t": 1442,
+   "code": "hbla",
+   "x": -5248.0,
+   "y": -3328.0,
+   "dist": 6272,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 17,
+   "code": "eaom",
+   "x": 4736.0,
+   "y": -640.0,
+   "dist": 3584,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 26,
+   "code": "emow",
+   "x": 4384.0,
+   "y": 544.0,
+   "dist": 2417,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 337,
+   "code": "emow",
+   "x": 4704.0,
+   "y": -608.0,
+   "dist": 3552,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 338,
+   "code": "emow",
+   "x": 4640.0,
+   "y": -608.0,
+   "dist": 3552,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 405,
+   "code": "etol",
+   "x": 4352.0,
+   "y": -2688.0,
+   "dist": 5641,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 480,
+   "code": "eaoe",
+   "x": 5120.0,
+   "y": -576.0,
+   "dist": 3548,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 491,
+   "code": "eaoe",
+   "x": 4416.0,
+   "y": 576.0,
+   "dist": 2381,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 492,
+   "code": "eden",
+   "x": 4224.0,
+   "y": 1024.0,
+   "dist": 1971,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 635,
+   "code": "emow",
+   "x": 4000.0,
+   "y": -2656.0,
+   "dist": 5640,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 670,
+   "code": "emow",
+   "x": 4128.0,
+   "y": -2336.0,
+   "dist": 5307,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 806,
+   "code": "emow",
+   "x": 3936.0,
+   "y": -2976.0,
+   "dist": 5965,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "who": "普通话补丁",
+   "t": 824,
+   "code": "eaow",
+   "x": 3840.0,
+   "y": -3328.0,
+   "dist": 6326,
+   "why": "基地外（视野农场 / 分矿的塔和大厅）"
+  }
+ ]
+}

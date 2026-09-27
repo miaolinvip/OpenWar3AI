@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenWar3 网关演示</title>
+<style>
+  :root { --ink: #1b2330; --muted: #5b6576; --rule: #dde2ea; --bg: #f4f6f8; --card: #fff; --accent: #9a2b2e; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.6 "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; display: grid; gap: 16px; }
+  h1 { font-size: 22px; margin: 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .card { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  input, select, button { font: inherit; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
+  button { cursor: pointer; } button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  td, th { border-bottom: 1px solid var(--rule); padding: 4px 6px; text-align: left; }
+  .muted { color: var(--muted); } pre { margin: 0; white-space: pre-wrap; font: 12px/1.5 Consolas, monospace; max-height: 260px; overflow: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>OpenWar3 网关演示</h1>
+  <div class="card row">
+    实例 <input id="inst" value="9" size="3">
+    角色 <select id="role"><option>dev</option><option>observer</option><option>player</option></select>
+    玩家号 <input id="player" value="0" size="3">
+    <input id="token" placeholder="令牌（局域网模式才要）" size="18" title="bin/gateway/token.txt；也可以在地址后面加 ?token=...">
+    <button class="primary" id="go">连接</button>
+    <span id="status" class="muted">没连</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <b>局面</b> <span class="muted">（overview，每 2 秒）</span>
+      <pre id="ov"></pre>
+    </div>
+    <div class="card">
+      <b>我方单位</b> <span class="muted">（订阅 state，units=mine）</span>
+      <table><thead><tr><th>类型</th><th>血</th><th>位置</th></tr></thead><tbody id="units"></tbody></table>
+    </div>
+  </div>
+  <div class="card row">
+    <input id="text" value="你好，来自浏览器" size="30">
+    <button id="toast">屏幕提示（ui.toast）</button>
+    <button id="btn">在游戏里放一个可点的按钮</button>
+    <button id="hot">登记热键 F6</button>
+  </div>
+  <div class="card"><b>事件</b> <span class="muted">（ui.click / hotkey / spell.cast / message …）</span><pre id="log"></pre></div>
+</main>
+<script type="module">
+import { OpenWar3 } from "./openwar3.mjs";
+const $ = (id) => document.getElementById(id);
+let ow = null;
+let timer = 0;
+const log = (s) => { $("log").textContent = `${new Date().toLocaleTimeString()} ${s}\n` + $("log").textContent.slice(0, 6000); };
+$("token").value = new URLSearchParams(location.search).get("token") || "";
+
+$("go").onclick = async () => {
+  ow?.close();
+  clearInterval(timer);                       // 再点一次「连接」：先停掉上一轮的定时刷新
+  const url = `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`;
+  ow = new OpenWar3(url, { inst: Number($("inst").value), role: $("role").value, player: Number($("player").value),
+                           token: $("token").value.trim() || undefined });
+  try {
+    const hello = await ow.connect();
+    $("status").textContent = `已连 pid=${hello.pid} · ${hello.role} · ${hello.methods.length} 个方法`;
+  } catch (e) { $("status").textContent = e.message; return; }
+  ow.on("state", (st) => {
+    $("units").innerHTML = (st.units || []).slice(0, 40).map((u) =>
+      `<tr><td>${u.type}${u.hero ? " ★" + u.level : ""}</td><td>${Math.round(u.hp)}/${Math.round(u.hp_max)}</td><td>${Math.round(u.x)}, ${Math.round(u.y)}</td></tr>`).join("");
+  });
+  ow.on("event", (e) => {
+    if (["unit.damaged", "order.changed", "damage", "ui.hover"].includes(e.kind)) return;
+    log(`${e.kind}${e.key ? " key=" + e.key : ""}${e.spell ? " " + e.spell : ""}${e.text ? " " + e.text : ""}`);
+  });
+  await ow.subscribe({ state: { hz: 2, units: "mine" }, events: true });
+  const tick = async () => { if (!ow) return; try { $("ov").textContent = JSON.stringify(await ow.overview(), null, 1); } catch {} };
+  tick(); timer = setInterval(tick, 2000);
+};
+$("toast").onclick = () => ow?.api.ui.toast($("text").value, { seconds: 3 });
+$("btn").onclick = () => ow?.api.ui.button("web.btn", "来自网页的按钮（点我）", { screen: [40, 360], size: 18 });
+$("hot").onclick = async () => { await ow?.api.ui.hotkey("F6"); log("登记了 F6，在游戏里按一下"); };
+</script>
+</body>
+</html>

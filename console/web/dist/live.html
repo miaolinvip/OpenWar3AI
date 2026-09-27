@@ -1,0 +1,69 @@
+<!doctype html>
+<!--
+  直播用的对局实况日志（OBS 浏览器源）：http://127.0.0.1:8866/log?inst=5
+  （09-22 标题从「AI 决策」改成「对局实况」—— 这里展示的并不是 AI 实时决策）
+    ?inst=5 / ?id=5     看哪个实例（默认 5 号，直播那台）
+    ?match=20260918-215028[&tick=60]   回看那一局（到第 60 拍）
+    ?clean=1  隐藏选择框    ?controls=0  连分类勾选/字号按钮也藏    ?rows=3  日志框几行    ?alpha=0.8  底色不透明度
+    ?cats=ai,fight,army  只看这几类    ?off=econ,sep  关掉这几类    ?size=2.5  字号系数
+    ?eco=0  不要「资源」那一行（双方金木 / 累计采金；09-22 加的，关掉就是原来的高度）
+    （OBS 的 localStorage 和平时的浏览器不是一份：在 Chrome 里点的勾选到 OBS 不算数，要写进地址）
+  旧版是 8777 的 war3-analytics/streamlog.html（老 AI）；这一版读新大脑的对局记录，数据见 farsight/server/stream.py。
+  深色底挂在 #back 上，不用去 OBS 改自定义 CSS（见 live.css 的注释）。
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>对局实况</title>
+    <script type="module" crossorigin src="/assets/live-CZeQtYnN.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/i18n-BkzQ73He.js">
+    <link rel="stylesheet" crossorigin href="/assets/live-D9ZCtdEX.css">
+  </head>
+  <body>
+    <div id="back"></div>
+    <header>
+      <div class="hrow">
+        <h1>对局实况</h1>
+        <span id="src" class="badge" title="这页在看哪个实例 / 回看哪一局"></span>
+        <select id="pick" title="看哪个实例 / 回看哪一局"></select>
+        <span id="scrubBox">拍 <input type="range" id="scrub" min="0" max="0" step="1" /><b id="scrubVal"></b></span>
+        <span id="clock" title="游戏时间 · 双方种族"></span>
+        <span id="spd" class="badge" title="当前推进倍速"></span>
+        <span id="at"></span>
+      </div>
+      <div class="hrow">
+        <span id="games" class="badge"></span>
+        <span id="kern" class="badge"></span>
+        <span id="tune" class="badge"></span>
+        <span id="filters"></span>
+        <span id="size">
+          <button id="minus" title="小一点">−</button>
+          <span id="sizeVal"></span>
+          <button id="plus" title="大一点">+</button>
+        </span>
+      </div>
+    </header>
+    <section id="brief">
+      <div class="brow" id="nowRow">
+        <span class="bt">局势</span>
+        <span id="nowLine"></span>
+      </div>
+      <div class="brow" id="ecoRow" title="全知信息：直接从游戏内存读对手的资源，人类玩家看不到（对手的电脑 AI 同样看得见我方全图）。总采金 = 开局到现在挖出来的金子，后面是最近一分钟（游戏时间）的采金速度">
+        <span class="bt">资源</span>
+        <span id="ecoLine"></span>
+      </div>
+      <div class="brow" id="prevRow">
+        <span class="bt">上一局</span>
+        <span id="briefLine"></span>
+      </div>
+      <div class="brow" id="fightRow">
+        <span class="bt">战斗</span>
+        <span id="fightLine"></span>
+      </div>
+    </section>
+    <div id="feed"></div>
+    <div id="dead"></div>
+  </body>
+</html>

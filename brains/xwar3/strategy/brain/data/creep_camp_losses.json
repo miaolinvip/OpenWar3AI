@@ -1,0 +1,61 @@
+{
+ "source": "09-18 晚打野阵亡分析：6~11 号 14:52~20:35 开局 358 局（人族 vs 疯狂电脑，LostTemple，tier 1 为主的早期部队）",
+ "made": "2026-09-18T21:05:45",
+ "min_rounds": 15,
+ "camps": {
+  "nanb+nmam": {
+   "rounds": 652,
+   "deaths_per_round": 0.02,
+   "any_death": 0.02,
+   "level": 5
+  },
+  "nitp+nits+nmam": {
+   "rounds": 517,
+   "deaths_per_round": 0.62,
+   "any_death": 0.48,
+   "level": 13
+  },
+  "nitp+nitr+ntks": {
+   "rounds": 365,
+   "deaths_per_round": 0.09,
+   "any_death": 0.07,
+   "level": 9
+  },
+  "nitt+ntkc+ntkh+ntks": {
+   "rounds": 304,
+   "deaths_per_round": 3.61,
+   "any_death": 0.94,
+   "level": 21
+  },
+  "nfpt+nitp+nits+nmam": {
+   "rounds": 114,
+   "deaths_per_round": 0.98,
+   "any_death": 0.56,
+   "level": 15
+  },
+  "nnwa+nnwl+nnwr+nnws": {
+   "rounds": 92,
+   "deaths_per_round": 1.87,
+   "any_death": 0.53,
+   "level": 38
+  },
+  "nith+nits+nplg": {
+   "rounds": 82,
+   "deaths_per_round": 1.28,
+   "any_death": 0.49,
+   "level": 18
+  },
+  "nbdw+nnwa": {
+   "rounds": 43,
+   "deaths_per_round": 0.42,
+   "any_death": 0.33,
+   "level": 9
+  },
+  "nfor+nits": {
+   "rounds": 20,
+   "deaths_per_round": 2.7,
+   "any_death": 0.85,
+   "level": 18
+  }
+ }
+}

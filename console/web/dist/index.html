@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN" data-mode="dark" data-style="modern">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Farsight 远见</title>
+    <script>
+      // 首屏之前定主题，避免闪一下亮色
+      try {
+        var t = JSON.parse(localStorage.getItem("farsight.theme") || "{}");
+        var mode = t.mode === "system" || !t.mode ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : t.mode;
+        document.documentElement.dataset.mode = mode;
+        document.documentElement.dataset.style = t.style || "modern";
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/assets/main--rf0Q4tL.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/i18n-BkzQ73He.js">
+    <link rel="stylesheet" crossorigin href="/assets/main-BregoOFs.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

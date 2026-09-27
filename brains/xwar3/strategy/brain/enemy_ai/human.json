@@ -1,0 +1,2342 @@
+{
+ "schema": "war3-enemy-ai/race@1",
+ "race": "human",
+ "race_jass": "RACE_HUMAN",
+ "source": {
+  "file": "War3x.mpq__human.ai",
+  "mpq": "War3x.mpq",
+  "说明": "1.27 的 War3Patch.mpq 没有覆盖四族 .ai，实机跑的就是这份。所有 line 指这个文件的行号。"
+ },
+ "hero": {
+  "pool": [
+   {
+    "i": 1,
+    "name": "ARCHMAGE",
+    "code": "Hamg"
+   },
+   {
+    "i": 2,
+    "name": "MTN_KING",
+    "code": "Hmkg"
+   },
+   {
+    "i": 3,
+    "name": "PALADIN",
+    "code": "Hpal"
+   },
+   {
+    "i": 4,
+    "name": "BLOOD_MAGE",
+    "code": "Hblm"
+   }
+  ],
+  "pick": "common.ai:2565-2579 三次 GetRandomInt 不重复抽 -> hero_id / hero_id2 / hero_id3，开局定死",
+  "learn_tables": [
+   {
+    "hero": "PALADIN",
+    "hero_code": "Hpal",
+    "hero_slot": 1,
+    "line": 66,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 2,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 3,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 4,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 5,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 6,
+      "ability": "RESURRECTION",
+      "code": "AHre"
+     },
+     {
+      "level": 7,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 8,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 9,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 10,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     }
+    ],
+    "order_names": [
+     "HOLY_BOLT",
+     "DEVOTION_AURA",
+     "HOLY_BOLT",
+     "DIVINE_SHIELD",
+     "HOLY_BOLT",
+     "RESURRECTION",
+     "DEVOTION_AURA",
+     "DEVOTION_AURA",
+     "DIVINE_SHIELD",
+     "DIVINE_SHIELD"
+    ]
+   },
+   {
+    "hero": "PALADIN",
+    "hero_code": "Hpal",
+    "hero_slot": 2,
+    "line": 67,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 2,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 3,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 4,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 5,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 6,
+      "ability": "RESURRECTION",
+      "code": "AHre"
+     },
+     {
+      "level": 7,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 8,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 9,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 10,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     }
+    ],
+    "order_names": [
+     "HOLY_BOLT",
+     "DEVOTION_AURA",
+     "HOLY_BOLT",
+     "DIVINE_SHIELD",
+     "HOLY_BOLT",
+     "RESURRECTION",
+     "DEVOTION_AURA",
+     "DEVOTION_AURA",
+     "DIVINE_SHIELD",
+     "DIVINE_SHIELD"
+    ]
+   },
+   {
+    "hero": "PALADIN",
+    "hero_code": "Hpal",
+    "hero_slot": 3,
+    "line": 68,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 2,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 3,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 4,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 5,
+      "ability": "HOLY_BOLT",
+      "code": "AHhb"
+     },
+     {
+      "level": 6,
+      "ability": "RESURRECTION",
+      "code": "AHre"
+     },
+     {
+      "level": 7,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 8,
+      "ability": "DEVOTION_AURA",
+      "code": "AHad"
+     },
+     {
+      "level": 9,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     },
+     {
+      "level": 10,
+      "ability": "DIVINE_SHIELD",
+      "code": "AHds"
+     }
+    ],
+    "order_names": [
+     "HOLY_BOLT",
+     "DEVOTION_AURA",
+     "HOLY_BOLT",
+     "DIVINE_SHIELD",
+     "HOLY_BOLT",
+     "RESURRECTION",
+     "DEVOTION_AURA",
+     "DEVOTION_AURA",
+     "DIVINE_SHIELD",
+     "DIVINE_SHIELD"
+    ]
+   },
+   {
+    "hero": "MTN_KING",
+    "hero_code": "Hmkg",
+    "hero_slot": 1,
+    "line": 81,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 2,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 3,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 4,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 5,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 6,
+      "ability": "AVATAR",
+      "code": "AHav"
+     },
+     {
+      "level": 7,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 8,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 9,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 10,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     }
+    ],
+    "order_names": [
+     "THUNDER_BOLT",
+     "BASH",
+     "THUNDER_BOLT",
+     "THUNDER_CLAP",
+     "THUNDER_BOLT",
+     "AVATAR",
+     "BASH",
+     "BASH",
+     "THUNDER_CLAP",
+     "THUNDER_CLAP"
+    ]
+   },
+   {
+    "hero": "MTN_KING",
+    "hero_code": "Hmkg",
+    "hero_slot": 2,
+    "line": 82,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 2,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 3,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 4,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 5,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 6,
+      "ability": "AVATAR",
+      "code": "AHav"
+     },
+     {
+      "level": 7,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 8,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 9,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 10,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     }
+    ],
+    "order_names": [
+     "THUNDER_BOLT",
+     "BASH",
+     "THUNDER_BOLT",
+     "THUNDER_CLAP",
+     "THUNDER_BOLT",
+     "AVATAR",
+     "BASH",
+     "BASH",
+     "THUNDER_CLAP",
+     "THUNDER_CLAP"
+    ]
+   },
+   {
+    "hero": "MTN_KING",
+    "hero_code": "Hmkg",
+    "hero_slot": 3,
+    "line": 83,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 2,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 3,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 4,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 5,
+      "ability": "THUNDER_BOLT",
+      "code": "AHtb"
+     },
+     {
+      "level": 6,
+      "ability": "AVATAR",
+      "code": "AHav"
+     },
+     {
+      "level": 7,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 8,
+      "ability": "BASH",
+      "code": "AHbh"
+     },
+     {
+      "level": 9,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     },
+     {
+      "level": 10,
+      "ability": "THUNDER_CLAP",
+      "code": "AHtc"
+     }
+    ],
+    "order_names": [
+     "THUNDER_BOLT",
+     "BASH",
+     "THUNDER_BOLT",
+     "THUNDER_CLAP",
+     "THUNDER_BOLT",
+     "AVATAR",
+     "BASH",
+     "BASH",
+     "THUNDER_CLAP",
+     "THUNDER_CLAP"
+    ]
+   },
+   {
+    "hero": "ARCHMAGE",
+    "hero_code": "Hamg",
+    "hero_slot": 1,
+    "line": 96,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 2,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 3,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 4,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 5,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 6,
+      "ability": "MASS_TELEPORT",
+      "code": "AHmt"
+     },
+     {
+      "level": 7,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 8,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 9,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 10,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     }
+    ],
+    "order_names": [
+     "WATER_ELEMENTAL",
+     "BRILLIANCE_AURA",
+     "WATER_ELEMENTAL",
+     "BLIZZARD",
+     "WATER_ELEMENTAL",
+     "MASS_TELEPORT",
+     "BRILLIANCE_AURA",
+     "BRILLIANCE_AURA",
+     "BLIZZARD",
+     "BLIZZARD"
+    ]
+   },
+   {
+    "hero": "ARCHMAGE",
+    "hero_code": "Hamg",
+    "hero_slot": 2,
+    "line": 97,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 2,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 3,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 4,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 5,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 6,
+      "ability": "MASS_TELEPORT",
+      "code": "AHmt"
+     },
+     {
+      "level": 7,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 8,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 9,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 10,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     }
+    ],
+    "order_names": [
+     "WATER_ELEMENTAL",
+     "BRILLIANCE_AURA",
+     "WATER_ELEMENTAL",
+     "BLIZZARD",
+     "WATER_ELEMENTAL",
+     "MASS_TELEPORT",
+     "BRILLIANCE_AURA",
+     "BRILLIANCE_AURA",
+     "BLIZZARD",
+     "BLIZZARD"
+    ]
+   },
+   {
+    "hero": "ARCHMAGE",
+    "hero_code": "Hamg",
+    "hero_slot": 3,
+    "line": 98,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 2,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 3,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 4,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 5,
+      "ability": "WATER_ELEMENTAL",
+      "code": "AHwe"
+     },
+     {
+      "level": 6,
+      "ability": "MASS_TELEPORT",
+      "code": "AHmt"
+     },
+     {
+      "level": 7,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 8,
+      "ability": "BRILLIANCE_AURA",
+      "code": "AHab"
+     },
+     {
+      "level": 9,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     },
+     {
+      "level": 10,
+      "ability": "BLIZZARD",
+      "code": "AHbz"
+     }
+    ],
+    "order_names": [
+     "WATER_ELEMENTAL",
+     "BRILLIANCE_AURA",
+     "WATER_ELEMENTAL",
+     "BLIZZARD",
+     "WATER_ELEMENTAL",
+     "MASS_TELEPORT",
+     "BRILLIANCE_AURA",
+     "BRILLIANCE_AURA",
+     "BLIZZARD",
+     "BLIZZARD"
+    ]
+   },
+   {
+    "hero": "BLOOD_MAGE",
+    "hero_code": "Hblm",
+    "hero_slot": 1,
+    "line": 111,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 2,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 3,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 4,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 5,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 6,
+      "ability": "SUMMON_PHOENIX",
+      "code": "AHpx"
+     },
+     {
+      "level": 7,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 8,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 9,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 10,
+      "ability": "BANISH",
+      "code": "AHbn"
+     }
+    ],
+    "order_names": [
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SUMMON_PHOENIX",
+     "SIPHON_MANA",
+     "BANISH",
+     "BANISH",
+     "BANISH"
+    ]
+   },
+   {
+    "hero": "BLOOD_MAGE",
+    "hero_code": "Hblm",
+    "hero_slot": 2,
+    "line": 112,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 2,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 3,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 4,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 5,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 6,
+      "ability": "SUMMON_PHOENIX",
+      "code": "AHpx"
+     },
+     {
+      "level": 7,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 8,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 9,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 10,
+      "ability": "BANISH",
+      "code": "AHbn"
+     }
+    ],
+    "order_names": [
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SUMMON_PHOENIX",
+     "SIPHON_MANA",
+     "BANISH",
+     "BANISH",
+     "BANISH"
+    ]
+   },
+   {
+    "hero": "BLOOD_MAGE",
+    "hero_code": "Hblm",
+    "hero_slot": 3,
+    "line": 113,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 2,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 3,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 4,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 5,
+      "ability": "FLAME_STRIKE",
+      "code": "AHfs"
+     },
+     {
+      "level": 6,
+      "ability": "SUMMON_PHOENIX",
+      "code": "AHpx"
+     },
+     {
+      "level": 7,
+      "ability": "SIPHON_MANA",
+      "code": "AHdr"
+     },
+     {
+      "level": 8,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 9,
+      "ability": "BANISH",
+      "code": "AHbn"
+     },
+     {
+      "level": 10,
+      "ability": "BANISH",
+      "code": "AHbn"
+     }
+    ],
+    "order_names": [
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SIPHON_MANA",
+     "FLAME_STRIKE",
+     "SUMMON_PHOENIX",
+     "SIPHON_MANA",
+     "BANISH",
+     "BANISH",
+     "BANISH"
+    ]
+   }
+  ],
+  "二英雄条件": "MeleeDifficulty() != MELEE_NEWBIE；简单电脑永远只有一个英雄"
+ },
+ "attack": {
+  "first_wave_gate": {
+   "src": "c_hero1_done > 0 and c_footman_done >= 2",
+   "line": 161
+  },
+  "newbie_first_delay_s": 240,
+  "newbie_between_waves_s": 60,
+  "normal_insane_between_waves_s": "无固定冷却；重组时间 0~72 秒（见 common.json.attack_loop）",
+  "melee_group": [
+   {
+    "unit": "hero_id",
+    "code": null,
+    "line": 123
+   },
+   {
+    "unit": "hero_id2",
+    "code": null,
+    "line": 124
+   },
+   {
+    "unit": "hero_id3",
+    "code": null,
+    "line": 125
+   },
+   {
+    "unit": "FOOTMEN",
+    "code": "hfoo",
+    "line": 126
+   },
+   {
+    "unit": "KNIGHT",
+    "code": "hkni",
+    "line": 127
+   },
+   {
+    "unit": "RIFLEMEN",
+    "code": "hrif",
+    "line": 128
+   },
+   {
+    "unit": "PRIEST",
+    "code": "hmpr",
+    "line": 129
+   },
+   {
+    "unit": "SORCERESS",
+    "code": "hsor",
+    "line": 130
+   },
+   {
+    "unit": "GRYPHON",
+    "code": "hgry",
+    "line": 131
+   },
+   {
+    "unit": "COPTER",
+    "code": "hgyr",
+    "line": 132
+   },
+   {
+    "unit": "SPELL_BREAKER",
+    "code": "hspt",
+    "line": 133
+   },
+   {
+    "unit": "HUMAN_DRAGON_HAWK",
+    "code": "hdhw",
+    "line": 134
+   }
+  ],
+  "force_level": {
+   "base": 4,
+   "terms": [
+    {
+     "line": 144,
+     "src": "set level = level + 2 * (c_footman_done + c_priest_done + c_sorceress_done + c_breaker_done)"
+    },
+    {
+     "line": 145,
+     "src": "set level = level + 3 * (c_rifleman_done + c_gryphon_done + c_hawk_done)"
+    },
+    {
+     "line": 146,
+     "src": "set level = level + 5 * (c_hero3_done + c_knight_done)"
+    },
+    {
+     "line": 147,
+     "src": "set level = level + 6 *  c_hero2_done"
+    }
+   ],
+   "用途": "max_creeps = level*4/5，min_creeps = max(0, max_creeps-10)，以及 needs_exp/has_siege 的门槛"
+  },
+  "flags": [
+   {
+    "line": 185,
+    "src": "set needs_exp        = take_exp and (level >= 9 or c_gold_owned < 2000)"
+   },
+   {
+    "line": 186,
+    "src": "set has_siege        = level >= 40 or c_mortar_done > 0 or c_tank_done > 0"
+   },
+   {
+    "line": 187,
+    "src": "set air_units        = c_gyro_done > 0 or c_gryphon_done > 0 or c_hawk_done > 0"
+   },
+   {
+    "line": 188,
+    "src": "set allow_air_creeps = (c_rifleman_done + c_hawk_done + 2*c_gyro_done + c_gryphon_done) >= 3"
+   }
+  ],
+  "extra_gate": []
+ },
+ "opening_build": [
+  {
+   "line": 371,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "town": "0"
+  },
+  {
+   "line": 372,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "town": "1"
+  },
+  {
+   "line": 374,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 375,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HUMAN_ALTAR",
+   "code": "halt"
+  },
+  {
+   "line": 376,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 377,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 378,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BARRACKS",
+   "code": "hbar"
+  },
+  {
+   "line": 379,
+   "call": "SetBuildUnit",
+   "qty": "9",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 380,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 381,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>"
+  },
+  {
+   "line": 382,
+   "call": "SetBuildUnit",
+   "qty": "11",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 383,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 384,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 385,
+   "call": "SetBuildUnit",
+   "qty": "12",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 386,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 387,
+   "call": "SetBuildUnit",
+   "qty": "13",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 388,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 389,
+   "call": "SetBuildUnit",
+   "qty": "14",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 390,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 391,
+   "call": "SetBuildUnit",
+   "qty": "15",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 392,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 393,
+   "call": "SetBuildUnit",
+   "qty": "16",
+   "unit": "PEASANT",
+   "code": "hpea"
+  },
+  {
+   "line": 394,
+   "call": "SetBuildUnit",
+   "qty": "5",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 395,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BLACKSMITH",
+   "code": "hbla"
+  },
+  {
+   "line": 396,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 397,
+   "call": "SetBuildUnit",
+   "qty": "5",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 398,
+   "call": "SetBuildUnit",
+   "qty": "8",
+   "unit": "FOOTMAN",
+   "code": "hfoo"
+  },
+  {
+   "line": 399,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 400,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "RIFLEMAN",
+   "code": "hrif"
+  },
+  {
+   "line": 401,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 402,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "RIFLEMAN",
+   "code": "hrif"
+  },
+  {
+   "line": 403,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ARCANE_VAULT",
+   "code": "hvlt"
+  },
+  {
+   "line": 405,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TOWN_HALL",
+   "code": "htow"
+  },
+  {
+   "line": 407,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "RIFLEMAN",
+   "code": "hrif"
+  },
+  {
+   "line": 408,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "LUMBER_MILL",
+   "code": "hlum"
+  },
+  {
+   "line": 411,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "WATCH_TOWER",
+   "code": "hwtw",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 413,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "GUARD_TOWER",
+   "code": "hgtw",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE",
+    "c_mill_done >= 1"
+   ]
+  },
+  {
+   "line": 416,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ARCANE_TOWER",
+   "code": "hatw",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE",
+    "c_watch_done >= 1"
+   ]
+  },
+  {
+   "line": 420,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "KEEP",
+   "code": "hkee"
+  },
+  {
+   "line": 421,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_DEFEND",
+   "code": "Rhde"
+  },
+  {
+   "line": 422,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ARMOR",
+   "code": "Rhar"
+  },
+  {
+   "line": 423,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "HOUSE",
+   "code": "hhou"
+  },
+  {
+   "line": 424,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MELEE",
+   "code": "Rhme"
+  },
+  {
+   "line": 430,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "WORKSHOP",
+   "code": "harm"
+  },
+  {
+   "line": 433,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 436,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CASTLE",
+   "code": "hcas"
+  },
+  {
+   "line": 438,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "WATCH_TOWER",
+   "code": "hwtw",
+   "town": "0"
+  },
+  {
+   "line": 440,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "GUARD_TOWER",
+   "code": "hgtw",
+   "town": "0",
+   "conditions": [
+    "c_watch_done >= 3"
+   ]
+  },
+  {
+   "line": 442,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ARCANE_TOWER",
+   "code": "hatw",
+   "town": "0",
+   "conditions": [
+    "c_watch_done >= 3",
+    "c_watch_done >= 4"
+   ]
+  },
+  {
+   "line": 446,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_RANGED",
+   "code": "Rhra"
+  },
+  {
+   "line": 447,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SANCTUM",
+   "code": "hars"
+  },
+  {
+   "line": 448,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "MORTAR",
+   "code": "hmtm"
+  },
+  {
+   "line": 449,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_WOOD",
+   "code": "Rhlh"
+  },
+  {
+   "line": 450,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ARMOR",
+   "code": "Rhar"
+  },
+  {
+   "line": 451,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_WOOD",
+   "code": "Rhlh"
+  }
+ ],
+ "steady_build": [
+  {
+   "line": 458,
+   "call": "set",
+   "src": "set peasants = 6 - GetWood() / 200",
+   "conditions": [
+    "c_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 460,
+   "call": "set",
+   "src": "set peasants = 3",
+   "conditions": [
+    "c_hall_done >= 1",
+    "peasants < 3"
+   ]
+  },
+  {
+   "line": 463,
+   "call": "set",
+   "src": "set peasants = peasants + 5",
+   "conditions": [
+    "c_hall_done >= 1",
+    "c_mines < 2"
+   ]
+  },
+  {
+   "line": 465,
+   "call": "set",
+   "src": "set peasants = peasants + 10",
+   "conditions": [
+    "c_hall_done >= 1",
+    "NOT(c_mines < 2)"
+   ]
+  },
+  {
+   "line": 468,
+   "call": "set",
+   "src": "set peasants = 15",
+   "conditions": [
+    "c_hall_done >= 1",
+    "peasants > 15"
+   ]
+  },
+  {
+   "line": 470,
+   "call": "SetBuildNext",
+   "qty": "peasants",
+   "unit": "PEASANT",
+   "code": "hpea",
+   "conditions": [
+    "c_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 476,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "town": "0",
+   "conditions": [
+    "c_hall < 1 and c_peasant_done >= 1"
+   ]
+  },
+  {
+   "line": 477,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "town": "1",
+   "conditions": [
+    "c_hall < 1 and c_peasant_done >= 1"
+   ]
+  },
+  {
+   "line": 478,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "town": "2",
+   "conditions": [
+    "c_hall < 1 and c_peasant_done >= 1"
+   ]
+  },
+  {
+   "line": 482,
+   "call": "SetBuildNext",
+   "qty": "20",
+   "unit": "PEASANT",
+   "code": "hpea",
+   "conditions": [
+    "c_gold > 500 and GetWood() < 100"
+   ]
+  },
+  {
+   "line": 488,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "conditions": [
+    "c_gold_owned < 2000"
+   ]
+  },
+  {
+   "line": 490,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "WATCH_TOWER",
+   "code": "hwtw",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 492,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "GUARD_TOWER",
+   "code": "hgtw",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE",
+    "c_watch >= 2"
+   ]
+  },
+  {
+   "line": 493,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ARCANE_TOWER",
+   "code": "hatw",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE",
+    "c_watch >= 2"
+   ]
+  },
+  {
+   "line": 501,
+   "call": "SetBuildUnit",
+   "qty": "c_house_done + 1",
+   "unit": "HOUSE",
+   "code": "hhou",
+   "conditions": [
+    "c_food_used + 5 >= c_food_made"
+   ]
+  },
+  {
+   "line": 510,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id3",
+   "code": "<随机英雄 hero_id3>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE",
+    "b_hero2_done",
+    "b_hero3_done or c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 513,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE",
+    "NOT(b_hero2_done)"
+   ]
+  },
+  {
+   "line": 516,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "NOT(b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE)"
+   ]
+  },
+  {
+   "line": 519,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HUMAN_ALTAR",
+   "code": "halt",
+   "conditions": [
+    "NOT(c_altar_done >= 1)"
+   ]
+  },
+  {
+   "line": 524,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BARRACKS",
+   "code": "hbar"
+  },
+  {
+   "line": 526,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "KNIGHT",
+   "code": "hkni",
+   "conditions": [
+    "b_knights_ok"
+   ]
+  },
+  {
+   "line": 528,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "FOOTMAN",
+   "code": "hfoo",
+   "conditions": [
+    "NOT(b_knights_ok)"
+   ]
+  },
+  {
+   "line": 534,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "GRYPHON",
+   "code": "hgry",
+   "conditions": [
+    "c_aviary_done >= 1"
+   ]
+  },
+  {
+   "line": 536,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BLACKSMITH",
+   "code": "hbla",
+   "conditions": [
+    "NOT(c_aviary_done >= 1)"
+   ]
+  },
+  {
+   "line": 538,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "RIFLEMEN",
+   "code": "hrif",
+   "conditions": [
+    "NOT(c_aviary_done >= 1)",
+    "c_smith_done >= 1 or c_gold < 1000"
+   ]
+  },
+  {
+   "line": 544,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "KEEP",
+   "code": "hkee"
+  },
+  {
+   "line": 545,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "WORKSHOP",
+   "code": "harm"
+  },
+  {
+   "line": 546,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "MORTAR",
+   "code": "hmtm"
+  },
+  {
+   "line": 548,
+   "call": "SetBuildUnit",
+   "qty": "c_watch_done - c_arcane",
+   "unit": "GUARD_TOWER",
+   "code": "hgtw"
+  },
+  {
+   "line": 553,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ARCANE_VAULT",
+   "code": "hvlt",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 554,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BLACKSMITH",
+   "code": "hbla",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 555,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "LUMBER_MILL",
+   "code": "hlum",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 556,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SANCTUM",
+   "code": "hars",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 557,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CASTLE",
+   "code": "hcas",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 558,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "AVIARY",
+   "code": "hgra",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 560,
+   "call": "do_upgrades",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 563,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "BARRACKS",
+   "code": "hbar",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 564,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "SANCTUM",
+   "code": "hars",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 565,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "AVIARY",
+   "code": "hgra",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 568,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_SENTINEL",
+   "code": "Rhse",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 571,
+   "call": "do_upgrades",
+   "conditions": [
+    "NOT(prev) and c_food_used >= UPKEEP_TIER1"
+   ]
+  },
+  {
+   "line": 574,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "TOWN_HALL",
+   "code": "htow"
+  },
+  {
+   "line": 583,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "KNIGHT",
+   "code": "hkni",
+   "conditions": [
+    "b_knights_ok"
+   ]
+  },
+  {
+   "line": 587,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "PRIEST",
+   "code": "hmpr",
+   "conditions": [
+    "c_sanctum_done >= 1"
+   ]
+  },
+  {
+   "line": 588,
+   "call": "SetBuildNext",
+   "qty": "1",
+   "unit": "SORCERESS",
+   "code": "hsor",
+   "conditions": [
+    "c_sanctum_done >= 1"
+   ]
+  },
+  {
+   "line": 589,
+   "call": "SetBuildNext",
+   "qty": "1",
+   "unit": "SPELL_BREAKER",
+   "code": "hspt",
+   "conditions": [
+    "c_sanctum_done >= 1"
+   ]
+  },
+  {
+   "line": 592,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "GRYPHON",
+   "code": "hgry",
+   "conditions": [
+    "c_sanctum_done >= 1",
+    "c_aviary_done >= 1"
+   ]
+  },
+  {
+   "line": 593,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "HUMAN_DRAGON_HAWK",
+   "code": "hdhw",
+   "conditions": [
+    "c_sanctum_done >= 1",
+    "c_aviary_done >= 1"
+   ]
+  },
+  {
+   "line": 597,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "COPTER",
+   "code": "hgyr",
+   "conditions": [
+    "c_sanctum_done >= 1",
+    "c_workshop_done >= 1"
+   ]
+  },
+  {
+   "line": 600,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "SORCERESS",
+   "code": "hsor",
+   "conditions": [
+    "c_sanctum_done >= 1"
+   ]
+  },
+  {
+   "line": 601,
+   "call": "SetBuildNext",
+   "qty": "1",
+   "unit": "SPELL_BREAKER",
+   "code": "hspt",
+   "conditions": [
+    "c_sanctum_done >= 1"
+   ]
+  },
+  {
+   "line": 605,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 3",
+   "unit": "TOWN_HALL",
+   "code": "htow",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 609,
+   "call": "GetZeppelin",
+   "conditions": [
+    "c_food_used >= 60 and c_zep < 3"
+   ]
+  }
+ ],
+ "upgrade_rules": [
+  {
+   "line": 267,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_WOOD",
+   "code": "Rhlh",
+   "conditions": [
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 270,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_WOOD",
+   "code": "Rhlh",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 274,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BREEDING",
+   "code": "Rhan",
+   "conditions": [
+    "c_keep_done >= 1",
+    "b_knights_ok"
+   ]
+  },
+  {
+   "line": 278,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_PRAYING",
+   "code": "Rhpt",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_sanctum_done >= 1",
+    "c_priest_done >= 1"
+   ]
+  },
+  {
+   "line": 281,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_SORCERY",
+   "code": "Rhst",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_sanctum_done >= 1",
+    "c_sorceress_done >= 1"
+   ]
+  },
+  {
+   "line": 286,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_WOOD",
+   "code": "Rhlh",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 290,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_PRAYING",
+   "code": "Rhpt",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_castle_done >= 1",
+    "c_sanctum_done >= 1",
+    "c_priest_done >= 1"
+   ]
+  },
+  {
+   "line": 293,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_SORCERY",
+   "code": "Rhst",
+   "conditions": [
+    "c_keep_done >= 1",
+    "c_castle_done >= 1",
+    "c_sanctum_done >= 1",
+    "c_sorceress_done >= 1"
+   ]
+  },
+  {
+   "line": 299,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_DEFEND",
+   "code": "Rhde"
+  },
+  {
+   "line": 302,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ARMOR",
+   "code": "Rhar",
+   "conditions": [
+    "c_smith_done >= 1"
+   ]
+  },
+  {
+   "line": 303,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MELEE",
+   "code": "Rhme",
+   "conditions": [
+    "c_smith_done >= 1"
+   ]
+  },
+  {
+   "line": 304,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_RANGED",
+   "code": "Rhra",
+   "conditions": [
+    "c_smith_done >= 1"
+   ]
+  },
+  {
+   "line": 305,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_LEATHER",
+   "code": "Rhla",
+   "conditions": [
+    "c_smith_done >= 1"
+   ]
+  },
+  {
+   "line": 308,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ARMOR",
+   "code": "Rhar",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 309,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_MELEE",
+   "code": "Rhme",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 310,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_RANGED",
+   "code": "Rhra",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 311,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_LEATHER",
+   "code": "Rhla",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 314,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ARMOR",
+   "code": "Rhar",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 315,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_MELEE",
+   "code": "Rhme",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 316,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_RANGED",
+   "code": "Rhra",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 317,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_LEATHER",
+   "code": "Rhla",
+   "conditions": [
+    "c_smith_done >= 1",
+    "c_keep_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 323,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_GUN_RANGE",
+   "code": "Rhri",
+   "conditions": [
+    "c_rifleman_done >= 1 and c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 327,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_FRAGS",
+   "code": "Rhfs",
+   "conditions": [
+    "c_workshop_done >= 1 and c_mortar_done >= 1"
+   ]
+  },
+  {
+   "line": 331,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_MASONRY",
+   "code": "Rhac",
+   "conditions": [
+    "c_mill_done >= 1"
+   ]
+  },
+  {
+   "line": 333,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_MASONRY",
+   "code": "Rhac",
+   "conditions": [
+    "c_mill_done >= 1",
+    "c_keep_done >= 1"
+   ]
+  },
+  {
+   "line": 339,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_FLAK",
+   "code": "Rhfc",
+   "conditions": [
+    "c_workshop_done >= 1 and c_gyro_done >= 1",
+    "c_castle_done >= 1"
+   ]
+  },
+  {
+   "line": 341,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BOMBS",
+   "code": "Rhgb",
+   "conditions": [
+    "c_workshop_done >= 1 and c_gyro_done >= 1"
+   ]
+  },
+  {
+   "line": 345,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_HAMMERS",
+   "code": "Rhhb",
+   "conditions": [
+    "c_aviary_done >= 1 and c_gryphon_done >= 1"
+   ]
+  },
+  {
+   "line": 349,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CONT_MAGIC",
+   "code": "Rhss",
+   "conditions": [
+    "c_sanctum_done >= 1 and c_breaker_done >= 1"
+   ]
+  },
+  {
+   "line": 353,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CLOUD",
+   "code": "Rhcd",
+   "conditions": [
+    "c_aviary_done >= 1 and c_hawk_done >= 1"
+   ]
+  },
+  {
+   "line": 357,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_TANK",
+   "code": "Rhrt",
+   "conditions": [
+    "c_workshop_done >= 1 and c_tank_done >= 1"
+   ]
+  }
+ ],
+ "workers": {
+  "src": [
+   {
+    "line": 621,
+    "src": "set T = TownWithMine()"
+   },
+   {
+    "line": 623,
+    "src": "call HarvestGold(T,4)"
+   },
+   {
+    "line": 624,
+    "src": "call HarvestWood(0,1)"
+   },
+   {
+    "line": 625,
+    "src": "call HarvestGold(T,1)"
+   },
+   {
+    "line": 626,
+    "src": "call HarvestWood(0,1)"
+   },
+   {
+    "line": 629,
+    "src": "call HarvestGold(T+1,5)"
+   },
+   {
+    "line": 632,
+    "src": "call HarvestWood(0,15)"
+   }
+  ],
+  "说明": "HarvestGold(town, n) / HarvestWood(town, n) 是累加式配额；每 1~3 秒 ClearHarvestAI 后重下一遍"
+ },
+ "basic_opening_exit": [
+  {
+   "line": 245,
+   "src": "if basic_opening and (b_hero2_done or (MeleeDifficulty() == MELEE_NEWBIE and c_castle_done >= 1)) then"
+  },
+  {
+   "line": 246,
+   "src": "set basic_opening = false"
+  }
+ ],
+ "ranges": {
+  "build_sequence": [
+   364,
+   611
+  ],
+  "attack_sequence": [
+   154,
+   196
+  ],
+  "init_vars": [
+   201,
+   248
+  ],
+  "do_upgrades": [
+   263,
+   359
+  ],
+  "set_skills": [
+   53,
+   114
+  ],
+  "force_level": [
+   142,
+   149
+  ],
+  "setup_force": [
+   119,
+   137
+  ],
+  "peon_assignment": [
+   616,
+   638
+  ]
+ }
+}

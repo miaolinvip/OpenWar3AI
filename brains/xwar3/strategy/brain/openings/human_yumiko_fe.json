@@ -1,0 +1,42 @@
+{
+ "id": "human_yumiko_fe",
+ "name": "Yumiko 速开矿",
+ "race": "human",
+ "desc": "兵营→祭坛→大法师→6 步兵→3~4 分钟开分矿（分矿放哨塔升神秘之塔）→8 步兵、防御姿态→主基地门口一座塔→伐木场、宝物库→二本→分矿再加塔升防御塔→10 步兵→铁匠铺、护甲→两座神秘圣地+车间+山丘之王，约 10 分钟交回建造表。农民、农场照建造表一直补（农民优先级提到最前）",
+ "source": [
+  "1481530917_Yumiko_TH000_Echo Isles.nwg（西侧出生，和 5 号同一个出生点，主参考）",
+  "1477992386_Yumiko_LawLiet_Echo Isles.nwg（东侧出生，对照：同样兵营先于祭坛、3:18 开分矿、6:24 二本）"
+ ],
+ "prio": 84,
+ "until_s": 720,
+ "keep": {"hpea": 86, "hhou": null},
+ "steps": [
+  {"kind": "building", "code": "hbar", "note": "TH000 0:03 / LawLiet 0:02：兵营是第一座"},
+  {"kind": "building", "code": "halt", "note": "0:16 / 0:17"},
+  {"kind": "hero", "code": "Hamg", "note": "TH000 1:47 大法师（LawLiet 那局先出山丘）"},
+  {"kind": "unit", "code": "hfoo", "qty": 2, "note": "1:37 两个步兵"},
+  {"kind": "unit", "code": "hfoo", "qty": 6, "note": "TH000 3:26 前 8 个、LawLiet 开矿前 6 个"},
+  {"kind": "expand", "code": "htow", "qty": 2, "not_before_s": 150, "max_wait_s": 150,
+   "note": "TH000 4:13 / LawLiet 3:18 开分矿；分矿旁有野怪时建造层会先叫部队去清（Yumiko 3:00~3:49 带步兵和大法师清的）"},
+  {"kind": "building", "code": "hwtw", "qty": 1, "where": "expansion", "count": ["hwtw", "hatw", "hgtw", "hctw"],
+   "note": "分矿哨塔（Yumiko 是先放塔再放大厅：4:03 / 3:02）"},
+  {"kind": "morph", "code": "hatw", "qty": 1, "note": "4:15 / 4:14 升神秘之塔"},
+  {"kind": "upgrade", "code": "Rhde", "note": "TH000 3:51 防御姿态"},
+  {"kind": "unit", "code": "hfoo", "qty": 8, "note": "5:24 / 5:00~5:12 再补两个"},
+  {"kind": "building", "code": "hwtw", "qty": 2, "where": "base", "count": ["hwtw", "hatw", "hgtw", "hctw"],
+   "note": "主基地门口一座塔（TH000 6:03 在大厅西边 (-320,+64)，LawLiet 4:30）"},
+  {"kind": "morph", "code": "hatw", "qty": 2, "note": "6:36 / 5:14 第二座神秘之塔"},
+  {"kind": "building", "code": "hlum", "note": "LawLiet 5:30 伐木场（TH000 8:07）"},
+  {"kind": "building", "code": "hvlt", "note": "TH000 6:29 宝物库"},
+  {"kind": "upgrade_hall", "code": "hkee", "max_wait_s": 150, "note": "TH000 7:15 / LawLiet 6:24 二本"},
+  {"kind": "unit", "code": "hfoo", "qty": 10, "note": "7:19~7:24"},
+  {"kind": "building", "code": "hwtw", "qty": 4, "where": "expansion", "count": ["hwtw", "hatw", "hgtw", "hctw"],
+   "note": "TH000 7:33 / 7:34 分矿再放两座塔"},
+  {"kind": "morph", "code": "hgtw", "qty": 1, "note": "8:52 升防御塔（要伐木场）"},
+  {"kind": "building", "code": "hbla", "note": "TH000 8:09 / LawLiet 7:19 铁匠铺"},
+  {"kind": "upgrade", "code": "Rhar", "note": "TH000 9:54 / LawLiet 8:38 护甲"},
+  {"kind": "building", "code": "hars", "qty": 2, "note": "9:50 / 9:16 两座神秘圣地（牧师、女巫）"},
+  {"kind": "hero", "code": "Hmkg", "with_prev": true, "note": "TH000 9:51 山丘之王"},
+  {"kind": "building", "code": "harm", "note": "9:52 / 9:20 车间（迫击炮、飞行器）"}
+ ]
+}

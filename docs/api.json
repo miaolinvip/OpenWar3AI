@@ -1,0 +1,929 @@
+[
+ {
+  "name": "status",
+  "category": "meta",
+  "status": "verified",
+  "mechanism": "世界块 + 快车道 + 仲裁表",
+  "latency": "",
+  "signature": "status() -> 'dict'",
+  "doc": "连接状态：pid、世界发布（周期、采集耗时）、快车道计数。"
+ },
+ {
+  "name": "snapshot",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 世界块 Local\\War3World_<pid>（运行时每 50 ms 推送，seqlock）",
+  "latency": "推送快照",
+  "signature": "snapshot(max_age: 'float' = 0.05)",
+  "doc": "整张地图的完整状态（WorldState）：.units .players .items .clock .me，max_age 秒内重复调用返回同一份。\n⚠ 进了金矿的工人不在表里；默认全图可见（锁步模型本地什么都有），Game(fair=True) 才按视野过滤。"
+ },
+ {
+  "name": "last_seen",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照的 visibleTo（每次刷新快照时记下看得见的敌方/野怪单位）",
+  "latency": "推送快照",
+  "signature": "last_seen(owner: 'str | int' = 'enemy', max_age: 'float | None' = None) -> 'list'",
+  "doc": "最后一次看见的敌方（或 'creep' 野怪、或某个玩家号）单位：[(单位当时的样子, 当时的游戏时钟, 过去了几秒)]，新的在前。\n看见它死了就从表里删掉。公平模式和普通模式都按\"我方此刻看得见\"来记 —— 这就是玩家脑子里的那张图：\n侦察到的兵力、上次看见对方英雄在哪、对面分矿什么时候开的。max_age 只要这么多游戏秒以内的。"
+ },
+ {
+  "name": "map",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 地图块 Local\\War3Map_<pid>（开局后运行时分批算，IsTerrainPathable 行走/建造）",
+  "latency": "推送快照",
+  "signature": "map()",
+  "doc": "这一局的地形表 MapInfo：.walkable(x,y) .buildable(x,y) .at(x,y) .bounds（可玩区）.starts（出生点）.cells（bit0 不能走、bit1 不能盖）。\n开局后要几秒才算好，没算好返回 None。树不在里面（用 trees()）。"
+ },
+ {
+  "name": "me",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块头",
+  "latency": "推送快照",
+  "signature": "me() -> 'int | None'",
+  "doc": "我是几号玩家（0~11）。"
+ },
+ {
+  "name": "resources",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 players[16]",
+  "latency": "推送快照",
+  "signature": "resources(player: 'int | None' = None) -> 'dict | None'",
+  "doc": "{'gold','lumber','food_used','food_cap','gold_gathered','lumber_gathered'}；player 默认我方，任何玩家都读得到。\n读不到返回 None，别当成 0。"
+ },
+ {
+  "name": "players",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 players[16]",
+  "latency": "推送快照",
+  "signature": "players() -> 'list'",
+  "doc": "全部 16 个玩家槽：Player(id, gold, lumber, food_used, food_cap, gold_gathered, lumber_gathered, race, known)。"
+ },
+ {
+  "name": "units",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 units[]",
+  "latency": "推送快照",
+  "signature": "units(owner: 'str | int' = 'all', types=None, alive: 'bool' = True) -> 'list'",
+  "doc": "按主人/类型筛单位。owner：'me' / 'enemy' / 'creep' / 'all' / 玩家号。types：四字码集合。"
+ },
+ {
+  "name": "unit",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 by_handle",
+  "latency": "推送快照",
+  "signature": "unit(handle) -> 'object | None'",
+  "doc": "按句柄对 (lo, hi) 找单位（订单目标、任务目标、事件给的都是句柄对）。"
+ },
+ {
+  "name": "is_building",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "快照 + units.json（spd==0 = 建筑）",
+  "latency": "推送快照",
+  "signature": "is_building(u) -> 'bool'",
+  "doc": "是不是建筑（含塔）。按单位表移动速度 0 判；亡灵大厅的占地是 0，别用占地判。"
+ },
+ {
+  "name": "my_workers",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照",
+  "latency": "推送快照",
+  "signature": "my_workers() -> 'list'",
+  "doc": "我方工人（农民/苦工/侍僧/小精灵）。"
+ },
+ {
+  "name": "idle_workers",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（订单槽 + 任务槽）",
+  "latency": "推送快照",
+  "signature": "idle_workers() -> 'list'",
+  "doc": "没活干的工人：没有订单、也没有任务（这一拍刚被你派了活的不算）。\n⚠ 给有任务的工人重下采集令会打断采集周期（收入归零）。"
+ },
+ {
+  "name": "my_heroes",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照",
+  "latency": "推送快照",
+  "signature": "my_heroes() -> 'list'",
+  "doc": "我方活着的英雄（死了的在祭坛复活表里，见 revive）。"
+ },
+ {
+  "name": "my_army",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照 + units.json",
+  "latency": "推送快照",
+  "signature": "my_army() -> 'list'",
+  "doc": "我方作战单位：不是工人、不是建筑。"
+ },
+ {
+  "name": "my_buildings",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照",
+  "latency": "推送快照",
+  "signature": "my_buildings(types=None) -> 'list'",
+  "doc": "我方建筑（含塔、在建的地基）；types 可以只要某几种，如 {'hbar'}。"
+ },
+ {
+  "name": "is_constructing",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（订单 = 建筑四字码，或施工令/修理令）",
+  "latency": "推送快照",
+  "signature": "is_constructing(worker) -> 'bool'",
+  "doc": "这个工人是不是正在盖房子（或正走去盖 / 在帮着修；含这一拍刚派的）。挑建造工时要跳过它，否则上一座地基会停工。"
+ },
+ {
+  "name": "under_construction",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（地基的血从很低一路涨到满）",
+  "latency": "推送快照",
+  "signature": "under_construction(building) -> 'bool'",
+  "doc": "这座建筑还没盖完（血没满）。⚠ 被打残的建筑也不满血 —— 开局判断够用，打起来之后要结合时间看。"
+ },
+ {
+  "name": "gold_mines",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（ngol/egol/ugol）",
+  "latency": "推送快照",
+  "signature": "gold_mines() -> 'list'",
+  "doc": "地图上的金矿。⚠ 暗夜缠绕金矿和中立金矿同一坐标各有一个单位，采集要派到自己那一个。"
+ },
+ {
+  "name": "enemies",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照",
+  "latency": "推送快照",
+  "signature": "enemies(fighters_only: 'bool' = False) -> 'list'",
+  "doc": "敌方玩家的单位（不含野怪）。fighters_only：去掉工人和建筑。"
+ },
+ {
+  "name": "creeps",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（owner 12 = 中立敌对）",
+  "latency": "推送快照",
+  "signature": "creeps() -> 'list'",
+  "doc": "野怪（中立敌对）。⚠ 夜里视野变短，远处营地进迷雾后对它的目标命令会被拒（原因码 1001）。"
+ },
+ {
+  "name": "nearest",
+  "category": "meta",
+  "status": "verified",
+  "mechanism": "纯计算",
+  "latency": "",
+  "signature": "nearest(candidates, to)",
+  "doc": "离 to（单位或 (x,y)）最近的一个；没有候选返回 None。"
+ },
+ {
+  "name": "life_mana",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块单位 hp/hpMax/mana/manaMax",
+  "latency": "推送快照",
+  "signature": "life_mana(u) -> 'dict | None'",
+  "doc": "{'hp','hp_max','mana','mana_max'}（浮点，引擎原值）。u 用快照里拿到的单位即可（会换成最新一份）。"
+ },
+ {
+  "name": "hero_info",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块单位 level/xp/skillPoints",
+  "latency": "推送快照",
+  "signature": "hero_info(hero) -> 'dict | None'",
+  "doc": "{'level','xp','skill_points'}。"
+ },
+ {
+  "name": "abilities",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块细节：技能（代码/等级/标志/剩余冷却）",
+  "latency": "推送快照",
+  "signature": "abilities(u) -> 'list'",
+  "doc": "[{code, level, cooldown, flags}]；buff 在 buffs(u)。只有\"有细节\"的单位才有（英雄 > 玩家单位 > 野怪，最多 256 个）。"
+ },
+ {
+  "name": "buffs",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块细节：B 开头的技能对象",
+  "latency": "推送快照",
+  "signature": "buffs(u) -> 'list'",
+  "doc": "单位身上的 buff 码（如 'BHds' 神圣护盾、'Bslo' 减速）。码对应什么效果见 data/game/buffs.json。"
+ },
+ {
+  "name": "cooldown",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块细节：技能剩余冷却（技能计时器）",
+  "latency": "推送快照",
+  "signature": "cooldown(u, ability: 'str') -> 'float | None'",
+  "doc": "这个技能还要冷却几秒（游戏秒）；0 = 能放；没有这个技能（或这个单位没细节）返回 None。"
+ },
+ {
+  "name": "inventory",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块细节：背包 6 格",
+  "latency": "推送快照",
+  "signature": "inventory(hero) -> 'list | None'",
+  "doc": "6 格物品四字码（空格为 None）；没有背包返回 None。"
+ },
+ {
+  "name": "current_order",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块单位 order / 订单目标 / 订单目标点",
+  "latency": "推送快照",
+  "signature": "current_order(u) -> 'dict | None'",
+  "doc": "{'order','target','x','y'}：单位手上这条订单（order 是 0x000D00xx 或建筑四字码，0 = 空闲）。\ntarget 是句柄对，用 g.unit(target) 换成单位。"
+ },
+ {
+  "name": "current_target",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块单位任务目标",
+  "latency": "推送快照",
+  "signature": "current_target(u)",
+  "doc": "单位**实际在打/在追**的那个单位（没有返回 None）。\n⚠ 攻击令下完订单槽很快变空，攻击挂在任务上 —— 判\"在打谁\"用这个，别用 current_order。"
+ },
+ {
+  "name": "clock",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块头 clockMs（引擎游戏时钟）",
+  "latency": "推送快照",
+  "signature": "clock() -> 'float | None'",
+  "doc": "引擎游戏时钟（游戏秒，载入中为 0）。倍速下它比墙钟走得快。"
+ },
+ {
+  "name": "production",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块生产表（Aque/ABnP/AUnP 技能对象 + 运行时跟踪的已进行时间；实测误差 < 0.2 游戏秒）",
+  "latency": "推送快照",
+  "signature": "production(building)",
+  "doc": "这座建筑正在做什么：Production(kind, queue, duration, elapsed, blocked, progress, remaining…)，没在做返回 None。\n  kind 'queue'（训练/研究/英雄，queue 最多 7 格，[0] 是正在做的）/ 'construction'（在建）/ 'upgrade'（升级大厅/塔）；\n  blocked = 有排队但没开始（多半是人口不够 —— 该造农场了）；progress 0..1。\n对手的建筑也能看（公平模式下只有看得见的建筑才有）。"
+ },
+ {
+  "name": "queue",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块生产表",
+  "latency": "推送快照",
+  "signature": "queue(building) -> 'list'",
+  "doc": "训练/研究队列里的四字码（[0] 正在做）；空闲或不是生产建筑 = []。"
+ },
+ {
+  "name": "all_production",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块生产表",
+  "latency": "推送快照",
+  "signature": "all_production(owner: 'str | int' = 'me') -> 'list'",
+  "doc": "全部正在进行的生产 [(建筑, Production)]。owner 同 units()：'me' / 'enemy' / 玩家号 / 'all'。\n职业用法：看对手在练什么兵、研究什么科技、什么时候升本（侦察到建筑时）。"
+ },
+ {
+  "name": "path_distance",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "地图块（引擎 IsTerrainPathable）+ 树块 + 建筑占地，SDK 侧 A*（128 一格）",
+  "latency": "推送快照 + 本地计算",
+  "signature": "path_distance(a, b) -> 'float | None'",
+  "doc": "地面单位从 a 走到 b 的路程（a、b 给单位或 (x,y)）；走不到 None。岛图上判断\"这个野点/分矿地面过不过得去\"用它，\n比直线距离靠谱（绕树林、绕悬崖、绕建筑）。精度一格 128；窄于一格的缝判成不通。"
+ },
+ {
+  "name": "reachable",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "同上",
+  "latency": "推送快照 + 本地计算",
+  "signature": "reachable(a, b) -> 'bool | None'",
+  "doc": "地面能不能走到（地图块没算好 = None）。"
+ },
+ {
+  "name": "walk_path",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "同上",
+  "latency": "推送快照 + 本地计算",
+  "signature": "walk_path(a, b) -> 'list | None'",
+  "doc": "路径拐点 [(x,y)...]（最后一点是 b）；配合 path(units, 点列表) 让部队按这条路走（绕开塔、走小路）。"
+ },
+ {
+  "name": "upkeep",
+  "category": "observe",
+  "status": "inferred",
+  "mechanism": "1.27 固定规则：0~50 人口不收、51~80 收入 ×0.7、81~100 ×0.4",
+  "latency": "推送快照",
+  "signature": "upkeep(player: 'int | None' = None) -> 'dict | None'",
+  "doc": "维护费档位：{'level': 'none'/'low'/'high', 'income': 1.0/0.7/0.4, 'next_at': 下一档的人口（没有 = None）}。\n职业常识：升三本/攻防时停在 50 人口，决战前才上 80。"
+ },
+ {
+  "name": "xp_to_next",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 level/xp + MiscGame NeedHeroXP 公式",
+  "latency": "推送快照",
+  "signature": "xp_to_next(hero) -> 'int | None'",
+  "doc": "英雄离下一级还差多少经验（10 级 = 0）。"
+ },
+ {
+  "name": "creep_camps",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照（野怪按 600 连成一群）+ units.json 等级",
+  "latency": "推送快照",
+  "signature": "creep_camps(link: 'float' = 600.0) -> 'list'",
+  "doc": "把场上（看得见的）野怪聚成营地：[{'x','y','units','level','hp','max_level'}]，按离我方主基地由近到远。\nlevel = 营地总等级（打野难度的常用口径），hp = 总血量。配合 time_to_kill / path_distance 挑点。"
+ },
+ {
+  "name": "buff_info",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "data/game/buffs.json（AbilityData.slk 的 BuffID -> 技能/效果/时长）",
+  "latency": "本地数据",
+  "signature": "buff_info(code: 'str') -> 'dict | None'",
+  "doc": "buff 码是什么：{'ability','effect','dur','hero_dur','targets'}（例 'Bslo' -> 减速）。一码多行时给第一行。"
+ },
+ {
+  "name": "stats",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "数据表（UnitBalance/UnitWeapons/UpgradeData/MiscGame）+ 实时科技等级 + 英雄等级",
+  "latency": "推送快照 + 快车道（5 秒一批）",
+  "signature": "stats(u, player: 'int | None' = None)",
+  "doc": "单位的战斗属性 combat.UnitStats：血/蓝上限、护甲（含攻防升级、英雄敏捷）、护甲类型、移速、白天/夜里视野、\n武器（能打什么、射程、攻击间隔、伤害区间、攻击类型、溅射）。u 给单位（自动用它主人的科技、英雄等级）或四字码（player 默认我方）。\n再配 .dps_vs(对方) / .hits_to_kill(对方) / combat.time_to_kill(一群, 对方)。⚠ 不含物品、光环、buff。"
+ },
+ {
+  "name": "time_to_kill",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "stats() + 实时血量",
+  "latency": "推送快照",
+  "signature": "time_to_kill(attackers, target) -> 'float | None'",
+  "doc": "这群单位一起打 target 要几游戏秒（用 target 现在的血；算克制、护甲、攻防升级；不算走位、溅射、治疗）。\n职业用法：集火先打\"最快能打死\"的那个（time_to_kill 最小），而不是最近的那个。打不到 = None。"
+ },
+ {
+  "name": "time_of_day",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块扩展区：GetFloatGameState(GAME_STATE_TIME_OF_DAY)",
+  "latency": "推送快照",
+  "signature": "time_of_day() -> 'float | None'",
+  "doc": "游戏内时间（小时，0~24）。开局是早上 8 点；一整天 = 480 游戏秒（白天、黑夜各 240 秒，按昼夜流速缩放）。\n读不到（老运行时 / 不在局里）返回 None。"
+ },
+ {
+  "name": "is_night",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块扩展区（6~18 点白天）",
+  "latency": "推送快照",
+  "signature": "is_night() -> 'bool | None'",
+  "doc": "现在是不是夜里（18:00~6:00）。职业打法：夜里野怪睡着（先手打野不被围）、所有单位视野变短（偷袭好时机），\n暗夜精灵的哨兵/单位夜里在树边隐身。读不到返回 None。"
+ },
+ {
+  "name": "seconds_until",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块扩展区 + 480 秒一天（实测 20 游戏秒/小时）",
+  "latency": "推送快照",
+  "signature": "seconds_until(hour: 'float') -> 'float | None'",
+  "doc": "离游戏内时间 hour 点还有几游戏秒（比如 seconds_until(18) = 离天黑还有多久，计划夜里打野用）。"
+ },
+ {
+  "name": "items_on_ground",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "世界块 items[]（只含地上的：持有者句柄全 FF）",
+  "latency": "推送快照",
+  "signature": "items_on_ground() -> 'list'",
+  "doc": "地上的物品 [Item(addr, handle_lo, handle_hi, type, x, y, life)]。捡走/用掉会发 item.removed 事件。"
+ },
+ {
+  "name": "trees",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "树块 Local\\War3Trees_<pid>（每 2 秒刷新）",
+  "latency": "推送快照",
+  "signature": "trees(x: 'float | None' = None, y: 'float | None' = None, limit: 'int' = 60) -> 'list'",
+  "doc": "活着的树（DestructableData 里 targType 含 tree 的），给了 (x,y) 就按距离由近到远，最多 limit 棵。\n每棵是 Tree(addr, handle_lo, handle_hi, type, x, y, life)，可以直接交给 gather 去伐木。"
+ },
+ {
+  "name": "events",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "事件环 Local\\War3Events_<pid>（发布对比 + 运行时捕获的伤害事件）",
+  "latency": "推送快照",
+  "signature": "events() -> 'list'",
+  "doc": "上次调用之后发生的事：unit.appeared / unit.died / unit.removed / unit.damaged / order.changed /\nhero.levelup / owner.changed / item.appeared / item.removed / game.started（这些按发布对比，精度 = 发布周期 50 ms），\n以及引擎级的 damage / killed（运行时在游戏线程上当场记下，**每一下**都有）：\n    damage：handle = 挨打的，.source_addr = 打它的（snapshot().unit_by_addr 换成单位），.value = 实际掉的血，\n            .raw_damage = 护甲前的伤害，.attack_type（normal/pierce/siege/magic/chaos/hero/spell），.damage_type\n    killed：这一下把它打死了，.source_addr = 凶手\n以及运行时跟踪生产表得出的 production.done（精度 = 发布周期）：单位 = 建筑，.done_code = 做完的四字码，\n    .done_kind = 'training'（兵/英雄/复活）/ 'research' / 'construction'（建筑盖好）/ 'upgrade'（升本/升塔），.value = 用了几游戏秒\n09-25 补齐：\n    spell.cast：单位 = 施法者，.spell 技能四字码，b 等级，value 冷却秒，x,y 施法点（技能开始冷却时认出来，精度 = 发布周期）\n    player.left：.player 离开 / 被判负移除的玩家号；game.ended：离开对局\n    selection.changed：本机玩家的选择变了（g.selection() 取单位）\n    message：屏幕消息框里的一条（游戏提示、聊天、系统）：.text 全文，.frame 消息框编号，\n             .chat = {'channel', 'sender', 'text'}（是聊天时；玩家在聊天框打的字就从这里读）\n    ui.click / ui.hover / hotkey / mouse.world：界面与输入（g.ui），.key 是画板 key / 热键写法\n每条是 Event(seq, kind, clock, addr, handle, type, owner, a, b, x, y, value, extra)。\n公平模式（fair=True）只给：自己的单位的事件、此刻看得见（或 1 秒内还看得见）的单位的事件、打我方/我方打的伤害，\n以及本机的界面 / 消息 / 对局类事件。"
+ },
+ {
+  "name": "selection",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 世界块扩展区 selAddrs（运行时每次发布时带上本机玩家的选择）",
+  "latency": "推送快照",
+  "signature": "selection() -> 'list'",
+  "doc": "本机玩家现在选中的单位（主单位排第一；最多 12 个）。选择一变会发 selection.changed 事件。"
+ },
+ {
+  "name": "messages",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "共享内存 Local\\War3Msgs_<pid>（运行时捕获的屏幕消息）",
+  "latency": "推送快照",
+  "signature": "messages() -> 'list'",
+  "doc": "上次调用之后屏幕消息框里新出的消息：[{'text', 'frame', 'repeat', 'seq', 'game_ms'}]。\n游戏提示（「需要更多的农场」「不能在那里建造」）、聊天、系统消息都在这里；frame 区分是哪个消息框。\n和事件流里的 message 事件是同一批（各有各的游标）。"
+ },
+ {
+  "name": "ui",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "W3P 74 input_enable + 共享内存 Local\\War3Input_<pid>（运行时接收窗口输入）",
+  "latency": "共享内存",
+  "signature": "ui()",
+  "doc": "界面与输入（openwar3.ui.UI）：可点的按钮和选项卡、热键、点地面选位置、鼠标指着哪儿。\n点在按钮上的这一下游戏收不到；纯本机输入 + 本机绘制，多人局也安全。"
+ },
+ {
+  "name": "tech",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_tech（引擎的玩家科技计数）",
+  "latency": "快车道",
+  "signature": "tech(code: 'str', player: 'int | None' = None) -> 'int | None'",
+  "doc": "研究等级 / 建完的建筑数（升级链算在内：城堡也算 htow）。player 默认我方，任何玩家都能查。"
+ },
+ {
+  "name": "can_do",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_feasible（引擎可行性检查）",
+  "latency": "快车道",
+  "signature": "can_do(u, code: 'str') -> 'int | None'",
+  "doc": "引擎的可行性裁决：0/220 能下；3 人口 8 缺金 9 缺木 32 队列满 183 缺前置 185 祭坛在复活 221 没有这一项/建造中。\n⚠ 对工人造建筑恒 221，不能用来判落点（用 build_near）。"
+ },
+ {
+  "name": "can_do_many",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_feasible × N，一批提交",
+  "latency": "快车道 × 1",
+  "signature": "can_do_many(pairs) -> 'list'",
+  "doc": "一次问很多个 can_do：pairs = [(单位, 四字码), ...]，返回同样顺序的裁决码列表（问不到的是 None）。\n规划一拍要造/练什么时先整体问一遍，比逐个 can_do 快 N 倍（参考大脑 09-23：建造规划 76 -> 25 ms）。"
+ },
+ {
+  "name": "tech_many",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_tech × N，一批提交",
+  "latency": "快车道 × 1",
+  "signature": "tech_many(codes, player: 'int | None' = None) -> 'dict'",
+  "doc": "一次查很多个科技/建筑计数：{四字码: 数量或 None}。"
+ },
+ {
+  "name": "visible",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_visible（看得见 / 迷雾 / 黑区）",
+  "latency": "快车道",
+  "signature": "visible(x: 'float', y: 'float') -> 'bool | None'",
+  "doc": "这一点我方现在看不看得见（不在迷雾/黑区里）。公平模式的 bot 应该只用看得见的敌人。"
+ },
+ {
+  "name": "gold_left",
+  "category": "observe",
+  "status": "inferred",
+  "mechanism": "W3P 查询 q_mine_gold（引擎的金矿余量）",
+  "latency": "快车道",
+  "signature": "gold_left(mine) -> 'int | None'",
+  "doc": "金矿还剩多少金。"
+ },
+ {
+  "name": "enemy_ai_plan",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "W3P 查询 q_captain（敌兵跟着的电脑队长）",
+  "latency": "快车道",
+  "signature": "enemy_ai_plan(enemy_unit) -> 'dict | None'",
+  "doc": "电脑 AI 的队长：它带兵要去哪（出门前就知道要打你家哪里）。只对电脑对手有效；没跟队长走返回 None。"
+ },
+ {
+  "name": "batch",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "块里的命令攒成一批，块结束时一次提交（同一帧执行、只等一次游戏线程）",
+  "latency": "快车道 × 1",
+  "signature": "batch() -> 'Batch'",
+  "doc": "把一拍里的命令合成一批：\n\n    with g.batch() as b:\n        g.attack(archers, target)          # 返回 Pending，块结束后才变成回执\n        g.move(wounded, *home)\n        g.cast(hero, \"thunderclap\")\n    print(b.sent, b.wait_ms, [r.reason for r in b.receipts])\n\n每条命令单独发都要等游戏线程处理一次（约 10 ms）；一批只等一次 —— 参考大脑 09-23 靠这个一轮 48 -> 26 ms。\n* 仲裁照旧逐条过（被握着的单位当场得到 held 回执，不进批）；\n* 块里的命令返回 Pending：块结束前读它的 .ok 会抛错（回执还不存在），块结束后和 Receipt 一样用；\n* 块里抛了异常 = 整批作废（status 97 cancelled），握着的单位放回去；\n* 查询（can_do / tech / visible …）和 build_near、buy 不进批，照旧当场问 —— 它们的结果当场要用；\n  要一次问很多个用 can_do_many / tech_many；\n* 嵌套的 with g.batch() 并进最外层那一批；超过 16 条运行时自动分几段（每段一次等待）。"
+ },
+ {
+  "name": "order_of",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "快照订单 + 本进程刚被接下的命令（回执）",
+  "latency": "推送快照",
+  "signature": "order_of(u) -> 'int | None'",
+  "doc": "单位现在的订单，**含你这一拍刚下的**（快照还没追上时用回执里的新订单）。\n⚠ 09-23 实机：hello_bot 刚派农民去盖农场，同一拍 rush_bot 从快照里看它\"空闲\"又派去盖兵营，农场一次次半途而废。\n  挑\"闲着的/没在盖房子的\"单位时，用这个而不是 u.order。"
+ },
+ {
+  "name": "move",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P point：move（extra 位 = 排队方式）",
+  "latency": "快车道",
+  "signature": "move(units, x: 'float', y: 'float', queue: 'str | None' = None)",
+  "doc": "走到 (x,y)，路上不打人（撤退用这个）。可以传一个单位或一个列表（同一帧一起下）。\nqueue='after'：做完手上这件再去（插在当前订单后面）。回执 values[0] = 下令后这个单位排着几条订单（含正在做的）。"
+ },
+ {
+  "name": "attack_move",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P point：attack 对点",
+  "latency": "快车道",
+  "signature": "attack_move(units, x: 'float', y: 'float', queue: 'str | None' = None)",
+  "doc": "攻击移动（A 地面）：路上遇敌就打。queue 同 move。"
+ },
+ {
+  "name": "attack",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target：目标命令（右键 smart）",
+  "latency": "快车道",
+  "signature": "attack(units, target, force: 'bool' = False, queue: 'str | None' = None)",
+  "doc": "打 target。默认用右键（对敌人 = 攻击这一个，09-23 实测订单目标/任务目标都是它）。\n⚠ 目标必须在视野里，看不见的会被拒（原因码 1001）。\nforce=True 用攻击令 0x0F（打自己人/中立小动物时要它）—— 实测它只换上攻击令、不记住目标，\n会去打附近别的敌人，打具体目标别用它。"
+ },
+ {
+  "name": "stop",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P immediate：stop",
+  "latency": "快车道",
+  "signature": "stop(units)",
+  "doc": "停下手上的一切（订单号 0x000D0004），排着的订单也清掉。"
+ },
+ {
+  "name": "hold",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P immediate：holdposition",
+  "latency": "快车道",
+  "signature": "hold(units, queue: 'str | None' = None)",
+  "doc": "原地待命（不追出去，只打射程里的）。"
+ },
+ {
+  "name": "patrol",
+  "category": "command",
+  "status": "inferred",
+  "mechanism": "W3P point：patrol",
+  "latency": "快车道",
+  "signature": "patrol(units, x: 'float', y: 'float', queue: 'str | None' = None)",
+  "doc": "在当前位置和 (x,y) 之间巡逻。"
+ },
+ {
+  "name": "attack_ground",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P point：attackground（攻城单位 / 迫击炮 / 投石车）",
+  "latency": "快车道",
+  "signature": "attack_ground(units, x: 'float', y: 'float', queue: 'str | None' = None)",
+  "doc": "攻击地面：炮对一块地方开火（打隐形单位、打树林后面的人、封路口）。只有能攻击地面的单位接受。"
+ },
+ {
+  "name": "cancel",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P immediate：cancel",
+  "latency": "快车道",
+  "signature": "cancel(building)",
+  "doc": "取消：训练/研究队列的最后一格（退钱）、正在盖的建筑（退 75%）、正在升级的大厅。"
+ },
+ {
+  "name": "path",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "一批：第一段立刻执行，其余倒序用 queue='after' 插（引擎只有插在当前后面）",
+  "latency": "快车道 × 1",
+  "signature": "path(units, points, attack: 'bool' = False)",
+  "doc": "按顺序走过一串点（Shift 连点：路径点、绕开塔、侦察路线）。attack=True 每段都是攻击移动。\n一次提交；回执是每个点一张（按 points 顺序）。"
+ },
+ {
+  "name": "gather",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target：harvest（金矿或树）",
+  "latency": "快车道",
+  "signature": "gather(workers, target, queue: 'str | None' = None)",
+  "doc": "采金/伐木（target 是金矿或 trees() 里的树）。⚠ 只给空闲工人派（idle_workers）：给有任务的工人重下会打断采集周期。\n职业用法：盖完房子回去采矿 = build(...) 之后 gather(worker, mine, queue='after')。"
+ },
+ {
+  "name": "repair",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target：repair",
+  "latency": "快车道",
+  "signature": "repair(workers, building, queue: 'str | None' = None)",
+  "doc": "修理 / 帮着盖（人族兽族的工地没人盖会停工）。"
+ },
+ {
+  "name": "build",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P build：建造订单，同一帧读回工人订单确认",
+  "latency": "快车道",
+  "signature": "build(worker, code: 'str', x: 'float', y: 'float', queue: 'str | None' = None)",
+  "doc": "让工人在 (x,y) 造 code（坐标对齐 32 格）。回执接下 = 工人订单已经是这座建筑（或开工令）；\nqueue='after' 时 = 排进了工人的订单队列（回执 values[0] 排队数）。\n⚠ 接下 ≠ 造得成：树林里的点引擎也当场接下，工人走到了才失败（09-23 实测）；钱被别处花掉也会让地基出不来。\n不知道哪里放得下就用 build_near（它会跟踪结果、拉黑失败的点）。连造几座用 build_queue。"
+ },
+ {
+  "name": "build_queue",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "一批：第一座立刻，其余倒序 queue='after'",
+  "latency": "快车道 × 1",
+  "signature": "build_queue(worker, plan)",
+  "doc": "一个工人按顺序连造几座（Shift 连造）：plan = [(四字码, x, y), ...]。一次提交；回执按 plan 顺序。\n⚠ 钱是开工时才扣的（排队时不扣）—— 排了 3 座但钱只够 1 座，后两座会在工人走到时失败。"
+ },
+ {
+  "name": "build_near",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "逐点 build + 跟踪（地基出现 = 成；工人放弃订单又没地基 = 这个点拉黑）",
+  "latency": "快车道 × 试的点数",
+  "signature": "build_near(worker, code: 'str', x: 'float', y: 'float', min_r: 'float' = 450, max_r: 'float' = 1500, max_tries: 'int' = 24)",
+  "doc": "在 (x,y) 周围由近到远找个放得下的点盖 code。**不阻塞**，每拍调都行：\n  * 这种建筑有一次还在进行中（工人走在路上）-> 返回那个点，不重复下令；\n  * 上一次成了（地基出现）-> 这次按需再找新点；\n  * 上一次失败了（工人走到才发现放不下，订单被引擎撤掉、没有地基）-> 那个点拉黑 45 秒，换下一个；\n  * 钱不够 -> 直接返回 None（不试、不拉黑）；都试完了返回 None。\n⚠ 为什么要跟踪：09-23 实机，树林里的点引擎**当场接下**、工人走到了才失败（同一帧的回执判不出来）；\n  而引擎的落点检查对工人造建筑恒回 221，也没法先\"查\"再盖。只有明显被占的点（大厅正中）会当场拒绝。"
+ },
+ {
+  "name": "can_afford",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "推送快照的我方资源 + units.json 的价格",
+  "latency": "推送快照",
+  "signature": "can_afford(code: 'str') -> 'bool'",
+  "doc": "现在的金/木够不够买 code（单位、建筑；按 units.json 的价格）。价格表里没有的一律当买得起。\n⚠ 升本的四字码在表里是累计价，这里会偏保守；最终以引擎的回执为准。"
+ },
+ {
+  "name": "train",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P immediate：四字码，被拒时带可行性原因码",
+  "latency": "快车道",
+  "signature": "train(building, code: 'str')",
+  "doc": "训练单位 / 研究科技 / 升级大厅（升本 = 对大厅本身下目标大厅的四字码，如 'hkee'）。\n被拒时回执的 reason 会说为什么（人口不够、缺金、缺木、队列满、缺前置……）。"
+ },
+ {
+  "name": "learn",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P learn：技能点减少才算学会",
+  "latency": "快车道",
+  "signature": "learn(hero, ability: 'str')",
+  "doc": "英雄学技能（四字码，如 'AHbz' 暴风雪）。"
+ },
+ {
+  "name": "cast",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target / point / immediate（按参数选）",
+  "latency": "快车道",
+  "signature": "cast(u, spell, target=None, x: 'float | None' = None, y: 'float | None' = None)",
+  "doc": "放技能。spell 是订单名（'thunderbolt' 风暴之锤、'blizzard'、'holybolt' 圣光术…，见 data/order-ids.txt）或订单号。\n给 target = 对单位；给 x,y = 对地面；都不给 = 无目标（雷霆一击、神圣护盾、召唤水元素）。\n回执接下只代表引擎接受了；放没放出来看 cooldown() 有没有进冷却、buffs() 有没有出现。"
+ },
+ {
+  "name": "rally",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P rally",
+  "latency": "快车道",
+  "signature": "rally(building, x: 'float | None' = None, y: 'float | None' = None, target=None)",
+  "doc": "设集结点（对点，或者对一个单位/金矿）。"
+ },
+ {
+  "name": "revive",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P revive：死亡英雄表 -> 祭坛对死英雄施放复活",
+  "latency": "快车道",
+  "signature": "revive(altar, hero=None)",
+  "doc": "在祭坛复活死掉的英雄（hero 不给就复活表里第一个）。\n被拒的常见原因（回执 reason 里会写）：人口不够（英雄也占人口）、钱不够、刚死不久（死后约 3 游戏秒才能复活）、\n复活已在进行（接下时引擎当场清掉那一槽）。"
+ },
+ {
+  "name": "pick_up",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target：右键物品",
+  "latency": "快车道",
+  "signature": "pick_up(hero, item)",
+  "doc": "英雄去捡地上的物品（item 来自 items_on_ground）。捡到后背包里出现、地上发 item.removed 事件。"
+ },
+ {
+  "name": "use_item",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P use_item（按格号）",
+  "latency": "快车道",
+  "signature": "use_item(hero, slot: 'int', target=None, x: 'float | None' = None, y: 'float | None' = None)",
+  "doc": "用背包第 slot 格（0~5）的物品；可带目标单位或目标点。\n⚠ 对点用物品（比如象牙塔）引擎成功也回 0，回执一律算接下 —— 看背包那格空没空。"
+ },
+ {
+  "name": "drop_item",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P item_drop（照抄 JASS UnitDropItemPoint：dropitem 0xD0021 对点 + 物品即时目标）",
+  "latency": "快车道",
+  "signature": "drop_item(hero, slot: 'int', x: 'float', y: 'float')",
+  "doc": "把背包第 slot 格的东西丢在 (x,y)（英雄走过去放下）。"
+ },
+ {
+  "name": "give_item",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P item_drop（照抄 JASS UnitDropItemTarget：dropitem 对单位）",
+  "latency": "快车道",
+  "signature": "give_item(hero, slot: 'int', to)",
+  "doc": "把背包第 slot 格的东西给 to（别的英雄 / 单位，走过去递过去）。给商店 = 卖掉（见 sell_item）。"
+ },
+ {
+  "name": "sell_item",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "同 give_item，目标是商店（实测避难权杖卖 125 金）",
+  "latency": "快车道",
+  "signature": "sell_item(hero, slot: 'int', shop)",
+  "doc": "把背包第 slot 格的东西卖给商店（英雄要走到商店旁边；可卖的物品才收，回一半价钱）。"
+ },
+ {
+  "name": "move_item",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P target：订单 0xD0022+格号，目标 = 物品（照抄 JASS UnitDropItemSlot）",
+  "latency": "快车道",
+  "signature": "move_item(hero, slot: 'int', to_slot: 'int')",
+  "doc": "背包里换格子（第 slot 格挪到第 to_slot 格；两格都有东西就对调）。整理快捷键位用。"
+ },
+ {
+  "name": "buy",
+  "category": "command",
+  "status": "inferred",
+  "mechanism": "W3P buy：商店卖给旁边的英雄",
+  "latency": "快车道",
+  "signature": "buy(shop, item_code: 'str')",
+  "doc": "在商店买物品（给站在商店旁边的英雄）。缺科技前置时引擎回 0、不扣钱。"
+ },
+ {
+  "name": "call_to_arms",
+  "category": "command",
+  "status": "verified",
+  "mechanism": "W3P immediate：townbellon/off",
+  "latency": "快车道",
+  "signature": "call_to_arms(hall, on: 'bool' = True)",
+  "doc": "人族战斗号召：农民变民兵（一本城镇大厅没有这个技能，只对主城/城堡有效）。"
+ },
+ {
+  "name": "set_speed",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "动作 47（25~800%）",
+  "latency": "控制通道",
+  "signature": "set_speed(percent: 'int') -> 'bool'",
+  "doc": "游戏倍速（100 = 原速）。"
+ },
+ {
+  "name": "pause",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "W3P pause",
+  "latency": "快车道",
+  "signature": "pause(on: 'bool' = True)",
+  "doc": "暂停 / 继续游戏。暂停时引擎时钟停住，快车道照常能下令（事件分发还在跑）。"
+ },
+ {
+  "name": "set_publish_period",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "世界块 requestedPeriodMs",
+  "latency": "推送快照",
+  "signature": "set_publish_period(ms: 'int') -> 'None'",
+  "doc": "世界状态的发布周期（16~1000 毫秒，默认 50）。一次采集约 0.5 ms，33 ms 也没问题；全机共用一个值，最后写的算。"
+ },
+ {
+  "name": "say",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "动作 56",
+  "latency": "控制通道",
+  "signature": "say(u, text: 'str', seconds: 'float' = 4.0) -> 'bool'",
+  "doc": "单位头顶冒一个聊天气泡（直播/调试用，不影响游戏）。没冒出来返回 False，原因在 g.last_say_error。"
+ },
+ {
+  "name": "message",
+  "category": "control",
+  "status": "inferred",
+  "mechanism": "动作 45",
+  "latency": "控制通道",
+  "signature": "message(text: 'str') -> 'bool'",
+  "doc": "在游戏左下角消息区打一行字（只有本机看得见）。要等游戏自己先弹过一条提示（DLL 从那次抓消息框）。"
+ },
+ {
+  "name": "end_game",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "动作 22",
+  "latency": "控制通道",
+  "signature": "end_game() -> 'bool'",
+  "doc": "结束这个游戏进程（farm.py --keep 会按 next_game.json 自动开下一局）。"
+ },
+ {
+  "name": "canvas",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "W3P 73 canvas_enable + 共享内存 Local\\War3Canvas_<pid>（运行时每帧在游戏画指针前画，指针盖在上面）",
+  "latency": "共享内存",
+  "signature": "canvas()",
+  "doc": "画板：往游戏画面上画文字框、面板、进度条、图片、地上的圈和路线（openwar3.canvas.Canvas）。\n运行时自己画，不建游戏句柄、不改游戏状态 —— 多人局也安全；样式随意（中文、圆角、半透明）。"
+ },
+ {
+  "name": "press_to_continue",
+  "category": "control",
+  "status": "verified",
+  "mechanism": "PostMessage WM_KEYDOWN/UP 空格到游戏窗口（不抢焦点）",
+  "latency": "窗口消息",
+  "signature": "press_to_continue() -> 'bool'",
+  "doc": "在「按下任意键以继续」的载入画面上按一下空格。很多 RPG / 剧情地图载入完要按键才开始（09-24 WarChasers 实测：\n不按就一直停在载入画面，游戏时钟 0、快车道不排空）。openwar3.run 等进局时自己会按，一般不用手调。"
+ },
+ {
+  "name": "map_data",
+  "category": "observe",
+  "status": "verified",
+  "mechanism": "地图文件（启动器 --map 的路径）：w3u/w3t/w3a + wts，保护过的图读图里的 TXT",
+  "latency": "读文件（第一次约 0.1 秒）",
+  "signature": "map_data()",
+  "doc": "正在打的这张地图的数据（openwar3.mapdata.MapData）：name_of('HC07') 自定义单位/物品/技能的名字、hero_names、tooltip。\nRPG 地图的单位大多是地图自己造的，内置名字表里没有；不是启动器起的游戏（找不到地图文件）返回 None。"
+ },
+ {
+  "name": "jass",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "W3P 70 jass（运行时按名字查 native 表，1291 个）",
+  "latency": "快车道",
+  "signature": "jass()",
+  "doc": "按名字调任意 JASS native：g.jass.CreateUnit(g.jass.Player(1), \"Hpal\", x, y, 270.0)。\n参数 I/R/B/S/H 自动转换（单位/物品对象直接传），多人局里只能调只读的。详见 openwar3/jass.py 和 docs/COMPANION_ZH.md。"
+ },
+ {
+  "name": "player_slots",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "JASS GetPlayerController / GetPlayerSlotState / IsPlayerAlly",
+  "latency": "快车道",
+  "signature": "player_slots() -> 'list[dict]'",
+  "doc": "16 个玩家槽：controller（user 真人 / computer / neutral…）、state（empty / playing / left）、human、me、ally（和我是不是盟友）。\nRPG 地图里找空槽放玩伴、判断是不是单人局都用它。"
+ },
+ {
+  "name": "spawn",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "JASS CreateUnit + W3P 72 句柄 -> 单位",
+  "latency": "快车道",
+  "signature": "spawn(code: 'str', x: 'float', y: 'float', player: 'int | None' = None, facing: 'float' = 270.0)",
+  "doc": "在 (x,y) 造一个单位（player 默认本机玩家），返回快照里的单位（等下一次世界发布，约 50 ms）；造不出来返回 None。\n返回的单位多一个属性 jass_handle。⚠ 只在单人局能用（多人局不同步）。"
+ },
+ {
+  "name": "set_alliance",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "JASS SetPlayerAlliance",
+  "latency": "快车道",
+  "signature": "set_alliance(a: 'int', b: 'int', allied: 'bool' = True, vision: 'bool' = True, control: 'bool' = False, xp: 'bool' = False, both: 'bool' = True) -> 'None'",
+  "doc": "设玩家 a 对 b 的同盟关系：allied = 不互相攻击 + 互相求援；vision 共享视野；control 共享单位控制（b 能指挥 a 的单位）；\nxp 分享经验。both=True 两个方向一起设（control 只设 a -> b）。"
+ },
+ {
+  "name": "set_player_name",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "JASS SetPlayerName",
+  "latency": "快车道",
+  "signature": "set_player_name(player: 'int', name: 'str') -> 'None'",
+  "doc": "改玩家名字（计分板、聊天、盟友面板里显示的那个）。给玩伴起名字用。"
+ },
+ {
+  "name": "show_text",
+  "category": "sandbox",
+  "status": "verified",
+  "mechanism": "JASS DisplayTimedTextToPlayer",
+  "latency": "快车道",
+  "signature": "show_text(text: 'str', seconds: 'float' = 6.0, player: 'int | None' = None) -> 'None'",
+  "doc": "屏幕左下角显示一行字（地图触发器用的那种文字），默认给本机玩家看。支持 |cffRRGGBB 颜色码。"
+ }
+]

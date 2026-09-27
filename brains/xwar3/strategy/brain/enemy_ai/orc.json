@@ -1,0 +1,2328 @@
+{
+ "schema": "war3-enemy-ai/race@1",
+ "race": "orc",
+ "race_jass": "RACE_ORC",
+ "source": {
+  "file": "War3x.mpq__orc.ai",
+  "mpq": "War3x.mpq",
+  "说明": "1.27 的 War3Patch.mpq 没有覆盖四族 .ai，实机跑的就是这份。所有 line 指这个文件的行号。"
+ },
+ "hero": {
+  "pool": [
+   {
+    "i": 1,
+    "name": "BLADE_MASTER",
+    "code": "Obla"
+   },
+   {
+    "i": 2,
+    "name": "FAR_SEER",
+    "code": "Ofar"
+   },
+   {
+    "i": 3,
+    "name": "TAUREN_CHIEF",
+    "code": "Otch"
+   },
+   {
+    "i": 4,
+    "name": "SHADOW_HUNTER",
+    "code": "Oshd"
+   }
+  ],
+  "pick": "common.ai:2565-2579 三次 GetRandomInt 不重复抽 -> hero_id / hero_id2 / hero_id3，开局定死",
+  "learn_tables": [
+   {
+    "hero": "BLADE_MASTER",
+    "hero_code": "Obla",
+    "hero_slot": 1,
+    "line": 76,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 2,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 3,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 4,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 5,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 6,
+      "ability": "BLADE_STORM",
+      "code": "AOww"
+     },
+     {
+      "level": 7,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 8,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 9,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 10,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     }
+    ],
+    "order_names": [
+     "MIRROR_IMAGE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "MIRROR_IMAGE",
+     "MIRROR_IMAGE",
+     "BLADE_STORM",
+     "CRITICAL_STRIKE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "WIND_WALK"
+    ]
+   },
+   {
+    "hero": "BLADE_MASTER",
+    "hero_code": "Obla",
+    "hero_slot": 2,
+    "line": 77,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 2,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 3,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 4,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 5,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 6,
+      "ability": "BLADE_STORM",
+      "code": "AOww"
+     },
+     {
+      "level": 7,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 8,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 9,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 10,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     }
+    ],
+    "order_names": [
+     "MIRROR_IMAGE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "MIRROR_IMAGE",
+     "MIRROR_IMAGE",
+     "BLADE_STORM",
+     "CRITICAL_STRIKE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "WIND_WALK"
+    ]
+   },
+   {
+    "hero": "BLADE_MASTER",
+    "hero_code": "Obla",
+    "hero_slot": 3,
+    "line": 78,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 2,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 3,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 4,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 5,
+      "ability": "MIRROR_IMAGE",
+      "code": "AOmi"
+     },
+     {
+      "level": 6,
+      "ability": "BLADE_STORM",
+      "code": "AOww"
+     },
+     {
+      "level": 7,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 8,
+      "ability": "CRITICAL_STRIKE",
+      "code": "AOcr"
+     },
+     {
+      "level": 9,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     },
+     {
+      "level": 10,
+      "ability": "WIND_WALK",
+      "code": "AOwk"
+     }
+    ],
+    "order_names": [
+     "MIRROR_IMAGE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "MIRROR_IMAGE",
+     "MIRROR_IMAGE",
+     "BLADE_STORM",
+     "CRITICAL_STRIKE",
+     "CRITICAL_STRIKE",
+     "WIND_WALK",
+     "WIND_WALK"
+    ]
+   },
+   {
+    "hero": "FAR_SEER",
+    "hero_code": "Ofar",
+    "hero_slot": 1,
+    "line": 91,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 2,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 3,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 4,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 5,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 6,
+      "ability": "EARTHQUAKE",
+      "code": "AOeq"
+     },
+     {
+      "level": 7,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 8,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 9,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 10,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     }
+    ],
+    "order_names": [
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "EARTHQUAKE",
+     "SPIRIT_WOLF",
+     "FAR_SIGHT",
+     "FAR_SIGHT",
+     "FAR_SIGHT"
+    ]
+   },
+   {
+    "hero": "FAR_SEER",
+    "hero_code": "Ofar",
+    "hero_slot": 2,
+    "line": 92,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 2,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 3,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 4,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 5,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 6,
+      "ability": "EARTHQUAKE",
+      "code": "AOeq"
+     },
+     {
+      "level": 7,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 8,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 9,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 10,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     }
+    ],
+    "order_names": [
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "EARTHQUAKE",
+     "SPIRIT_WOLF",
+     "FAR_SIGHT",
+     "FAR_SIGHT",
+     "FAR_SIGHT"
+    ]
+   },
+   {
+    "hero": "FAR_SEER",
+    "hero_code": "Ofar",
+    "hero_slot": 3,
+    "line": 93,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 2,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 3,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 4,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 5,
+      "ability": "CHAIN_LIGHTNING",
+      "code": "AOcl"
+     },
+     {
+      "level": 6,
+      "ability": "EARTHQUAKE",
+      "code": "AOeq"
+     },
+     {
+      "level": 7,
+      "ability": "SPIRIT_WOLF",
+      "code": "AOsf"
+     },
+     {
+      "level": 8,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 9,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     },
+     {
+      "level": 10,
+      "ability": "FAR_SIGHT",
+      "code": "AOfs"
+     }
+    ],
+    "order_names": [
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "SPIRIT_WOLF",
+     "CHAIN_LIGHTNING",
+     "EARTHQUAKE",
+     "SPIRIT_WOLF",
+     "FAR_SIGHT",
+     "FAR_SIGHT",
+     "FAR_SIGHT"
+    ]
+   },
+   {
+    "hero": "TAUREN_CHIEF",
+    "hero_code": "Otch",
+    "hero_slot": 1,
+    "line": 106,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 2,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 3,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 4,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 5,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 6,
+      "ability": "REINCARNATION",
+      "code": "AOre"
+     },
+     {
+      "level": 7,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 8,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 9,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 10,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     }
+    ],
+    "order_names": [
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "REINCARNATION",
+     "ENDURANE_AURA",
+     "WAR_STOMP",
+     "WAR_STOMP",
+     "WAR_STOMP"
+    ]
+   },
+   {
+    "hero": "TAUREN_CHIEF",
+    "hero_code": "Otch",
+    "hero_slot": 2,
+    "line": 107,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 2,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 3,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 4,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 5,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 6,
+      "ability": "REINCARNATION",
+      "code": "AOre"
+     },
+     {
+      "level": 7,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 8,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 9,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 10,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     }
+    ],
+    "order_names": [
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "REINCARNATION",
+     "ENDURANE_AURA",
+     "WAR_STOMP",
+     "WAR_STOMP",
+     "WAR_STOMP"
+    ]
+   },
+   {
+    "hero": "TAUREN_CHIEF",
+    "hero_code": "Otch",
+    "hero_slot": 3,
+    "line": 108,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 2,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 3,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 4,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 5,
+      "ability": "SHOCKWAVE",
+      "code": "AOsh"
+     },
+     {
+      "level": 6,
+      "ability": "REINCARNATION",
+      "code": "AOre"
+     },
+     {
+      "level": 7,
+      "ability": "ENDURANE_AURA",
+      "code": "AOae"
+     },
+     {
+      "level": 8,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 9,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     },
+     {
+      "level": 10,
+      "ability": "WAR_STOMP",
+      "code": "AOws"
+     }
+    ],
+    "order_names": [
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "ENDURANE_AURA",
+     "SHOCKWAVE",
+     "REINCARNATION",
+     "ENDURANE_AURA",
+     "WAR_STOMP",
+     "WAR_STOMP",
+     "WAR_STOMP"
+    ]
+   },
+   {
+    "hero": "SHADOW_HUNTER",
+    "hero_code": "Oshd",
+    "hero_slot": 1,
+    "line": 121,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 2,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 3,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 4,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 5,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 6,
+      "ability": "VOODOO",
+      "code": "AOvd"
+     },
+     {
+      "level": 7,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 8,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 9,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 10,
+      "ability": "HEX",
+      "code": "AOhx"
+     }
+    ],
+    "order_names": [
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "VOODOO",
+     "SERPENT_WARD",
+     "HEX",
+     "HEX",
+     "HEX"
+    ]
+   },
+   {
+    "hero": "SHADOW_HUNTER",
+    "hero_code": "Oshd",
+    "hero_slot": 2,
+    "line": 122,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 2,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 3,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 4,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 5,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 6,
+      "ability": "VOODOO",
+      "code": "AOvd"
+     },
+     {
+      "level": 7,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 8,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 9,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 10,
+      "ability": "HEX",
+      "code": "AOhx"
+     }
+    ],
+    "order_names": [
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "VOODOO",
+     "SERPENT_WARD",
+     "HEX",
+     "HEX",
+     "HEX"
+    ]
+   },
+   {
+    "hero": "SHADOW_HUNTER",
+    "hero_code": "Oshd",
+    "hero_slot": 3,
+    "line": 123,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 2,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 3,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 4,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 5,
+      "ability": "HEALING_WAVE",
+      "code": "AOhw"
+     },
+     {
+      "level": 6,
+      "ability": "VOODOO",
+      "code": "AOvd"
+     },
+     {
+      "level": 7,
+      "ability": "SERPENT_WARD",
+      "code": "AOsw"
+     },
+     {
+      "level": 8,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 9,
+      "ability": "HEX",
+      "code": "AOhx"
+     },
+     {
+      "level": 10,
+      "ability": "HEX",
+      "code": "AOhx"
+     }
+    ],
+    "order_names": [
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "SERPENT_WARD",
+     "HEALING_WAVE",
+     "VOODOO",
+     "SERPENT_WARD",
+     "HEX",
+     "HEX",
+     "HEX"
+    ]
+   }
+  ],
+  "二英雄条件": "MeleeDifficulty() != MELEE_NEWBIE；简单电脑永远只有一个英雄"
+ },
+ "attack": {
+  "first_wave_gate": {
+   "src": "c_hero1_done > 0 and c_grunt_done >= 2",
+   "line": 173
+  },
+  "newbie_first_delay_s": 240,
+  "newbie_between_waves_s": 60,
+  "normal_insane_between_waves_s": "无固定冷却；重组时间 0~72 秒（见 common.json.attack_loop）",
+  "melee_group": [
+   {
+    "unit": "hero_id",
+    "code": null,
+    "line": 133
+   },
+   {
+    "unit": "hero_id2",
+    "code": null,
+    "line": 134
+   },
+   {
+    "unit": "hero_id3",
+    "code": null,
+    "line": 135
+   },
+   {
+    "unit": "GRUNT",
+    "code": "ogru",
+    "line": 136
+   },
+   {
+    "unit": "RAIDER",
+    "code": "orai",
+    "line": 137
+   },
+   {
+    "unit": "TAUREN",
+    "code": "otau",
+    "line": 138
+   },
+   {
+    "unit": "HEAD_HUNTER",
+    "code": "ohun",
+    "line": 139
+   },
+   {
+    "unit": "BERSERKER",
+    "code": "otbk",
+    "line": 140
+   },
+   {
+    "unit": "WYVERN",
+    "code": "owyv",
+    "line": 141
+   },
+   {
+    "unit": "WITCH_DOCTOR",
+    "code": "odoc",
+    "line": 142
+   },
+   {
+    "unit": "SHAMAN",
+    "code": "oshm",
+    "line": 143
+   },
+   {
+    "unit": "KODO_BEAST",
+    "code": "okod",
+    "line": 144
+   },
+   {
+    "unit": "BATRIDER",
+    "code": "otbr",
+    "line": 145
+   },
+   {
+    "unit": "SPIRIT_WALKER",
+    "code": "ospw",
+    "line": 146
+   }
+  ],
+  "force_level": {
+   "base": 4,
+   "terms": [
+    {
+     "line": 156,
+     "src": "set level = level + 2 * (c_hunter_done + c_raider_done + c_batrider_done + c_shaman_done + c_doc_done + c_swalker_done)"
+    },
+    {
+     "line": 157,
+     "src": "set level = level + 3 * (c_grunt_done + c_kodo_done + c_wyvern_done)"
+    },
+    {
+     "line": 158,
+     "src": "set level = level + 5 * (c_hero3_done + c_tauren_done)"
+    },
+    {
+     "line": 159,
+     "src": "set level = level + 6 *  c_hero2_done"
+    }
+   ],
+   "用途": "max_creeps = level*4/5，min_creeps = max(0, max_creeps-10)，以及 needs_exp/has_siege 的门槛"
+  },
+  "flags": [
+   {
+    "line": 197,
+    "src": "set air_units        = c_wyvern_done > 0 or c_batrider_done > 0"
+   },
+   {
+    "line": 198,
+    "src": "set needs_exp        = take_exp and (level >= 9 or c_gold_owned < 2000)"
+   },
+   {
+    "line": 199,
+    "src": "set has_siege        = level >= 40 or 2*c_cat_done + c_raider_done + c_batrider_done >= 2"
+   },
+   {
+    "line": 200,
+    "src": "set allow_air_creeps = c_wyvern_done + c_raider_done + c_hunter_done >= 3"
+   }
+  ],
+  "extra_gate": []
+ },
+ "opening_build": [
+  {
+   "line": 396,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "town": "0"
+  },
+  {
+   "line": 397,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "town": "1"
+  },
+  {
+   "line": 399,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 400,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_ALTAR",
+   "code": "oalt"
+  },
+  {
+   "line": 401,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 402,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb"
+  },
+  {
+   "line": 403,
+   "call": "SetBuildUnit",
+   "qty": "8",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 404,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "BURROW",
+   "code": "otrb"
+  },
+  {
+   "line": 405,
+   "call": "SetBuildUnit",
+   "qty": "10",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 406,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>"
+  },
+  {
+   "line": 407,
+   "call": "SetBuildUnit",
+   "qty": "11",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 408,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_BARRACKS",
+   "code": "obar"
+  },
+  {
+   "line": 409,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "FORGE",
+   "code": "ofor"
+  },
+  {
+   "line": 410,
+   "call": "SetBuildUnit",
+   "qty": "14",
+   "unit": "PEON",
+   "code": "opeo"
+  },
+  {
+   "line": 411,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "GRUNT",
+   "code": "ogru"
+  },
+  {
+   "line": 412,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_MELEE",
+   "code": "Rome"
+  },
+  {
+   "line": 413,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "GRUNT",
+   "code": "ogru"
+  },
+  {
+   "line": 414,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "BURROW",
+   "code": "otrb"
+  },
+  {
+   "line": 415,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "HEAD_HUNTER",
+   "code": "ohun"
+  },
+  {
+   "line": 416,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "VOODOO_LOUNGE",
+   "code": "ovln"
+  },
+  {
+   "line": 417,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_RANGED",
+   "code": "Rora"
+  },
+  {
+   "line": 418,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "HEAD_HUNTER",
+   "code": "ohun"
+  },
+  {
+   "line": 419,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_ARMOR",
+   "code": "Roar"
+  },
+  {
+   "line": 420,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "GRUNT",
+   "code": "ogru"
+  },
+  {
+   "line": 422,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "GREAT_HALL",
+   "code": "ogre"
+  },
+  {
+   "line": 425,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 426,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ORC_WATCH_TOWER",
+   "code": "owtw",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 429,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "BURROW",
+   "code": "otrb"
+  },
+  {
+   "line": 430,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "GRUNT",
+   "code": "ogru"
+  },
+  {
+   "line": 431,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "STRONGHOLD",
+   "code": "ostr"
+  },
+  {
+   "line": 432,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_SPIKES",
+   "code": "Rosp"
+  },
+  {
+   "line": 435,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 438,
+   "call": "SetBuildUnit",
+   "qty": "5",
+   "unit": "BURROW",
+   "code": "otrb"
+  },
+  {
+   "line": 439,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CATAPULT",
+   "code": "ocat"
+  },
+  {
+   "line": 440,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_MELEE",
+   "code": "Rome"
+  },
+  {
+   "line": 441,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_PILLAGE",
+   "code": "Ropg"
+  },
+  {
+   "line": 442,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "CATAPULT",
+   "code": "ocat"
+  }
+ ],
+ "steady_build": [
+  {
+   "line": 449,
+   "call": "set",
+   "src": "set peons = 6 - GetWood() / 200",
+   "conditions": [
+    "c_great_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 451,
+   "call": "set",
+   "src": "set peons = 3",
+   "conditions": [
+    "c_great_hall_done >= 1",
+    "peons < 3"
+   ]
+  },
+  {
+   "line": 454,
+   "call": "set",
+   "src": "set peons = peons + 5",
+   "conditions": [
+    "c_great_hall_done >= 1",
+    "c_mines < 2 or c_great_hall_done < 2"
+   ]
+  },
+  {
+   "line": 456,
+   "call": "set",
+   "src": "set peons = peons + 10",
+   "conditions": [
+    "c_great_hall_done >= 1",
+    "NOT(c_mines < 2 or c_great_hall_done < 2)"
+   ]
+  },
+  {
+   "line": 459,
+   "call": "set",
+   "src": "set peons = 15",
+   "conditions": [
+    "c_great_hall_done >= 1",
+    "peons > 15"
+   ]
+  },
+  {
+   "line": 461,
+   "call": "SetBuildNext",
+   "qty": "peons",
+   "unit": "PEON",
+   "code": "opeo",
+   "conditions": [
+    "c_great_hall_done >= 1"
+   ]
+  },
+  {
+   "line": 467,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "town": "0",
+   "conditions": [
+    "c_great_hall < 1 and c_peon_done >= 1"
+   ]
+  },
+  {
+   "line": 468,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "town": "1",
+   "conditions": [
+    "c_great_hall < 1 and c_peon_done >= 1"
+   ]
+  },
+  {
+   "line": 469,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "town": "2",
+   "conditions": [
+    "c_great_hall < 1 and c_peon_done >= 1"
+   ]
+  },
+  {
+   "line": 473,
+   "call": "SetBuildNext",
+   "qty": "15",
+   "unit": "PEON",
+   "code": "opeo",
+   "conditions": [
+    "c_gold > 500 and GetWood() < 100"
+   ]
+  },
+  {
+   "line": 479,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "conditions": [
+    "c_gold_owned < 2000"
+   ]
+  },
+  {
+   "line": 481,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 488,
+   "call": "SetBuildUnit",
+   "qty": "c_burrow_done + 1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "conditions": [
+    "c_food_used + 5 >= c_food_made"
+   ]
+  },
+  {
+   "line": 495,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 497,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "NOT(b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE)"
+   ]
+  },
+  {
+   "line": 500,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_ALTAR",
+   "code": "oalt",
+   "conditions": [
+    "NOT(c_altar_done >= 1)"
+   ]
+  },
+  {
+   "line": 506,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "TAUREN",
+   "code": "otau",
+   "conditions": [
+    "c_totem_done >= 1"
+   ]
+  },
+  {
+   "line": 508,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_BARRACKS",
+   "code": "obar",
+   "conditions": [
+    "NOT(c_totem_done >= 1)"
+   ]
+  },
+  {
+   "line": 509,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "GRUNT",
+   "code": "ogru",
+   "conditions": [
+    "NOT(c_totem_done >= 1)"
+   ]
+  },
+  {
+   "line": 516,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "WYVERN",
+   "code": "owyv",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 518,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "RAIDER",
+   "code": "orai",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "NOT(prev) and b_ensnare"
+   ]
+  },
+  {
+   "line": 520,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_BARRACKS",
+   "code": "obar",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "NOT(NOT(prev) and b_ensnare)"
+   ]
+  },
+  {
+   "line": 521,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "hunter_code",
+   "code": null,
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "NOT(NOT(prev) and b_ensnare)"
+   ]
+  },
+  {
+   "line": 525,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "BATRIDER",
+   "code": "otbr",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_voodoo_done >= 1 and c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 527,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "RAIDER",
+   "code": "orai",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "NOT(c_voodoo_done >= 1 and c_fortress_done >= 1)"
+   ]
+  },
+  {
+   "line": 530,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_BARRACKS",
+   "code": "obar",
+   "conditions": [
+    "NOT(c_bestiary_done >= 1)"
+   ]
+  },
+  {
+   "line": 531,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "hunter_code",
+   "code": null,
+   "conditions": [
+    "NOT(c_bestiary_done >= 1)"
+   ]
+  },
+  {
+   "line": 532,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "CATAPULT",
+   "code": "ocat",
+   "conditions": [
+    "NOT(c_bestiary_done >= 1)"
+   ]
+  },
+  {
+   "line": 540,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 541,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "ORC_WATCH_TOWER",
+   "code": "owtw",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 542,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 543,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ORC_WATCH_TOWER",
+   "code": "owtw",
+   "town": "1",
+   "conditions": [
+    "c_gold > 1000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 546,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ORC_BARRACKS",
+   "code": "obar",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 547,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "FORGE",
+   "code": "ofor",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 548,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "VOODOO_LOUNGE",
+   "code": "ovln",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 549,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "STRONGHOLD",
+   "code": "ostr",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 550,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "LODGE",
+   "code": "osld",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 551,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BESTIARY",
+   "code": "obea",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 552,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "FORTRESS",
+   "code": "ofrt",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 553,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TOTEM",
+   "code": "otto",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 555,
+   "call": "do_upgrades",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 558,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "ORC_BARRACKS",
+   "code": "obar",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 559,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "LODGE",
+   "code": "osld",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 560,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "BESTIARY",
+   "code": "obea",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 561,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "TOTEM",
+   "code": "otto",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 565,
+   "call": "do_upgrades",
+   "conditions": [
+    "NOT(prev) and c_food_used >= UPKEEP_TIER1"
+   ]
+  },
+  {
+   "line": 568,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "GREAT_HALL",
+   "code": "ogre"
+  },
+  {
+   "line": 570,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 571,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ORC_WATCH_TOWER",
+   "code": "owtw",
+   "town": "1",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 581,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "TAUREN",
+   "code": "otau",
+   "conditions": [
+    "c_totem_done >= 1"
+   ]
+  },
+  {
+   "line": 583,
+   "call": "SetBuildNext",
+   "qty": "6",
+   "unit": "GRUNT",
+   "code": "ogru",
+   "conditions": [
+    "NOT(c_totem_done >= 1)"
+   ]
+  },
+  {
+   "line": 588,
+   "call": "SetBuildNext",
+   "qty": "3",
+   "unit": "WYVERN",
+   "code": "owyv",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 590,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "RAIDER",
+   "code": "orai",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "NOT(prev) and b_ensnare"
+   ]
+  },
+  {
+   "line": 593,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "KODO_BEAST",
+   "code": "okod",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_forge_done >= 1"
+   ]
+  },
+  {
+   "line": 598,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SHAMAN",
+   "code": "oshm",
+   "conditions": [
+    "c_lodge_done >= 1"
+   ]
+  },
+  {
+   "line": 599,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "WITCH_DOCTOR",
+   "code": "odoc",
+   "conditions": [
+    "c_lodge_done >= 1"
+   ]
+  },
+  {
+   "line": 600,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SPIRIT_WALKER",
+   "code": "ospw",
+   "conditions": [
+    "c_lodge_done >= 1"
+   ]
+  },
+  {
+   "line": 601,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "SHAMAN",
+   "code": "oshm",
+   "conditions": [
+    "c_lodge_done >= 1"
+   ]
+  },
+  {
+   "line": 602,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "WITCH_DOCTOR",
+   "code": "odoc",
+   "conditions": [
+    "c_lodge_done >= 1"
+   ]
+  },
+  {
+   "line": 606,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 3",
+   "unit": "GREAT_HALL",
+   "code": "ogre",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 608,
+   "call": "GuardSecondary",
+   "qty": "1",
+   "unit": "BURROW",
+   "code": "otrb",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 609,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ORC_WATCH_TOWER",
+   "code": "owtw",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 614,
+   "call": "GetZeppelin",
+   "conditions": [
+    "c_food_used >= 60 and c_zep < 3"
+   ]
+  }
+ ],
+ "upgrade_rules": [
+  {
+   "line": 291,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_PULVERIZE",
+   "code": "Rows",
+   "conditions": [
+    "c_totem_done >= 1 and c_tauren >= 1"
+   ]
+  },
+  {
+   "line": 296,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_BURROWS",
+   "code": "Rorb",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 298,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ORC_MELEE",
+   "code": "Rome",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 299,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ORC_RANGED",
+   "code": "Rora",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 300,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ORC_ARMOR",
+   "code": "Roar",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 301,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ORC_SPIKES",
+   "code": "Rosp",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 304,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_MELEE",
+   "code": "Rome",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(prev) and c_stronghold_done >= 1"
+   ]
+  },
+  {
+   "line": 305,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_RANGED",
+   "code": "Rora",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(prev) and c_stronghold_done >= 1"
+   ]
+  },
+  {
+   "line": 306,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_ARMOR",
+   "code": "Roar",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(prev) and c_stronghold_done >= 1"
+   ]
+  },
+  {
+   "line": 308,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_MELEE",
+   "code": "Rome",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(NOT(prev) and c_stronghold_done >= 1)"
+   ]
+  },
+  {
+   "line": 309,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_RANGED",
+   "code": "Rora",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(NOT(prev) and c_stronghold_done >= 1)"
+   ]
+  },
+  {
+   "line": 310,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_ARMOR",
+   "code": "Roar",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(NOT(prev) and c_stronghold_done >= 1)"
+   ]
+  },
+  {
+   "line": 316,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_ENSNARE",
+   "code": "Roen",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_raider >= 1"
+   ]
+  },
+  {
+   "line": 321,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_VENOM",
+   "code": "Rovs",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_fortress_done >= 1",
+    "c_wyvern >= 1"
+   ]
+  },
+  {
+   "line": 325,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_WAR_DRUMS",
+   "code": "Rwdm",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_fortress_done >= 1",
+    "c_forge_done >= 1 and c_kodo >= 1"
+   ]
+  },
+  {
+   "line": 329,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_FIRE",
+   "code": "Rolf",
+   "conditions": [
+    "c_bestiary_done >= 1",
+    "c_fortress_done >= 1",
+    "c_voodoo_done >= 1 and c_batrider >= 1"
+   ]
+  },
+  {
+   "line": 336,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_BERSERK",
+   "code": "Robs",
+   "conditions": [
+    "c_barracks_done >= 1",
+    "c_fortress_done >= 1 and c_grunt >= 2"
+   ]
+  },
+  {
+   "line": 341,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_BERSERKER",
+   "code": "Robk",
+   "conditions": [
+    "c_barracks_done >= 1",
+    "c_stronghold_done >= 1 and c_hunter >= 2",
+    "c_forge_done >= 1"
+   ]
+  },
+  {
+   "line": 343,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_REGEN",
+   "code": "Rotr",
+   "conditions": [
+    "c_barracks_done >= 1",
+    "c_stronghold_done >= 1 and c_hunter >= 2"
+   ]
+  },
+  {
+   "line": 350,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_SHAMAN",
+   "code": "Rost",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "c_fortress_done >= 1",
+    "c_shaman >= 1"
+   ]
+  },
+  {
+   "line": 353,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_DOCS",
+   "code": "Rowd",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "c_fortress_done >= 1",
+    "c_doc >= 1"
+   ]
+  },
+  {
+   "line": 356,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_SWALKER",
+   "code": "Rowt",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "c_fortress_done >= 1",
+    "c_swalker >= 1"
+   ]
+  },
+  {
+   "line": 360,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_SHAMAN",
+   "code": "Rost",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "NOT(c_fortress_done >= 1)",
+    "c_shaman >= 2"
+   ]
+  },
+  {
+   "line": 363,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_DOCS",
+   "code": "Rowd",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "NOT(c_fortress_done >= 1)",
+    "c_doc >= 2"
+   ]
+  },
+  {
+   "line": 366,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_SWALKER",
+   "code": "Rowt",
+   "conditions": [
+    "c_lodge_done >= 1",
+    "NOT(c_fortress_done >= 1)",
+    "c_swalker >= 1"
+   ]
+  },
+  {
+   "line": 372,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_PILLAGE",
+   "code": "Ropg",
+   "conditions": [
+    "c_great_hall_done >= 1 and c_raider >= 1"
+   ]
+  },
+  {
+   "line": 377,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_ORC_SPIKES",
+   "code": "Rosp",
+   "conditions": [
+    "c_forge_done >= 1",
+    "c_fortress_done >= 1"
+   ]
+  },
+  {
+   "line": 379,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_ORC_SPIKES",
+   "code": "Rosp",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(prev) and c_stronghold_done >= 1"
+   ]
+  },
+  {
+   "line": 381,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_ORC_SPIKES",
+   "code": "Rosp",
+   "conditions": [
+    "c_forge_done >= 1",
+    "NOT(NOT(prev) and c_stronghold_done >= 1)"
+   ]
+  }
+ ],
+ "workers": {
+  "src": [
+   {
+    "line": 626,
+    "src": "set T = TownWithMine()"
+   },
+   {
+    "line": 628,
+    "src": "call HarvestGold(T,4)"
+   },
+   {
+    "line": 629,
+    "src": "call HarvestWood(0,1)"
+   },
+   {
+    "line": 630,
+    "src": "call HarvestGold(T,1)"
+   },
+   {
+    "line": 631,
+    "src": "call HarvestWood(0,1)"
+   },
+   {
+    "line": 634,
+    "src": "call HarvestGold(T+1,5)"
+   },
+   {
+    "line": 637,
+    "src": "call HarvestWood(0,10)"
+   }
+  ],
+  "说明": "HarvestGold(town, n) / HarvestWood(town, n) 是累加式配额；每 1~3 秒 ClearHarvestAI 后重下一遍"
+ },
+ "basic_opening_exit": [
+  {
+   "line": 270,
+   "src": "if basic_opening and (b_hero2_done or (MeleeDifficulty() == MELEE_NEWBIE and c_stronghold_done >= 1)) then"
+  },
+  {
+   "line": 271,
+   "src": "set basic_opening = false"
+  }
+ ],
+ "ranges": {
+  "build_sequence": [
+   389,
+   616
+  ],
+  "attack_sequence": [
+   166,
+   208
+  ],
+  "init_vars": [
+   213,
+   273
+  ],
+  "do_upgrades": [
+   288,
+   384
+  ],
+  "set_skills": [
+   63,
+   124
+  ],
+  "force_level": [
+   154,
+   161
+  ],
+  "setup_force": [
+   129,
+   149
+  ],
+  "peon_assignment": [
+   621,
+   642
+  ]
+ }
+}

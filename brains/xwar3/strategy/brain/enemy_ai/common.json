@@ -1,0 +1,413 @@
+{
+ "schema": "war3-enemy-ai/common@1",
+ "说明": "暴雪 TFT 近战 AI 框架（common.ai）里和 1v1 对局有关的部分。所有 line 指 War3Patch.mpq__common.ai 的行号。",
+ "source": {
+  "file": "War3Patch.mpq__common.ai",
+  "mpq": "War3Patch.mpq（1.27）",
+  "rcs_id": "common.ai,v 1.68 2003/05/12",
+  "与_TFT_原版的差异": "和 War3x.mpq__common.ai（v1.66.2.1）逐行 diff 只差两处：文件头的 $Id 注释，和 SleepInCombat 里新增的三行注释（1704-1706，被注释掉的 SuicideSleep(1)）。行为完全相同。",
+  "四族脚本": "1.27 的 War3Patch.mpq 没有 human/orc/undead/elf.ai，实机加载的是 War3x.mpq 里的那四份。"
+ },
+ "difficulty": {
+  "映射": {
+   "MELEE_NEWBIE": {
+    "jass": 1,
+    "难度序号（从 0 起）": 0,
+    "界面": "电脑（简单的）"
+   },
+   "MELEE_NORMAL": {
+    "jass": 2,
+    "难度序号（从 0 起）": 1,
+    "界面": "电脑（普通的）"
+   },
+   "MELEE_INSANE": {
+    "jass": 3,
+    "难度序号（从 0 起）": 2,
+    "界面": "电脑（疯狂的）"
+   }
+  },
+  "常量定义行": [
+   662,
+   663,
+   664
+  ],
+  "结论": "普通和疯狂在整套近战脚本里只有一处可能不同（common.ai:2220-2226），而那一处在 1v1（无盟友）下取值相同。1v1 时 疯狂 == 普通，逐条等价。",
+  "全部分支": [
+   {
+    "file": "common.ai",
+    "line": 781,
+    "函数": "StandardAI",
+    "表达式": "isNewbie = (MeleeDifficulty() == MELEE_NEWBIE)",
+    "影响": "SetGroupsFlee / SetHeroesBuyItems / SetSmartArtillery / SetTargetHeroes / SetUnitsFlee 五个开关 = not isNewbie",
+    "newbie": "五个开关全 false",
+    "normal": "全 true",
+    "insane": "全 true",
+    "普通vs疯狂": "相同"
+   },
+   {
+    "file": "common.ai",
+    "line": 1024,
+    "函数": "SetBuildUpgr",
+    "表达式": "MeleeDifficulty() != MELEE_NEWBIE or qty == 1",
+    "影响": "简单电脑只做 1 级升级，2/3 级的请求被整条丢掉",
+    "newbie": "只接受 qty==1",
+    "normal": "全接受",
+    "insane": "全接受",
+    "普通vs疯狂": "相同"
+   },
+   {
+    "file": "common.ai",
+    "line": 2167,
+    "函数": "SingleMeleeAttack",
+    "表达式": "allies and MeleeDifficulty() != MELEE_NEWBIE",
+    "影响": "是否响应盟友的共同目标（GetAllianceTarget）",
+    "newbie": "不响应",
+    "normal": "响应",
+    "insane": "响应",
+    "普通vs疯狂": "相同",
+    "1v1": "allies==false，整段不进"
+   },
+   {
+    "file": "common.ai",
+    "line": 2199,
+    "函数": "SingleMeleeAttack",
+    "表达式": "MeleeDifficulty() != MELEE_NEWBIE",
+    "影响": "是否打 MEGA TARGET（GetMegaTarget，全力一击）",
+    "newbie": "永不",
+    "normal": "会",
+    "insane": "会",
+    "普通vs疯狂": "相同"
+   },
+   {
+    "file": "common.ai",
+    "line": "2220-2226",
+    "函数": "SingleMeleeAttack",
+    "表达式": "minimum = 3 / 1 / 0",
+    "影响": "看到敌方分矿后要「攒够几次」才去拆（exp_seen >= minimum）",
+    "newbie": "minimum=3（要连着 3 轮攻击循环看到才动手）",
+    "normal": "有盟友 minimum=1；没有盟友 minimum=0",
+    "insane": "minimum=0（第一次看到就打）",
+    "普通vs疯狂": "★ 全脚本唯一可能不同的一处；只有 AI 还有活着的盟友时才不同。1v1 下两者都是 0。"
+   },
+   {
+    "file": "human/orc/undead/elf.ai",
+    "line": "各族 attack_sequence",
+    "表达式": "MeleeDifficulty() == MELEE_NEWBIE",
+    "影响": "第一波前 Sleep(240)，每波之间 Sleep(60)",
+    "newbie": "有这两个延迟",
+    "normal": "没有",
+    "insane": "没有",
+    "普通vs疯狂": "相同"
+   },
+   {
+    "file": "human/orc/undead/elf.ai",
+    "line": "各族 build_sequence / init_vars",
+    "表达式": "MeleeDifficulty() != MELEE_NEWBIE",
+    "影响": "二/三英雄、分矿哨塔（GuardSecondary）、basic_opening 的退出条件",
+    "newbie": "不出二英雄、不在分矿造塔、basic_opening 靠「三本/要塞/圣坛/4 月井」退出",
+    "normal": "出二/三英雄、分矿造塔、basic_opening 靠「二英雄造出来了」退出",
+    "insane": "同普通",
+    "普通vs疯狂": "相同"
+   }
+  ],
+  "资源作弊": {
+   "结论": "脚本里没有任何资源、采集速度、handicap 的调整。",
+   "查过的": [
+    "common.ai 顶部 native 声明表（4-139 行）里没有任何给资源/改 handicap 的函数；只有只读的 GetGold/GetWood/GetGoldOwned/GetMinesOwned。",
+    "四族脚本 + common.ai 全文 grep：cheat / handicap / SetPlayerState / AddResource 零命中（do_debug_cheats 是个从没被读过的全局变量，common.ai:732）。",
+    "common.j 里确实有 SetPlayerHandicap(+1699 行)/SetPlayerState(1714 行)，但 AI 脚本没有声明也没有调用它们。"
+   ],
+   "还没排除的": "引擎侧是否按难度给过 handicap 或采集加成 —— 本次只读脚本，引擎内部没有验证。实测：疯狂电脑一局中段累计采金 10666 对我方 11753，没有作弊迹象。"
+  }
+ },
+ "standard_ai_switches": {
+  "line": "779-806",
+  "函数": "StandardAI",
+  "说明": "每局开头一次性设好的引擎开关。not isNewbie 的五个在普通/疯狂下都是 true。",
+  "switches": [
+   {
+    "native": "SetMeleeAI",
+    "值": "—",
+    "line": 785,
+    "含义": "进近战模式（对应电脑 AI 的队长逻辑）"
+   },
+   {
+    "native": "SetDefendPlayer",
+    "值": true,
+    "line": 787,
+    "含义": "会为了保护自己（和盟友）而回防"
+   },
+   {
+    "native": "SetGroupsFlee",
+    "值": "not isNewbie",
+    "line": 788,
+    "含义": "成队撤退：整支部队打不过会跑"
+   },
+   {
+    "native": "SetHeroesBuyItems",
+    "值": "not isNewbie",
+    "line": 789,
+    "含义": "英雄会去商店买东西（简单电脑不买）"
+   },
+   {
+    "native": "SetHeroesFlee",
+    "值": true,
+    "line": 790,
+    "含义": "英雄残血会跑 —— 三档难度都开"
+   },
+   {
+    "native": "SetHeroesTakeItems",
+    "值": true,
+    "line": 791,
+    "含义": "英雄会捡地上的物品 —— 三档都开"
+   },
+   {
+    "native": "SetIgnoreInjured",
+    "值": true,
+    "line": 792,
+    "含义": "组队时跳过受伤单位（配合 RemoveInjuries）"
+   },
+   {
+    "native": "SetPeonsRepair",
+    "值": true,
+    "line": 793,
+    "含义": "农民会修建筑"
+   },
+   {
+    "native": "SetSmartArtillery",
+    "值": "not isNewbie",
+    "line": 794,
+    "含义": "攻城单位会挑目标（简单电脑不会）"
+   },
+   {
+    "native": "SetTargetHeroes",
+    "值": "not isNewbie",
+    "line": 795,
+    "含义": "★ 优先集火敌方英雄（简单电脑不针对英雄）"
+   },
+   {
+    "native": "SetUnitsFlee",
+    "值": "not isNewbie",
+    "line": 796,
+    "含义": "单兵残血会跑"
+   },
+   {
+    "native": "SetWatchMegaTargets",
+    "值": true,
+    "line": 797,
+    "含义": "监视「全力一击」目标，三档都开（但简单电脑在 2199 行被挡住不会打）"
+   }
+  ]
+ },
+ "attack_loop": {
+  "说明": "四族 attack_sequence 结构一致：等触发 -> (简单才睡 240) -> StaggerSleep(0,2) -> 无限循环 { 等不在撤退 -> setup_force -> 算 force_level -> SingleMeleeAttack -> (简单才睡 60) }",
+  "stagger": {
+   "line": 1382,
+   "src": "Sleep(base + spread * aiPlayerIndex / GetPlayers())",
+   "含义": "开局错峰，0~2 秒"
+  },
+  "setup_force": {
+   "含义": "每一轮重新组队：AwaitMeleeHeroes -> InitMeleeGroup(清空进攻名单 + RemoveInjuries + RemoveSiege) -> 逐个 SetMeleeGroup -> SetInitialWave(10)",
+   "AwaitMeleeHeroes": {
+    "line": "2510-2518",
+    "规则": "阻塞直到 hero1 活着；并且（take_exp 为真 或 从没有过二英雄 或 二英雄也活着）",
+    "two_heroes": "一旦二英雄出过一次，two_heroes 就永久为 true（2511-2513，没有复位）",
+    "★可利用": "打死任一英雄 => 整个进攻线程卡在这里，直到它复活（take_exp 为 true 时除外）"
+   },
+   "SetMeleeGroup": {
+    "line": "1510-1516",
+    "hero1": "SetAssaultGroup(1, 9, hero)",
+    "其它": "SetAssaultGroup(已完成数*3/4, 20, unit)",
+    "实际效果": "FormGroup 里 count>=desire 时 AddAssault(count) —— 每种兵最后是「全部带上」，每种最多 20"
+   },
+   "RemoveSiege": {
+    "line": 949,
+    "含义": "默认把攻城单位从进攻队里踢掉；只有 AddSiege() 的分支才带攻城"
+   },
+   "SetInitialWave": {
+    "line": 1402,
+    "含义": "sleep_seconds = 10，这是 FormGroup 超时的起点"
+   }
+  },
+  "FormGroup": {
+   "line": "1559-1621",
+   "调用形态": "近战路径全是 FormGroup(3, true) —— 每 3 秒一轮，要求健康度 >= 50%",
+   "退出条件": [
+    "form_group_timeouts 且 sleep_seconds < -60（超时，硬发车）",
+    "CaptainInCombat(true)（已经打起来了）",
+    "CaptainIsFull() 且 CaptainReadiness() >= 50"
+   ],
+   "★超时算术": "setup_force 把 sleep_seconds 置 10，FormGroup 每轮 SuicideSleep(3) 扣 3。10 -> -61 需要 24 轮 = 72 秒。也就是说：集结最多等约 72 游戏秒，然后不管齐不齐、健不健康都出发。"
+  },
+  "波次间隔": {
+   "normal_insane": "没有固定冷却。SleepInCombat（1692-1709）在战斗结束后会连打 8 次空转直接返回（1705 的注释承认这是个 bug，'do this for next patch'），所以一波打完立刻回到循环顶上重新组队 —— 间隔 = 重组时间（0~72 秒）。",
+   "newbie": "第一波前 240 秒，每波之后 60 秒。"
+  }
+ },
+ "single_melee_attack": {
+  "line": "2135-2268",
+  "说明": "每一轮进攻只走其中一条分支然后 return。顺序就是优先级。",
+  "branches": [
+   {
+    "序": 0,
+    "line": 2147,
+    "条件": "TownThreatened()",
+    "动作": "Sleep(2) 直接返回，这一轮不进攻",
+    "★": "自己家被威胁时它不发起新进攻"
+   },
+   {
+    "序": 1,
+    "line": 2155,
+    "条件": "get_zeppelin 且 金>300 且 木>100",
+    "动作": "买飞艇，返回",
+    "触发源": "各族 c_food_used >= 60 且 飞艇<3 时 GetZeppelin()"
+   },
+   {
+    "序": 2,
+    "line": "2166-2179",
+    "条件": "有活着的盟友 且 非简单 且 GetAllianceTarget()!=null",
+    "动作": "(有 mega 则 AddSiege) FormGroup -> 打盟友指定的目标",
+    "1v1": "不会触发"
+   },
+   {
+    "序": 3,
+    "line": "2183-2195",
+    "条件": "needs_exp 且 GetExpansionFoe()!=null",
+    "动作": "打「挡着分矿的那伙野怪」，打完 Sleep(20)，take_exp=false",
+    "needs_exp": "take_exp and (force_level>=9 or 自己矿里剩余金 < 2000)"
+   },
+   {
+    "序": 4,
+    "line": "2199-2208",
+    "条件": "非简单 且 GetMegaTarget()!=null",
+    "动作": "AddSiege -> 全力一击（带攻城车全军压上）",
+    "★": "GetMegaTarget 的判据在引擎里（引擎侧 native 的实现），脚本看不到 —— 名字和注释（'all-out attack if the player is weak'）说明是「玩家很弱」时给出的目标"
+   },
+   {
+    "序": 5,
+    "line": "2212-2239",
+    "条件": "GetEnemyExpansion()!=null 且 (can_siege 或 该分矿没塔) 且 exp_seen>=minimum",
+    "动作": "AddSiege -> 拆我方分矿",
+    "can_siege": "has_siege 且 (有空军 或 4<=当前时刻<=12，即白天)",
+    "minimum": "简单 3；普通有盟友 1；其余 0",
+    "exp_seen": "每次条件成立但没达到 minimum 就 +1；打了就清 0（2230/2238）",
+    "★": "IsTowered(hall) —— 分矿旁边有塔，且它没有攻城能力时，它不打"
+   },
+   {
+    "序": 6,
+    "line": "2243-2248",
+    "条件": "can_siege",
+    "动作": "AddSiege -> AnyPlayerAttack（先打敌方分矿，没有就找主基地）",
+    "★": "有攻城 + 白天（或有空军）是它打主基地的充要条件"
+   },
+   {
+    "序": 7,
+    "line": "2252-2256",
+    "条件": "min_creeps != -1（近战永远成立）",
+    "动作": "CreepAttackEx：按 [min_creeps, max_creeps] 挑野怪营地去打",
+    "★": "这是它的默认动作 —— 没有攻城就去打野"
+   },
+   {
+    "序": 8,
+    "line": "2260-2267",
+    "条件": "兜底",
+    "动作": "major/minor creep attack",
+    "1v1近战": "到不了"
+   }
+  ],
+  "creep_level": {
+   "max_creeps": "force_level * 4 / 5",
+   "min_creeps": "max(0, max_creeps - 10)",
+   "GetCreepCamp": "引擎侧 native，参数 (min, max, 允许飞行营地)",
+   "allow_air_creeps": "各族自己算，见各族 json"
+  }
+ },
+ "retreat_and_recall": {
+  "CaptainRetreating": {
+   "来源": "引擎侧 native（判据在引擎里，脚本看不到）",
+   "用法": "attack_sequence 每轮开头阻塞等它变 false（各族 attack_sequence 内层 loop）"
+  },
+  "CommonSleepUntilTargetDead": {
+   "line": "1984-2007",
+   "放弃当前目标的条件": [
+    "CaptainRetreating()",
+    "★ CaptainReadinessHP() <= 40 —— 队伍血量健康度掉到 40% 就放弃目标",
+    "目标死了",
+    "目标隐身且没被侦测到"
+   ],
+   "TownThreatened": "为真时这一轮不再重发 AttackMoveKill（1992），等于原地停住/让引擎回防",
+   "reform": "离开战斗超过 40 秒（sleep_seconds < -40）会 FormGroup(1,false) 把新造的兵并进来，健康度门槛降到 0"
+  },
+  "防守队长": "SetDefendPlayer(true) 之后由引擎里电脑 AI 的队长逻辑管，脚本里没有任何分配逻辑 —— 兵力怎么分给守家队长在引擎内部，本次没查。"
+ },
+ "expansion": {
+  "BasicExpansion": {
+   "line": "1174-1178",
+   "规则": "build_it 且 所有大厅都建完（HallsCompleted：在建数==已完成数）时，往建造表里压一条 BUILD_EXPAND(当前大厅数+1)"
+  },
+  "StartExpansion": {
+   "line": "1307-1341",
+   "步骤": [
+    "已有大厅数 >= 请求数 -> 直接成功",
+    "GetNextExpansion() == -1（没有可开的点）-> 直接成功（跳过）",
+    "★ set take_exp = true（一旦想开矿，打野就会优先去清分矿点的怪）",
+    "金子不够大厅 -> 返回 false，整条建造表在这里断掉",
+    "GetExpansionFoe() != null（分矿点有怪）-> 返回 true 但不派人，等进攻线程去清",
+    "GetExpansionPeon() 拿一个农民 -> SetExpansion(peon, hall)"
+   ]
+  },
+  "GuardSecondary": {
+   "line": "1082-1086",
+   "规则": "只有当该编号的分城「有大厅 且 有矿」时，才往那个分城下建造单（塔/地洞/月井）",
+   "★": "分矿还没建好之前不会先造塔；塔是分矿建成之后补的"
+  },
+  "MeleeTownHall": {
+   "line": "1204-1208",
+   "规则": "该编号的城镇有矿但没大厅时，在那里补一座大厅"
+  }
+ },
+ "build_engine": {
+  "说明": "各族 build_sequence 每 1~3 秒重建一张「愿望清单」；BuildLoop（1387-1394）每 2 秒按清单顺序走一遍。",
+  "OneBuildLoop": {
+   "line": "1344-1379",
+   "★核心机制": "total_gold = 当前金 - gold_buffer；顺序处理清单，BUILD_UNIT 一旦 StartUnit 返回 false（买不起）就 return —— 清单后面的全部不执行。升级（BUILD_UPGRADE）买不起不会中断清单。",
+   "含义": "它的建造顺序是严格前缀式的：清单里越靠前的东西没买到，后面的东西一律不会开始。"
+  },
+  "StartUnit": {
+   "line": "1219-1293",
+   "要点": [
+    "已有数量（含在建）>= 请求数 -> 认为满足，继续往后走",
+    "按 total_gold/total_wood 折算买得起几个，买不起（<1）就中断清单",
+    "不管实际有没有造出来，先从 total_gold 里扣掉「请求数 * 单价」（1277-1278）—— 这是个悲观预算，会压住后面的项"
+   ]
+  },
+  "SetBuildNext": {
+   "line": "993-999",
+   "含义": "已有（含在建）>= qty 就跳过；否则只请求「已完成数 + 1」—— 一次只加一个"
+  },
+  "BuildFactory": {
+   "line": "1068-1074",
+   "含义": "金>1000 且 木>500 时造 2 座该出兵建筑，否则 1 座"
+  },
+  "UPKEEP": {
+   "UPKEEP_TIER1": 50,
+   "UPKEEP_TIER2": 80,
+   "line": "674-675",
+   "用法": [
+    "c_food_used >= 50 且 金<=1000 时才做升级（do_upgrades）",
+    "★ c_food_used >= 70（UPKEEP_TIER2-10）且 金<2000 时，build_sequence 直接 return —— 不再补兵，停在 70 人口附近"
+   ]
+  }
+ },
+ "hero": {
+  "PickMeleeHero": {
+   "line": "2523-2582",
+   "规则": "每族 4 个英雄的池子，用 GetRandomInt 做不重复三抽，得到 hero_id / hero_id2 / hero_id3",
+   "★": "开局就定死了，整局不变；顺序也就定了"
+  },
+  "SkillArrays": {
+   "line": "2455-2469",
+   "规则": "按英雄槽位和当前等级，从各族 set_skills 写好的表里取技能 —— 加点表是写死的"
+  }
+ }
+}

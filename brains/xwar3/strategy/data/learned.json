@@ -1,0 +1,4607 @@
+{
+ "sources": [
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "length": "45:26",
+   "map": "(2)EchoIsles",
+   "version": "1.27"
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "length": "30:51",
+   "map": "(2)EchoIsles",
+   "version": "1.27"
+  },
+  {
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "length": "9:28",
+   "map": "(2)Echo Isles v2.2",
+   "version": "1.27"
+  }
+ ],
+ "skills": {
+  "Hmkg": [
+   "AHtb",
+   "AHbh",
+   "AHtb",
+   "AHbh",
+   "AHtb",
+   "AHav",
+   "AHbh",
+   "AHtc",
+   "AHtc",
+   "AHtc"
+  ],
+  "Hamg": [
+   "AHwe",
+   "AHab",
+   "AHwe",
+   "AHab",
+   "AHwe",
+   "AHmt",
+   "AHab",
+   "AHbz",
+   "AHbz",
+   "AHbz"
+  ],
+  "Hpal": [
+   "AHhb",
+   "AHds",
+   "AHhb",
+   "AHds",
+   "AHhb",
+   "AHre",
+   "AHds",
+   "AHad",
+   "AHad",
+   "AHad"
+  ],
+  "Npbm": [
+   "ANbf",
+   "ANdh",
+   "ANbf",
+   "ANdh",
+   "ANbf",
+   "ANef",
+   "ANdh",
+   "ANdb",
+   "ANdb",
+   "ANdb"
+  ],
+  "Edem": [
+   "AEmb",
+   "AEev",
+   "AEmb",
+   "AEev",
+   "AEmb",
+   "AEme",
+   "AEev",
+   "AEim",
+   "AEim",
+   "AEim"
+  ],
+  "Obla": [
+   "AOwk",
+   "AOcr",
+   "AOwk",
+   "AOcr",
+   "AOwk",
+   "AOww",
+   "AOcr",
+   "AOmi",
+   "AOmi",
+   "AOmi"
+  ],
+  "Oshd": [
+   "AOhx",
+   "AOhw",
+   "AOhw",
+   "AOhx",
+   "AOhx",
+   "AOvd",
+   "AOhw",
+   "AOsw",
+   "AOsw",
+   "AOsw"
+  ],
+  "Ewar": [
+   "AEsh",
+   "AEbl",
+   "AEbl",
+   "AEfk",
+   "AEfk",
+   "AEfk",
+   "AEbl",
+   "AEsv",
+   "AEsh",
+   "AEsh"
+  ],
+  "Nplh": [
+   "ANca",
+   "ANht",
+   "ANca",
+   "ANht",
+   "ANca",
+   "ANdo",
+   "ANht",
+   "ANrf",
+   "ANrf",
+   "ANrf"
+  ]
+ },
+ "skillSources": {
+  "Hmkg": {
+   "player": "虎牙Yumiko",
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "won": true,
+   "learned": 6,
+   "names": [
+    "风暴之锤",
+    "重击",
+    "风暴之锤",
+    "重击",
+    "风暴之锤",
+    "天神下凡",
+    "重击",
+    "雷霆一击",
+    "雷霆一击",
+    "雷霆一击"
+   ],
+   "agreedLevels": [
+    1,
+    3,
+    5
+   ],
+   "games": 2
+  },
+  "Hamg": {
+   "player": "虎牙Yumiko",
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "won": true,
+   "learned": 5,
+   "names": [
+    "召唤水元素",
+    "辉煌光环",
+    "召唤水元素",
+    "辉煌光环",
+    "召唤水元素",
+    "群体传送",
+    "辉煌光环",
+    "暴风雪",
+    "暴风雪",
+    "暴风雪"
+   ],
+   "agreedLevels": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "games": 2
+  },
+  "Hpal": {
+   "player": "虎牙Yumiko",
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "won": true,
+   "learned": 5,
+   "names": [
+    "神圣之光",
+    "神圣护甲",
+    "神圣之光",
+    "神圣护甲",
+    "神圣之光",
+    "复活",
+    "神圣护甲",
+    "专注光环",
+    "专注光环",
+    "专注光环"
+   ],
+   "agreedLevels": [
+    1,
+    2
+   ],
+   "games": 2
+  },
+  "Npbm": {
+   "player": "普通话补丁",
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "won": true,
+   "learned": 8,
+   "names": [
+    "火焰呼吸",
+    "醉酒云雾",
+    "火焰呼吸",
+    "醉酒云雾",
+    "火焰呼吸",
+    "火土风暴",
+    "醉酒云雾",
+    "醉拳",
+    "醉拳",
+    "醉拳"
+   ],
+   "agreedLevels": [
+    3,
+    5
+   ],
+   "games": 2
+  },
+  "Edem": {
+   "player": "普通话补丁",
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "won": true,
+   "learned": 4,
+   "names": [
+    "法力燃烧",
+    "闪避",
+    "法力燃烧",
+    "闪避",
+    "法力燃烧",
+    "变身",
+    "闪避",
+    "献祭",
+    "献祭",
+    "献祭"
+   ],
+   "agreedLevels": [
+    1,
+    2,
+    3
+   ],
+   "games": 2
+  },
+  "Obla": {
+   "player": "决战",
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "won": true,
+   "learned": 3,
+   "names": [
+    "疾步风",
+    "致命一击",
+    "疾步风",
+    "致命一击",
+    "疾步风",
+    "剑刃风暴",
+    "致命一击",
+    "镜像",
+    "镜像",
+    "镜像"
+   ]
+  },
+  "Oshd": {
+   "player": "决战",
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "won": true,
+   "learned": 3,
+   "names": [
+    "妖术",
+    "医疗波",
+    "医疗波",
+    "妖术",
+    "妖术",
+    "巫毒",
+    "医疗波",
+    "毒蛇守卫",
+    "毒蛇守卫",
+    "毒蛇守卫"
+   ],
+   "agreedLevels": [
+    3
+   ],
+   "games": 2
+  },
+  "Ewar": {
+   "player": "月馒头",
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "won": false,
+   "learned": 10,
+   "names": [
+    "暗影突袭",
+    "闪烁",
+    "闪烁",
+    "刀阵旋风",
+    "刀阵旋风",
+    "刀阵旋风",
+    "闪烁",
+    "复仇之魂",
+    "暗影突袭",
+    "暗影突袭"
+   ]
+  },
+  "Nplh": {
+   "player": "玄穹佛爷",
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "won": false,
+   "learned": 3,
+   "names": [
+    "分裂攻击",
+    "恐怖嚎叫",
+    "分裂攻击",
+    "恐怖嚎叫",
+    "分裂攻击",
+    "魔鬼缠身",
+    "恐怖嚎叫",
+    "火焰雨",
+    "火焰雨",
+    "火焰雨"
+   ]
+  }
+ },
+ "skillAgreement": {
+  "Hmkg": {
+   "name": "山丘之王",
+   "builds": [
+    {
+     "player": "虎牙Yumiko",
+     "won": true,
+     "codes": [
+      "AHtb",
+      "AHbh",
+      "AHtb",
+      "AHbh",
+      "AHtb",
+      "AHav"
+     ],
+     "names": [
+      "风暴之锤",
+      "重击",
+      "风暴之锤",
+      "重击",
+      "风暴之锤",
+      "天神下凡"
+     ]
+    },
+    {
+     "player": "虎牙Yumiko",
+     "won": false,
+     "codes": [
+      "AHtb",
+      "AHtc",
+      "AHtb",
+      "AHtc",
+      "AHtb"
+     ],
+     "names": [
+      "风暴之锤",
+      "雷霆一击",
+      "风暴之锤",
+      "雷霆一击",
+      "风暴之锤"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "风暴之锤": 2
+     },
+     "winner": "风暴之锤"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "重击": 1,
+      "雷霆一击": 1
+     },
+     "winner": "重击"
+    },
+    {
+     "level": 3,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "风暴之锤": 2
+     },
+     "winner": "风暴之锤"
+    },
+    {
+     "level": 4,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "重击": 1,
+      "雷霆一击": 1
+     },
+     "winner": "重击"
+    },
+    {
+     "level": 5,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "风暴之锤": 2
+     },
+     "winner": "风暴之锤"
+    },
+    {
+     "level": 6,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "天神下凡": 1
+     },
+     "winner": "天神下凡"
+    }
+   ]
+  },
+  "Hamg": {
+   "name": "大魔法师",
+   "builds": [
+    {
+     "player": "虎牙Yumiko",
+     "won": true,
+     "codes": [
+      "AHwe",
+      "AHab",
+      "AHwe",
+      "AHab",
+      "AHwe"
+     ],
+     "names": [
+      "召唤水元素",
+      "辉煌光环",
+      "召唤水元素",
+      "辉煌光环",
+      "召唤水元素"
+     ]
+    },
+    {
+     "player": "虎牙Yumiko",
+     "won": false,
+     "codes": [
+      "AHwe",
+      "AHab",
+      "AHwe",
+      "AHab",
+      "AHwe"
+     ],
+     "names": [
+      "召唤水元素",
+      "辉煌光环",
+      "召唤水元素",
+      "辉煌光环",
+      "召唤水元素"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "召唤水元素": 2
+     },
+     "winner": "召唤水元素"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "辉煌光环": 2
+     },
+     "winner": "辉煌光环"
+    },
+    {
+     "level": 3,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "召唤水元素": 2
+     },
+     "winner": "召唤水元素"
+    },
+    {
+     "level": 4,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "辉煌光环": 2
+     },
+     "winner": "辉煌光环"
+    },
+    {
+     "level": 5,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "召唤水元素": 2
+     },
+     "winner": "召唤水元素"
+    }
+   ]
+  },
+  "Hpal": {
+   "name": "圣骑士",
+   "builds": [
+    {
+     "player": "虎牙Yumiko",
+     "won": true,
+     "codes": [
+      "AHhb",
+      "AHds",
+      "AHhb",
+      "AHds",
+      "AHhb"
+     ],
+     "names": [
+      "神圣之光",
+      "神圣护甲",
+      "神圣之光",
+      "神圣护甲",
+      "神圣之光"
+     ]
+    },
+    {
+     "player": "虎牙Yumiko",
+     "won": false,
+     "codes": [
+      "AHhb",
+      "AHds"
+     ],
+     "names": [
+      "神圣之光",
+      "神圣护甲"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "神圣之光": 2
+     },
+     "winner": "神圣之光"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "神圣护甲": 2
+     },
+     "winner": "神圣护甲"
+    },
+    {
+     "level": 3,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "神圣之光": 1
+     },
+     "winner": "神圣之光"
+    },
+    {
+     "level": 4,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "神圣护甲": 1
+     },
+     "winner": "神圣护甲"
+    },
+    {
+     "level": 5,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "神圣之光": 1
+     },
+     "winner": "神圣之光"
+    }
+   ]
+  },
+  "Npbm": {
+   "name": "熊猫酒仙",
+   "builds": [
+    {
+     "player": "月馒头",
+     "won": false,
+     "codes": [
+      "ANdh",
+      "ANbf",
+      "ANbf",
+      "ANdb",
+      "ANbf"
+     ],
+     "names": [
+      "醉酒云雾",
+      "火焰呼吸",
+      "火焰呼吸",
+      "醉拳",
+      "火焰呼吸"
+     ]
+    },
+    {
+     "player": "普通话补丁",
+     "won": true,
+     "codes": [
+      "ANbf",
+      "ANdh",
+      "ANbf",
+      "ANdh",
+      "ANbf",
+      "ANef",
+      "ANdh",
+      "ANdb"
+     ],
+     "names": [
+      "火焰呼吸",
+      "醉酒云雾",
+      "火焰呼吸",
+      "醉酒云雾",
+      "火焰呼吸",
+      "火土风暴",
+      "醉酒云雾",
+      "醉拳"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "醉酒云雾": 1,
+      "火焰呼吸": 1
+     },
+     "winner": "火焰呼吸"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "火焰呼吸": 1,
+      "醉酒云雾": 1
+     },
+     "winner": "醉酒云雾"
+    },
+    {
+     "level": 3,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "火焰呼吸": 2
+     },
+     "winner": "火焰呼吸"
+    },
+    {
+     "level": 4,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "醉拳": 1,
+      "醉酒云雾": 1
+     },
+     "winner": "醉酒云雾"
+    },
+    {
+     "level": 5,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "火焰呼吸": 2
+     },
+     "winner": "火焰呼吸"
+    },
+    {
+     "level": 6,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "火土风暴": 1
+     },
+     "winner": "火土风暴"
+    },
+    {
+     "level": 7,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "醉酒云雾": 1
+     },
+     "winner": "醉酒云雾"
+    },
+    {
+     "level": 8,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "醉拳": 1
+     },
+     "winner": "醉拳"
+    }
+   ]
+  },
+  "Edem": {
+   "name": "恶魔猎手",
+   "builds": [
+    {
+     "player": "月馒头",
+     "won": false,
+     "codes": [
+      "AEmb",
+      "AEev",
+      "AEmb"
+     ],
+     "names": [
+      "法力燃烧",
+      "闪避",
+      "法力燃烧"
+     ]
+    },
+    {
+     "player": "普通话补丁",
+     "won": true,
+     "codes": [
+      "AEmb",
+      "AEev",
+      "AEmb",
+      "AEev"
+     ],
+     "names": [
+      "法力燃烧",
+      "闪避",
+      "法力燃烧",
+      "闪避"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "法力燃烧": 2
+     },
+     "winner": "法力燃烧"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "闪避": 2
+     },
+     "winner": "闪避"
+    },
+    {
+     "level": 3,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "法力燃烧": 2
+     },
+     "winner": "法力燃烧"
+    },
+    {
+     "level": 4,
+     "games": 1,
+     "same": false,
+     "picks": {
+      "闪避": 1
+     },
+     "winner": "闪避"
+    }
+   ]
+  },
+  "Oshd": {
+   "name": "暗影猎手",
+   "builds": [
+    {
+     "player": "决战",
+     "won": true,
+     "codes": [
+      "AOhx",
+      "AOhw",
+      "AOhw"
+     ],
+     "names": [
+      "妖术",
+      "医疗波",
+      "医疗波"
+     ]
+    },
+    {
+     "player": "玄穹佛爷",
+     "won": false,
+     "codes": [
+      "AOhw",
+      "AOhx",
+      "AOhw"
+     ],
+     "names": [
+      "医疗波",
+      "妖术",
+      "医疗波"
+     ]
+    }
+   ],
+   "levels": [
+    {
+     "level": 1,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "妖术": 1,
+      "医疗波": 1
+     },
+     "winner": "妖术"
+    },
+    {
+     "level": 2,
+     "games": 2,
+     "same": false,
+     "picks": {
+      "医疗波": 1,
+      "妖术": 1
+     },
+     "winner": "医疗波"
+    },
+    {
+     "level": 3,
+     "games": 2,
+     "same": true,
+     "picks": {
+      "医疗波": 2
+     },
+     "winner": "医疗波"
+    }
+   ]
+  }
+ },
+ "compare": {
+  "人族": [
+   {
+    "player": "虎牙Yumiko",
+    "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+    "won": true,
+    "apm": 330,
+    "heroes": [
+     "山丘之王",
+     "大魔法师",
+     "圣骑士"
+    ],
+    "tier": [
+     "6:24 人族二本",
+     "9:13 人族三本"
+    ],
+    "expansions": [
+     "3:18"
+    ],
+    "workers": {
+     "1分": 15,
+     "3分": 23,
+     "5分": 27,
+     "10分": 29,
+     "15分": 31
+    },
+    "purchases": 39
+   },
+   {
+    "player": "虎牙Yumiko",
+    "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+    "won": false,
+    "apm": 346,
+    "heroes": [
+     "大魔法师",
+     "山丘之王",
+     "圣骑士"
+    ],
+    "tier": [
+     "7:15 人族二本",
+     "21:06 人族三本"
+    ],
+    "expansions": [
+     "4:13"
+    ],
+    "workers": {
+     "1分": 14,
+     "3分": 24,
+     "5分": 26,
+     "10分": 42,
+     "15分": 47
+    },
+    "purchases": 23
+   }
+  ],
+  "兽族": [
+   {
+    "player": "决战",
+    "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+    "won": true,
+    "apm": 356,
+    "heroes": [
+     "剑圣",
+     "暗影猎手"
+    ],
+    "tier": [
+     "2:41 兽族二本"
+    ],
+    "expansions": [],
+    "workers": {
+     "1分": 5,
+     "3分": 7,
+     "5分": 7,
+     "10分": 7,
+     "15分": null
+    },
+    "purchases": 9
+   },
+   {
+    "player": "玄穹佛爷",
+    "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+    "won": false,
+    "apm": 346,
+    "heroes": [
+     "暗影猎手",
+     "深渊魔王"
+    ],
+    "tier": [
+     "2:46 兽族二本"
+    ],
+    "expansions": [],
+    "workers": {
+     "1分": 6,
+     "3分": 6,
+     "5分": 6,
+     "10分": 10,
+     "15分": null
+    },
+    "purchases": 9
+   }
+  ],
+  "暗夜": [
+   {
+    "player": "月馒头",
+    "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+    "won": false,
+    "apm": 245,
+    "heroes": [
+     "守望者",
+     "熊猫酒仙",
+     "恶魔猎手"
+    ],
+    "tier": [],
+    "expansions": [
+     "4:44"
+    ],
+    "workers": {
+     "1分": 6,
+     "3分": 10,
+     "5分": 12,
+     "10分": 25,
+     "15分": 26
+    },
+    "purchases": 28
+   },
+   {
+    "player": "普通话补丁",
+    "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+    "won": true,
+    "apm": 261,
+    "heroes": [
+     "熊猫酒仙",
+     "恶魔猎手",
+     "丛林守护者"
+    ],
+    "tier": [],
+    "expansions": [
+     "6:45"
+    ],
+    "workers": {
+     "1分": 3,
+     "3分": 10,
+     "5分": 11,
+     "10分": 22,
+     "15分": 30
+    },
+    "purchases": 34
+   }
+  ]
+ },
+ "players": [
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "name": "虎牙Yumiko",
+   "race": "人族",
+   "raceKey": "human",
+   "won": true,
+   "apm": 330,
+   "heroes": [
+    "Hmkg",
+    "Hamg",
+    "Hpal"
+   ],
+   "skillBuilds": {
+    "Hmkg": [
+     "AHtb",
+     "AHbh",
+     "AHtb",
+     "AHbh",
+     "AHtb",
+     "AHav"
+    ],
+    "Hamg": [
+     "AHwe",
+     "AHab",
+     "AHwe",
+     "AHab",
+     "AHwe"
+    ],
+    "Hpal": [
+     "AHhb",
+     "AHds",
+     "AHhb",
+     "AHds",
+     "AHhb"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:00",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "0:02",
+     "act": "build",
+     "code": "hbar",
+     "name": "兵营",
+     "n": 3
+    },
+    {
+     "t": "0:05",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 3
+    },
+    {
+     "t": "0:11",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 4
+    },
+    {
+     "t": "0:17",
+     "act": "build",
+     "code": "halt",
+     "name": "国王祭坛",
+     "n": 1
+    },
+    {
+     "t": "0:18",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "0:26",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "0:33",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "0:39",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 3
+    },
+    {
+     "t": "0:49",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "0:55",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:02",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 1
+    },
+    {
+     "t": "1:04",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:06",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "1:11",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "1:17",
+     "act": "train",
+     "code": "Hmkg",
+     "name": "山丘之王",
+     "n": 2
+    },
+    {
+     "t": "1:24",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 2
+    },
+    {
+     "t": "1:29",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 4
+    },
+    {
+     "t": "1:38",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "1:40",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:49",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:02",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "2:10",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:18",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 1
+    },
+    {
+     "t": "2:30",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:37",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "2:52",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "3:02",
+     "act": "build",
+     "code": "hwtw",
+     "name": "哨塔",
+     "n": 3
+    },
+    {
+     "t": "3:18",
+     "act": "build",
+     "code": "htow",
+     "name": "城镇大厅",
+     "n": 1
+    },
+    {
+     "t": "3:38",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "4:14",
+     "act": "upgrade",
+     "code": "hatw",
+     "name": "神秘之塔",
+     "n": 1
+    },
+    {
+     "t": "4:20",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "4:25",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "4:30",
+     "act": "build",
+     "code": "hwtw",
+     "name": "哨塔",
+     "n": 1
+    },
+    {
+     "t": "4:43",
+     "act": "train",
+     "code": "nfsp",
+     "name": "树魔影子牧师",
+     "n": 1
+    },
+    {
+     "t": "4:47",
+     "act": "train",
+     "code": "nftb",
+     "name": "树魔狂战士",
+     "n": 1
+    },
+    {
+     "t": "4:56",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "5:00",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "5:12",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "5:13",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "6:07",
+     "code": "bspd",
+     "name": "速度之靴",
+     "gold": 250
+    },
+    {
+     "t": "6:08",
+     "code": "dust",
+     "name": "尘土之影",
+     "gold": 75
+    },
+    {
+     "t": "9:59",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "9:59",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "10:01",
+     "code": "stel",
+     "name": "传送权杖",
+     "gold": 150
+    },
+    {
+     "t": "10:22",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "11:13",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "11:16",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "12:44",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "13:10",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "13:13",
+     "code": "ssan",
+     "name": "避难权杖",
+     "gold": 250
+    },
+    {
+     "t": "14:35",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "14:36",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "14:36",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "14:36",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "15:02",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "16:25",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "16:27",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "16:27",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "16:27",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "17:35",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "17:38",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "17:38",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "17:38",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "17:40",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "18:24",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "19:14",
+     "code": "ssan",
+     "name": "避难权杖",
+     "gold": 250
+    },
+    {
+     "t": "19:16",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "19:16",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "19:16",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "19:28",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "20:25",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "21:04",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "21:04",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "21:04",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "21:05",
+     "code": "tsct",
+     "name": "象牙塔",
+     "gold": 40
+    },
+    {
+     "t": "21:28",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "21:28",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "21:28",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    }
+   ],
+   "tier": [
+    {
+     "t": "6:24",
+     "code": "hkee",
+     "tier": "人族二本"
+    },
+    {
+     "t": "9:13",
+     "code": "hcas",
+     "tier": "人族三本"
+    }
+   ],
+   "expansions": [
+    "3:18"
+   ],
+   "workersByMinute": [
+    15,
+    20,
+    23,
+    23,
+    27,
+    29,
+    29,
+    29,
+    29,
+    29,
+    31,
+    31,
+    31,
+    31,
+    31
+   ],
+   "waves10": [
+    {
+     "t": "2:05",
+     "kind": "push",
+     "army": {
+      "步兵": 1
+     }
+    },
+    {
+     "t": "2:28",
+     "kind": "creep",
+     "army": {
+      "步兵": 2,
+      "山丘之王": 1,
+      "农民": 4
+     }
+    },
+    {
+     "t": "3:07",
+     "kind": "push",
+     "army": {
+      "步兵": 2,
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "3:47",
+     "kind": "push",
+     "army": {
+      "步兵": 3,
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "4:43",
+     "kind": "creep",
+     "army": {
+      "步兵": 4,
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "5:43",
+     "kind": "push",
+     "army": {
+      "步兵": 4,
+      "树魔狂战士": 1,
+      "树魔影子牧师": 1,
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "6:18",
+     "kind": "creep",
+     "army": {
+      "步兵": 5,
+      "树魔狂战士": 1,
+      "树魔影子牧师": 1,
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "7:04",
+     "kind": "creep",
+     "army": {
+      "步兵": 7,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "7:44",
+     "kind": "creep",
+     "army": {
+      "步兵": 5,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "7:52",
+     "kind": "creep",
+     "army": {
+      "步兵": 5,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "9:08",
+     "kind": "creep",
+     "army": {
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "9:11",
+     "kind": "push",
+     "army": {
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "9:15",
+     "kind": "push",
+     "army": {
+      "山丘之王": 1
+     }
+    },
+    {
+     "t": "9:47",
+     "kind": "creep",
+     "army": {
+      "山丘之王": 1
+     }
+    }
+   ]
+  },
+  {
+   "file": "1477992386_Yumiko_LawLiet_Echo Isles.nwg",
+   "name": "月馒头",
+   "race": "暗夜",
+   "raceKey": "nightelf",
+   "won": false,
+   "apm": 245,
+   "heroes": [
+    "Ewar",
+    "Npbm",
+    "Edem"
+   ],
+   "skillBuilds": {
+    "Ewar": [
+     "AEsh",
+     "AEbl",
+     "AEbl",
+     "AEfk",
+     "AEfk",
+     "AEfk",
+     "AEbl",
+     "AEsv",
+     "AEsh",
+     "AEsh"
+    ],
+    "Npbm": [
+     "ANdh",
+     "ANbf",
+     "ANbf",
+     "ANdb",
+     "ANbf"
+    ],
+    "Edem": [
+     "AEmb",
+     "AEev",
+     "AEmb"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:01",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "0:04",
+     "act": "build",
+     "code": "eate",
+     "name": "长者祭坛",
+     "n": 1
+    },
+    {
+     "t": "0:14",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "0:16",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "0:27",
+     "act": "build",
+     "code": "eaom",
+     "name": "战争古树",
+     "n": 1
+    },
+    {
+     "t": "0:30",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "0:39",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "0:45",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:04",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:07",
+     "act": "train",
+     "code": "Ewar",
+     "name": "守望者",
+     "n": 1
+    },
+    {
+     "t": "1:12",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:27",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "1:30",
+     "act": "train",
+     "code": "earc",
+     "name": "弓箭手",
+     "n": 1
+    },
+    {
+     "t": "1:40",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "2:26",
+     "act": "train",
+     "code": "nfsp",
+     "name": "树魔影子牧师",
+     "n": 1
+    },
+    {
+     "t": "2:47",
+     "act": "build",
+     "code": "edob",
+     "name": "猎手大厅",
+     "n": 1
+    },
+    {
+     "t": "3:07",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "3:12",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "3:41",
+     "act": "train",
+     "code": "etoa",
+     "name": "远古之树",
+     "n": 1
+    },
+    {
+     "t": "3:54",
+     "act": "train",
+     "code": "nftb",
+     "name": "树魔狂战士",
+     "n": 1
+    },
+    {
+     "t": "4:08",
+     "act": "train",
+     "code": "esen",
+     "name": "女猎手",
+     "n": 1
+    },
+    {
+     "t": "4:20",
+     "act": "research",
+     "code": "Reuv",
+     "name": "夜视能力",
+     "n": 1
+    },
+    {
+     "t": "4:44",
+     "act": "build",
+     "code": "etol",
+     "name": "生命之树",
+     "n": 1
+    },
+    {
+     "t": "5:22",
+     "act": "train",
+     "code": "esen",
+     "name": "女猎手",
+     "n": 1
+    },
+    {
+     "t": "6:17",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "6:23",
+     "act": "build",
+     "code": "eaoe",
+     "name": "知识古树",
+     "n": 2
+    },
+    {
+     "t": "6:57",
+     "act": "train",
+     "code": "etoe",
+     "name": "永恒之树",
+     "n": 1
+    },
+    {
+     "t": "7:11",
+     "act": "build",
+     "code": "eden",
+     "name": "奇迹古树",
+     "n": 1
+    },
+    {
+     "t": "7:13",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "7:41",
+     "act": "train",
+     "code": "edry",
+     "name": "树妖",
+     "n": 1
+    },
+    {
+     "t": "7:55",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 5
+    },
+    {
+     "t": "8:32",
+     "act": "train",
+     "code": "Npbm",
+     "name": "熊猫酒仙",
+     "n": 1
+    },
+    {
+     "t": "8:39",
+     "act": "research",
+     "code": "Resi",
+     "name": "驱逐魔法",
+     "n": 1
+    },
+    {
+     "t": "9:08",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 3
+    },
+    {
+     "t": "9:13",
+     "act": "build",
+     "code": "eaow",
+     "name": "风之古树",
+     "n": 1
+    },
+    {
+     "t": "9:14",
+     "act": "research",
+     "code": "Resw",
+     "name": "野性力量",
+     "n": 1
+    },
+    {
+     "t": "9:39",
+     "act": "research",
+     "code": "Redc",
+     "name": "利爪德鲁伊专家训练",
+     "n": 1
+    },
+    {
+     "t": "9:39",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 3
+    },
+    {
+     "t": "9:40",
+     "act": "research",
+     "code": "Rews",
+     "name": "月井之春",
+     "n": 1
+    },
+    {
+     "t": "10:02",
+     "act": "train",
+     "code": "edoc",
+     "name": "利爪德鲁伊",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "5:33",
+     "code": "stel",
+     "name": "传送权杖",
+     "gold": 150
+    },
+    {
+     "t": "9:32",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "9:57",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "10:48",
+     "code": "penr",
+     "name": "能量垂饰",
+     "gold": 300
+    },
+    {
+     "t": "14:12",
+     "code": "tret",
+     "name": "再训练之书",
+     "gold": 300
+    },
+    {
+     "t": "14:27",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "14:30",
+     "code": "oven",
+     "name": "毒液之球",
+     "gold": 325
+    },
+    {
+     "t": "14:35",
+     "code": "spre",
+     "name": "保存权杖",
+     "gold": 150
+    },
+    {
+     "t": "15:59",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "16:10",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "16:10",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "16:12",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    },
+    {
+     "t": "18:15",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "18:16",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "18:17",
+     "code": "oven",
+     "name": "毒液之球",
+     "gold": 325
+    },
+    {
+     "t": "18:18",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "19:36",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "20:53",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "21:51",
+     "code": "wswd",
+     "name": "岗哨守卫",
+     "gold": 150
+    },
+    {
+     "t": "23:36",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "26:21",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "26:23",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    },
+    {
+     "t": "26:28",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    },
+    {
+     "t": "27:24",
+     "code": "phea",
+     "name": "生命药水",
+     "gold": 150
+    },
+    {
+     "t": "27:50",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "27:55",
+     "code": "phea",
+     "name": "生命药水",
+     "gold": 150
+    },
+    {
+     "t": "29:19",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "31:45",
+     "code": "tret",
+     "name": "再训练之书",
+     "gold": 300
+    }
+   ],
+   "tier": [],
+   "expansions": [
+    "4:44"
+   ],
+   "workersByMinute": [
+    6,
+    10,
+    10,
+    12,
+    12,
+    12,
+    14,
+    19,
+    19,
+    25,
+    25,
+    26,
+    26,
+    26,
+    26
+   ],
+   "waves10": [
+    {
+     "t": "2:01",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 1,
+      "战争古树": 1,
+      "树魔影子牧师": 1,
+      "守望者": 1
+     }
+    },
+    {
+     "t": "2:54",
+     "kind": "creep",
+     "army": {
+      "树魔影子牧师": 1,
+      "弓箭手": 1,
+      "守望者": 1
+     }
+    },
+    {
+     "t": "3:40",
+     "kind": "creep",
+     "army": {
+      "守望者": 1,
+      "树魔狂战士": 1,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "4:31",
+     "kind": "creep",
+     "army": {
+      "守望者": 1,
+      "树魔狂战士": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 1,
+      "战争古树": 1
+     }
+    },
+    {
+     "t": "5:35",
+     "kind": "creep",
+     "army": {
+      "树魔狂战士": 1,
+      "女猎手": 1,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "5:56",
+     "kind": "push",
+     "army": {
+      "守望者": 1,
+      "树魔狂战士": 1,
+      "女猎手": 1,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "6:08",
+     "kind": "push",
+     "army": {
+      "守望者": 1,
+      "树魔狂战士": 1,
+      "女猎手": 2,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "6:21",
+     "kind": "push",
+     "army": {
+      "守望者": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "6:34",
+     "kind": "push",
+     "army": {
+      "树魔狂战士": 1,
+      "女猎手": 2,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "6:40",
+     "kind": "push",
+     "army": {
+      "树魔狂战士": 1,
+      "女猎手": 2,
+      "树魔影子牧师": 1,
+      "守望者": 1
+     }
+    },
+    {
+     "t": "7:16",
+     "kind": "push",
+     "army": {
+      "守望者": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "7:53",
+     "kind": "creep",
+     "army": {
+      "守望者": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "8:16",
+     "kind": "creep",
+     "army": {
+      "守望者": 1
+     }
+    },
+    {
+     "t": "8:35",
+     "kind": "push",
+     "army": {
+      "树妖": 2,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "8:48",
+     "kind": "push",
+     "army": {
+      "树妖": 2,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1,
+      "守望者": 1
+     }
+    },
+    {
+     "t": "8:59",
+     "kind": "push",
+     "army": {
+      "守望者": 1,
+      "树妖": 2,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "9:24",
+     "kind": "creep",
+     "army": {
+      "树妖": 2,
+      "守望者": 1,
+      "熊猫酒仙": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "9:41",
+     "kind": "creep",
+     "army": {
+      "树妖": 2,
+      "熊猫酒仙": 1,
+      "守望者": 1,
+      "女猎手": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "9:44",
+     "kind": "push",
+     "army": {
+      "守望者": 1
+     }
+    }
+   ]
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "name": "虎牙Yumiko",
+   "race": "人族",
+   "raceKey": "human",
+   "won": false,
+   "apm": 346,
+   "heroes": [
+    "Hamg",
+    "Hmkg",
+    "Hpal"
+   ],
+   "skillBuilds": {
+    "Hamg": [
+     "AHwe",
+     "AHab",
+     "AHwe",
+     "AHab",
+     "AHwe"
+    ],
+    "Hmkg": [
+     "AHtb",
+     "AHtc",
+     "AHtb",
+     "AHtc",
+     "AHtb"
+    ],
+    "Hpal": [
+     "AHhb",
+     "AHds"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:00",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 3
+    },
+    {
+     "t": "0:03",
+     "act": "build",
+     "code": "hbar",
+     "name": "兵营",
+     "n": 2
+    },
+    {
+     "t": "0:04",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 7
+    },
+    {
+     "t": "0:13",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 3
+    },
+    {
+     "t": "0:16",
+     "act": "build",
+     "code": "halt",
+     "name": "国王祭坛",
+     "n": 1
+    },
+    {
+     "t": "0:21",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:00",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "1:06",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 3
+    },
+    {
+     "t": "1:16",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:31",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 1
+    },
+    {
+     "t": "1:34",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:37",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 2
+    },
+    {
+     "t": "1:41",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "1:47",
+     "act": "train",
+     "code": "Hamg",
+     "name": "大魔法师",
+     "n": 2
+    },
+    {
+     "t": "1:53",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "1:57",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "1:58",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:00",
+     "act": "build",
+     "code": "hhou",
+     "name": "农场",
+     "n": 3
+    },
+    {
+     "t": "2:10",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 2
+    },
+    {
+     "t": "2:17",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:32",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "2:41",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "2:56",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "3:01",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "3:17",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "3:26",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "3:51",
+     "act": "research",
+     "code": "Rhde",
+     "name": "防御",
+     "n": 1
+    },
+    {
+     "t": "4:03",
+     "act": "build",
+     "code": "hwtw",
+     "name": "哨塔",
+     "n": 1
+    },
+    {
+     "t": "4:13",
+     "act": "build",
+     "code": "htow",
+     "name": "城镇大厅",
+     "n": 1
+    },
+    {
+     "t": "4:15",
+     "act": "upgrade",
+     "code": "hatw",
+     "name": "神秘之塔",
+     "n": 1
+    },
+    {
+     "t": "5:03",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "5:09",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "5:17",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "5:24",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "5:31",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "5:50",
+     "act": "train",
+     "code": "hfoo",
+     "name": "步兵",
+     "n": 1
+    },
+    {
+     "t": "5:52",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 2
+    },
+    {
+     "t": "6:01",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    },
+    {
+     "t": "6:03",
+     "act": "build",
+     "code": "hwtw",
+     "name": "哨塔",
+     "n": 1
+    },
+    {
+     "t": "6:04",
+     "act": "train",
+     "code": "hpea",
+     "name": "农民",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "4:19",
+     "code": "stel",
+     "name": "传送权杖",
+     "gold": 150
+    },
+    {
+     "t": "4:20",
+     "code": "dust",
+     "name": "尘土之影",
+     "gold": 75
+    },
+    {
+     "t": "5:49",
+     "code": "bspd",
+     "name": "速度之靴",
+     "gold": 250
+    },
+    {
+     "t": "5:49",
+     "code": "bspd",
+     "name": "速度之靴",
+     "gold": 250
+    },
+    {
+     "t": "7:56",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "7:56",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "7:58",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "8:59",
+     "code": "pinv",
+     "name": "隐形药水",
+     "gold": 100
+    },
+    {
+     "t": "8:59",
+     "code": "pinv",
+     "name": "隐形药水",
+     "gold": 100
+    },
+    {
+     "t": "9:00",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "9:01",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "9:04",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "10:14",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "10:31",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "12:46",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "15:07",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "16:52",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "18:13",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "21:27",
+     "code": "phea",
+     "name": "生命药水",
+     "gold": 150
+    },
+    {
+     "t": "21:35",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "25:17",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "26:34",
+     "code": "sreg",
+     "name": "恢复卷轴",
+     "gold": 100
+    },
+    {
+     "t": "28:35",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    }
+   ],
+   "tier": [
+    {
+     "t": "7:15",
+     "code": "hkee",
+     "tier": "人族二本"
+    },
+    {
+     "t": "21:06",
+     "code": "hcas",
+     "tier": "人族三本"
+    }
+   ],
+   "expansions": [
+    "4:13"
+   ],
+   "workersByMinute": [
+    14,
+    22,
+    24,
+    26,
+    26,
+    34,
+    41,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    46,
+    47
+   ],
+   "waves10": [
+    {
+     "t": "3:00",
+     "kind": "creep",
+     "army": {
+      "农民": 1,
+      "步兵": 2
+     }
+    },
+    {
+     "t": "3:05",
+     "kind": "creep",
+     "army": {}
+    },
+    {
+     "t": "3:08",
+     "kind": "push",
+     "army": {
+      "步兵": 1
+     }
+    },
+    {
+     "t": "3:11",
+     "kind": "creep",
+     "army": {
+      "农民": 1,
+      "大魔法师": 1,
+      "步兵": 2
+     }
+    },
+    {
+     "t": "3:12",
+     "kind": "push",
+     "army": {
+      "步兵": 1
+     }
+    },
+    {
+     "t": "3:21",
+     "kind": "creep",
+     "army": {
+      "大魔法师": 1,
+      "步兵": 3,
+      "农民": 6
+     }
+    },
+    {
+     "t": "3:46",
+     "kind": "push",
+     "army": {
+      "步兵": 2
+     }
+    },
+    {
+     "t": "3:48",
+     "kind": "creep",
+     "army": {
+      "农民": 6
+     }
+    },
+    {
+     "t": "3:48",
+     "kind": "push",
+     "army": {
+      "大魔法师": 1,
+      "步兵": 3
+     }
+    },
+    {
+     "t": "3:49",
+     "kind": "creep",
+     "army": {
+      "农民": 6
+     }
+    },
+    {
+     "t": "4:29",
+     "kind": "push",
+     "army": {
+      "大魔法师": 1
+     }
+    },
+    {
+     "t": "4:37",
+     "kind": "push",
+     "army": {
+      "大魔法师": 1
+     }
+    },
+    {
+     "t": "4:54",
+     "kind": "creep",
+     "army": {
+      "步兵": 1,
+      "大魔法师": 1
+     }
+    },
+    {
+     "t": "5:07",
+     "kind": "push",
+     "army": {
+      "步兵": 3
+     }
+    }
+   ]
+  },
+  {
+   "file": "1481530917_Yumiko_TH000_Echo Isles.nwg",
+   "name": "普通话补丁",
+   "race": "暗夜",
+   "raceKey": "nightelf",
+   "won": true,
+   "apm": 261,
+   "heroes": [
+    "Npbm",
+    "Edem",
+    "Ekee"
+   ],
+   "skillBuilds": {
+    "Npbm": [
+     "ANbf",
+     "ANdh",
+     "ANbf",
+     "ANdh",
+     "ANbf",
+     "ANef",
+     "ANdh",
+     "ANdb"
+    ],
+    "Edem": [
+     "AEmb",
+     "AEev",
+     "AEmb",
+     "AEev"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:03",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "0:16",
+     "act": "build",
+     "code": "eaom",
+     "name": "战争古树",
+     "n": 1
+    },
+    {
+     "t": "0:26",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "0:26",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:08",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:16",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:28",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "1:44",
+     "act": "build",
+     "code": "eate",
+     "name": "长者祭坛",
+     "n": 1
+    },
+    {
+     "t": "1:48",
+     "act": "train",
+     "code": "earc",
+     "name": "弓箭手",
+     "n": 1
+    },
+    {
+     "t": "1:53",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "2:05",
+     "act": "train",
+     "code": "earc",
+     "name": "弓箭手",
+     "n": 2
+    },
+    {
+     "t": "2:11",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "2:25",
+     "act": "train",
+     "code": "earc",
+     "name": "弓箭手",
+     "n": 1
+    },
+    {
+     "t": "2:31",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "2:45",
+     "act": "train",
+     "code": "Npbm",
+     "name": "熊猫酒仙",
+     "n": 2
+    },
+    {
+     "t": "2:50",
+     "act": "train",
+     "code": "earc",
+     "name": "弓箭手",
+     "n": 1
+    },
+    {
+     "t": "2:52",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "3:02",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "3:08",
+     "act": "train",
+     "code": "nfsp",
+     "name": "树魔影子牧师",
+     "n": 2
+    },
+    {
+     "t": "3:42",
+     "act": "train",
+     "code": "etoa",
+     "name": "远古之树",
+     "n": 1
+    },
+    {
+     "t": "4:11",
+     "act": "train",
+     "code": "nftb",
+     "name": "树魔狂战士",
+     "n": 2
+    },
+    {
+     "t": "4:21",
+     "act": "build",
+     "code": "eden",
+     "name": "奇迹古树",
+     "n": 1
+    },
+    {
+     "t": "5:03",
+     "act": "train",
+     "code": "nfsp",
+     "name": "树魔影子牧师",
+     "n": 2
+    },
+    {
+     "t": "5:20",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "5:36",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 2
+    },
+    {
+     "t": "5:53",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "6:18",
+     "act": "research",
+     "code": "Repm",
+     "name": "背包技能",
+     "n": 2
+    },
+    {
+     "t": "6:45",
+     "act": "build",
+     "code": "etol",
+     "name": "生命之树",
+     "n": 1
+    },
+    {
+     "t": "6:51",
+     "act": "build",
+     "code": "edob",
+     "name": "猎手大厅",
+     "n": 1
+    },
+    {
+     "t": "6:59",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 1
+    },
+    {
+     "t": "7:09",
+     "act": "train",
+     "code": "nfsp",
+     "name": "树魔影子牧师",
+     "n": 2
+    },
+    {
+     "t": "7:55",
+     "act": "build",
+     "code": "eden",
+     "name": "奇迹古树",
+     "n": 1
+    },
+    {
+     "t": "7:56",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "7:56",
+     "act": "build",
+     "code": "eaoe",
+     "name": "知识古树",
+     "n": 2
+    },
+    {
+     "t": "8:10",
+     "act": "build",
+     "code": "eaoe",
+     "name": "知识古树",
+     "n": 1
+    },
+    {
+     "t": "8:12",
+     "act": "build",
+     "code": "eden",
+     "name": "奇迹古树",
+     "n": 1
+    },
+    {
+     "t": "8:12",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 2
+    },
+    {
+     "t": "8:30",
+     "act": "build",
+     "code": "emow",
+     "name": "月亮井",
+     "n": 1
+    },
+    {
+     "t": "8:58",
+     "act": "train",
+     "code": "ewsp",
+     "name": "小精灵",
+     "n": 4
+    },
+    {
+     "t": "9:15",
+     "act": "train",
+     "code": "nogm",
+     "name": "食人鬼拳手",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "4:43",
+     "code": "bspd",
+     "name": "速度之靴",
+     "gold": 250
+    },
+    {
+     "t": "6:02",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "6:02",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "6:25",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "10:15",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "10:54",
+     "code": "stel",
+     "name": "传送权杖",
+     "gold": 150
+    },
+    {
+     "t": "11:00",
+     "code": "pinv",
+     "name": "隐形药水",
+     "gold": 100
+    },
+    {
+     "t": "12:43",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "12:46",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    },
+    {
+     "t": "12:47",
+     "code": "pams",
+     "name": "抗体药水",
+     "gold": 100
+    },
+    {
+     "t": "12:48",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "12:48",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "14:54",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "14:55",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "14:55",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "15:52",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "15:52",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "20:12",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "20:13",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "20:13",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "20:49",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "20:49",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "20:50",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "21:35",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "23:40",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "23:40",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "23:41",
+     "code": "moon",
+     "name": "月亮石",
+     "gold": 50
+    },
+    {
+     "t": "23:48",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "23:48",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    },
+    {
+     "t": "24:19",
+     "code": "stwp",
+     "name": "回城卷轴",
+     "gold": 350
+    },
+    {
+     "t": "29:23",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "29:23",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "29:23",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    },
+    {
+     "t": "29:25",
+     "code": "pnvl",
+     "name": "较小的无敌药水",
+     "gold": 150
+    }
+   ],
+   "tier": [],
+   "expansions": [
+    "6:45"
+   ],
+   "workersByMinute": [
+    3,
+    6,
+    10,
+    11,
+    11,
+    11,
+    12,
+    14,
+    18,
+    22,
+    25,
+    26,
+    28,
+    30,
+    30
+   ],
+   "waves10": [
+    {
+     "t": "2:58",
+     "kind": "creep",
+     "army": {
+      "战争古树": 1,
+      "长者祭坛": 1,
+      "弓箭手": 3,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "3:48",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "4:10",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "熊猫酒仙": 1,
+      "树魔影子牧师": 1,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "4:48",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 1,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "4:51",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 1,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "4:53",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 1,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "5:09",
+     "kind": "push",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "5:17",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "5:42",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "5:47",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "5:59",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "6:05",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "熊猫酒仙": 1,
+      "树魔狂战士": 1,
+      "战争古树": 1,
+      "长者祭坛": 1
+     }
+    },
+    {
+     "t": "6:13",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "6:14",
+     "kind": "creep",
+     "army": {
+      "战争古树": 1,
+      "长者祭坛": 1,
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "6:29",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 2,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "6:38",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "6:39",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "7:10",
+     "kind": "creep",
+     "army": {
+      "树魔影子牧师": 1
+     }
+    },
+    {
+     "t": "7:13",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "7:14",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1,
+      "弓箭手": 3,
+      "树魔影子牧师": 3,
+      "树魔狂战士": 1,
+      "战争古树": 1,
+      "长者祭坛": 1
+     }
+    },
+    {
+     "t": "7:41",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "7:44",
+     "kind": "creep",
+     "army": {
+      "树魔影子牧师": 3,
+      "弓箭手": 3,
+      "熊猫酒仙": 1,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "8:18",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 3,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "8:36",
+     "kind": "creep",
+     "army": {
+      "战争古树": 1,
+      "长者祭坛": 1
+     }
+    },
+    {
+     "t": "8:38",
+     "kind": "creep",
+     "army": {
+      "弓箭手": 3,
+      "树魔影子牧师": 3,
+      "树魔狂战士": 1
+     }
+    },
+    {
+     "t": "9:04",
+     "kind": "push",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "9:42",
+     "kind": "creep",
+     "army": {
+      "熊猫酒仙": 1
+     }
+    },
+    {
+     "t": "9:49",
+     "kind": "creep",
+     "army": {
+      "食人鬼拳手": 1,
+      "树魔影子牧师": 3,
+      "弓箭手": 3,
+      "树魔狂战士": 1,
+      "树妖": 1,
+      "熊猫酒仙": 1
+     }
+    }
+   ]
+  },
+  {
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "name": "决战",
+   "race": "兽族",
+   "raceKey": "orc",
+   "won": true,
+   "apm": 356,
+   "heroes": [
+    "Obla",
+    "Oshd"
+   ],
+   "skillBuilds": {
+    "Obla": [
+     "AOwk",
+     "AOcr",
+     "AOwk"
+    ],
+    "Oshd": [
+     "AOhx",
+     "AOhw",
+     "AOhw"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:01",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 2
+    },
+    {
+     "t": "0:04",
+     "act": "build",
+     "code": "oalt",
+     "name": "风暴祭坛",
+     "n": 2
+    },
+    {
+     "t": "0:17",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "0:19",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:32",
+     "act": "build",
+     "code": "obar",
+     "name": "兵营",
+     "n": 1
+    },
+    {
+     "t": "0:40",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:52",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "1:02",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "1:07",
+     "act": "train",
+     "code": "Obla",
+     "name": "剑圣",
+     "n": 2
+    },
+    {
+     "t": "1:22",
+     "act": "build",
+     "code": "ovln",
+     "name": "巫毒商店",
+     "n": 1
+    },
+    {
+     "t": "1:33",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "1:37",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "1:57",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "2:41",
+     "act": "upgrade",
+     "code": "ostr",
+     "name": "要塞",
+     "n": 1
+    },
+    {
+     "t": "3:01",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "3:35",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "3:51",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "5:03",
+     "act": "train",
+     "code": "Oshd",
+     "name": "暗影猎手",
+     "n": 1
+    },
+    {
+     "t": "5:04",
+     "act": "build",
+     "code": "osld",
+     "name": "灵魂归宿",
+     "n": 1
+    },
+    {
+     "t": "5:05",
+     "act": "build",
+     "code": "obea",
+     "name": "兽栏",
+     "n": 1
+    },
+    {
+     "t": "5:23",
+     "act": "research",
+     "code": "Robs",
+     "name": "狂暴力量",
+     "n": 1
+    },
+    {
+     "t": "6:09",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "6:13",
+     "act": "research",
+     "code": "Roen",
+     "name": "诱捕",
+     "n": 1
+    },
+    {
+     "t": "6:23",
+     "act": "train",
+     "code": "ospm",
+     "name": "灵魂行者",
+     "n": 1
+    },
+    {
+     "t": "6:54",
+     "act": "train",
+     "code": "orai",
+     "name": "掠夺者",
+     "n": 1
+    },
+    {
+     "t": "6:57",
+     "act": "train",
+     "code": "ospm",
+     "name": "灵魂行者",
+     "n": 1
+    },
+    {
+     "t": "7:11",
+     "act": "build",
+     "code": "ofor",
+     "name": "战争磨坊",
+     "n": 1
+    },
+    {
+     "t": "7:28",
+     "act": "train",
+     "code": "orai",
+     "name": "掠夺者",
+     "n": 1
+    },
+    {
+     "t": "7:42",
+     "act": "research",
+     "code": "Rowt",
+     "name": "灵魂行者专家训练",
+     "n": 1
+    },
+    {
+     "t": "8:01",
+     "act": "train",
+     "code": "orai",
+     "name": "掠夺者",
+     "n": 1
+    },
+    {
+     "t": "8:28",
+     "act": "train",
+     "code": "okod",
+     "name": "科多兽",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "2:24",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "2:24",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "2:35",
+     "code": "rat6",
+     "name": "攻击之爪 +6",
+     "gold": 125
+    },
+    {
+     "t": "3:43",
+     "code": "cnob",
+     "name": "贵族圆环",
+     "gold": 175
+    },
+    {
+     "t": "5:21",
+     "code": "rag1",
+     "name": "敏捷便鞋  +3",
+     "gold": 100
+    },
+    {
+     "t": "6:00",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "6:00",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "6:01",
+     "code": "shas",
+     "name": "速度卷轴",
+     "gold": 50
+    },
+    {
+     "t": "8:38",
+     "code": "shea",
+     "name": "医疗卷轴",
+     "gold": 250
+    }
+   ],
+   "tier": [
+    {
+     "t": "2:41",
+     "code": "ostr",
+     "tier": "兽族二本"
+    }
+   ],
+   "expansions": [],
+   "workersByMinute": [
+    5,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7
+   ],
+   "waves10": [
+    {
+     "t": "2:51",
+     "kind": "push",
+     "army": {
+      "剑圣": 1
+     }
+    },
+    {
+     "t": "3:30",
+     "kind": "push",
+     "army": {
+      "剑圣": 1
+     }
+    },
+    {
+     "t": "3:58",
+     "kind": "push",
+     "army": {
+      "剑圣": 1
+     }
+    },
+    {
+     "t": "6:45",
+     "kind": "creep",
+     "army": {
+      "兽族步兵": 3,
+      "暗影猎手": 1,
+      "剑圣": 1
+     }
+    },
+    {
+     "t": "7:39",
+     "kind": "push",
+     "army": {
+      "剑圣": 1
+     }
+    },
+    {
+     "t": "8:00",
+     "kind": "creep",
+     "army": {
+      "兽族步兵": 3,
+      "灵魂行者": 2,
+      "暗影猎手": 1,
+      "掠夺者": 1
+     }
+    },
+    {
+     "t": "9:05",
+     "kind": "push",
+     "army": {
+      "兽族步兵": 3,
+      "灵魂行者": 2,
+      "暗影猎手": 1,
+      "剑圣": 1,
+      "掠夺者": 3
+     }
+    }
+   ]
+  },
+  {
+   "file": "1789104197_XiaoKK_FoCuS_Echo Isles 22.nwg",
+   "name": "玄穹佛爷",
+   "race": "兽族",
+   "raceKey": "orc",
+   "won": false,
+   "apm": 346,
+   "heroes": [
+    "Oshd",
+    "Nplh"
+   ],
+   "skillBuilds": {
+    "Oshd": [
+     "AOhw",
+     "AOhx",
+     "AOhw"
+    ],
+    "Nplh": [
+     "ANca",
+     "ANht",
+     "ANca"
+    ]
+   },
+   "opening": [
+    {
+     "t": "0:01",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:02",
+     "act": "build",
+     "code": "oalt",
+     "name": "风暴祭坛",
+     "n": 1
+    },
+    {
+     "t": "0:09",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:17",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "0:27",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:31",
+     "act": "build",
+     "code": "obar",
+     "name": "兵营",
+     "n": 1
+    },
+    {
+     "t": "0:39",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "0:54",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 2
+    },
+    {
+     "t": "1:07",
+     "act": "train",
+     "code": "Oshd",
+     "name": "暗影猎手",
+     "n": 1
+    },
+    {
+     "t": "1:22",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "1:32",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "1:46",
+     "act": "build",
+     "code": "ovln",
+     "name": "巫毒商店",
+     "n": 1
+    },
+    {
+     "t": "2:14",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "2:46",
+     "act": "upgrade",
+     "code": "ostr",
+     "name": "要塞",
+     "n": 1
+    },
+    {
+     "t": "3:11",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "3:27",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "3:57",
+     "act": "train",
+     "code": "ogru",
+     "name": "兽族步兵",
+     "n": 1
+    },
+    {
+     "t": "5:08",
+     "act": "train",
+     "code": "Nplh",
+     "name": "深渊魔王",
+     "n": 1
+    },
+    {
+     "t": "5:13",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "5:15",
+     "act": "build",
+     "code": "obea",
+     "name": "兽栏",
+     "n": 1
+    },
+    {
+     "t": "5:26",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "5:39",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "6:02",
+     "act": "build",
+     "code": "osld",
+     "name": "灵魂归宿",
+     "n": 1
+    },
+    {
+     "t": "6:20",
+     "act": "train",
+     "code": "orai",
+     "name": "掠夺者",
+     "n": 1
+    },
+    {
+     "t": "6:21",
+     "act": "build",
+     "code": "ofor",
+     "name": "战争磨坊",
+     "n": 1
+    },
+    {
+     "t": "6:43",
+     "act": "research",
+     "code": "Roen",
+     "name": "诱捕",
+     "n": 1
+    },
+    {
+     "t": "7:04",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "7:14",
+     "act": "train",
+     "code": "ospm",
+     "name": "灵魂行者",
+     "n": 1
+    },
+    {
+     "t": "7:26",
+     "act": "train",
+     "code": "opeo",
+     "name": "苦工",
+     "n": 1
+    },
+    {
+     "t": "7:42",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "8:21",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "8:26",
+     "act": "research",
+     "code": "Rowt",
+     "name": "灵魂行者专家训练",
+     "n": 1
+    },
+    {
+     "t": "8:52",
+     "act": "build",
+     "code": "otrb",
+     "name": "兽族地洞",
+     "n": 1
+    },
+    {
+     "t": "9:17",
+     "act": "train",
+     "code": "orai",
+     "name": "掠夺者",
+     "n": 1
+    }
+   ],
+   "purchases": [
+    {
+     "t": "3:35",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "3:35",
+     "code": "hslv",
+     "name": "医疗剂",
+     "gold": 100
+    },
+    {
+     "t": "3:37",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "4:30",
+     "code": "shas",
+     "name": "速度卷轴",
+     "gold": 50
+    },
+    {
+     "t": "5:23",
+     "code": "dust",
+     "name": "尘土之影",
+     "gold": 75
+    },
+    {
+     "t": "7:24",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "7:24",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "8:55",
+     "code": "plcl",
+     "name": "小净化药水",
+     "gold": 70
+    },
+    {
+     "t": "8:55",
+     "code": "pman",
+     "name": "魔法药水",
+     "gold": 200
+    }
+   ],
+   "tier": [
+    {
+     "t": "2:46",
+     "code": "ostr",
+     "tier": "兽族二本"
+    }
+   ],
+   "expansions": [],
+   "workersByMinute": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    9,
+    9,
+    10,
+    10,
+    10
+   ],
+   "waves10": [
+    {
+     "t": "2:08",
+     "kind": "creep",
+     "army": {
+      "暗影猎手": 1,
+      "兽族步兵": 1
+     }
+    },
+    {
+     "t": "4:02",
+     "kind": "creep",
+     "army": {
+      "暗影猎手": 1
+     }
+    },
+    {
+     "t": "4:17",
+     "kind": "creep",
+     "army": {
+      "兽族步兵": 4,
+      "暗影猎手": 1
+     }
+    },
+    {
+     "t": "4:59",
+     "kind": "creep",
+     "army": {
+      "兽族步兵": 4
+     }
+    },
+    {
+     "t": "4:59",
+     "kind": "creep",
+     "army": {
+      "暗影猎手": 1
+     }
+    },
+    {
+     "t": "5:19",
+     "kind": "push",
+     "army": {
+      "暗影猎手": 1,
+      "深渊魔王": 1,
+      "兽族步兵": 4
+     }
+    },
+    {
+     "t": "6:03",
+     "kind": "creep",
+     "army": {
+      "兽族步兵": 4,
+      "暗影猎手": 1,
+      "深渊魔王": 1
+     }
+    },
+    {
+     "t": "6:54",
+     "kind": "creep",
+     "army": {
+      "暗影猎手": 1,
+      "深渊魔王": 1,
+      "兽族步兵": 4,
+      "掠夺者": 1
+     }
+    },
+    {
+     "t": "7:41",
+     "kind": "creep",
+     "army": {
+      "暗影猎手": 1,
+      "深渊魔王": 1
+     }
+    },
+    {
+     "t": "8:34",
+     "kind": "creep",
+     "army": {
+      "深渊魔王": 1,
+      "兽族步兵": 4,
+      "掠夺者": 1,
+      "灵魂行者": 1,
+      "暗影猎手": 1
+     }
+    }
+   ]
+  }
+ ],
+ "note": "replay_learn.py 生成；AI 目前只用 skills（war3ai.ps1 W3-ApplyLearnedSkills）"
+}

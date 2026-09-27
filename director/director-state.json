@@ -1,0 +1,1 @@
+{"enabled": true, "distance": 2600.0, "minShot": 6.0, "ownOnly": true, "heroFollow": true, "fogCheck": true, "staleAfter": 3.5, "idleSeconds": 4.0, "orbitSeconds": 6.0}

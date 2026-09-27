@@ -1,0 +1,17 @@
+# 运行（参考大脑、SDK、网页指挥台）
+numpy>=1.26
+psutil>=5.9
+fastapi>=0.110
+uvicorn>=0.27
+pydantic>=2.5
+# 网关 gateway/（WebSocket；uvicorn 的 WebSocket 支持要它）
+websockets>=12
+# 测试：网关的离线测试用 fastapi 的 TestClient，它要 httpx
+httpx>=0.27
+# 网页里的地图预览（可选）
+Pillow>=10
+# 从本机游戏提取数据（setup 时用一次）
+mpyq>=0.2.5
+# 参考大脑的自动调参器 tuner.py（可选）
+scipy>=1.11
+scikit-learn>=1.4

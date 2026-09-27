@@ -1,0 +1,104 @@
+{
+ "note": "tools/calibrate_power.py 拟合。p_win = lo+(hi-lo)·sigmoid(a·ln比值+b)，loss 同形。参数顺序 [a, b, lo, hi]。键是「谁的仗/哪个估计器」：foe|creep × power|amai。",
+ "files": 964,
+ "samples": 5981,
+ "tag": "l15",
+ "fits": {
+  "foe.power": {
+   "kind": "foe",
+   "est": "power",
+   "n": 2117,
+   "n_fit": 1481,
+   "tag": "l15",
+   "win": [
+    2.14461,
+    -0.34225,
+    0.08676,
+    0.44695
+   ],
+   "loss": [
+    -4.74599,
+    -0.17781,
+    0.57475,
+    0.79873
+   ],
+   "base_rate": 0.2664,
+   "brier_test": 0.2094,
+   "brier_base": 0.2494,
+   "auc_test": 0.7096,
+   "loss_brier_test": 0.0796
+  },
+  "foe.amai": {
+   "kind": "foe",
+   "est": "amai",
+   "n": 2117,
+   "n_fit": 1481,
+   "tag": "l15",
+   "win": [
+    5.03503,
+    -0.25398,
+    0.08587,
+    0.43637
+   ],
+   "loss": [
+    -8.27801,
+    -0.16522,
+    0.57863,
+    0.79752
+   ],
+   "base_rate": 0.2664,
+   "brier_test": 0.2096,
+   "brier_base": 0.2494,
+   "auc_test": 0.708,
+   "loss_brier_test": 0.0793
+  },
+  "creep.power": {
+   "kind": "creep",
+   "est": "power",
+   "n": 2996,
+   "n_fit": 2097,
+   "tag": "l15",
+   "win": [
+    2.68969,
+    -0.30196,
+    0.74904,
+    0.91917
+   ],
+   "loss": [
+    -2.35873,
+    1.86895,
+    0.17307,
+    0.33047
+   ],
+   "base_rate": 0.8765,
+   "brier_test": 0.115,
+   "brier_base": 0.1124,
+   "auc_test": 0.4685,
+   "loss_brier_test": 0.0584
+  },
+  "creep.amai": {
+   "kind": "creep",
+   "est": "amai",
+   "n": 2994,
+   "n_fit": 2095,
+   "tag": "l15",
+   "win": [
+    6.36636,
+    -1.03246,
+    0.76479,
+    0.93215
+   ],
+   "loss": [
+    -2.94321,
+    0.99148,
+    0.16422,
+    0.33915
+   ],
+   "base_rate": 0.8764,
+   "brier_test": 0.1166,
+   "brier_base": 0.1124,
+   "auc_test": 0.4612,
+   "loss_brier_test": 0.0605
+  }
+ }
+}

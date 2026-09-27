@@ -1,0 +1,2125 @@
+{
+ "schema": "war3-enemy-ai/race@1",
+ "race": "undead",
+ "race_jass": "RACE_UNDEAD",
+ "source": {
+  "file": "War3x.mpq__undead.ai",
+  "mpq": "War3x.mpq",
+  "说明": "1.27 的 War3Patch.mpq 没有覆盖四族 .ai，实机跑的就是这份。所有 line 指这个文件的行号。"
+ },
+ "hero": {
+  "pool": [
+   {
+    "i": 1,
+    "name": "DEATH_KNIGHT",
+    "code": "Udea"
+   },
+   {
+    "i": 2,
+    "name": "DREAD_LORD",
+    "code": "Udre"
+   },
+   {
+    "i": 3,
+    "name": "LICH",
+    "code": "Ulic"
+   },
+   {
+    "i": 4,
+    "name": "CRYPT_LORD",
+    "code": "Ucrl"
+   }
+  ],
+  "pick": "common.ai:2565-2579 三次 GetRandomInt 不重复抽 -> hero_id / hero_id2 / hero_id3，开局定死",
+  "learn_tables": [
+   {
+    "hero": "LICH",
+    "hero_code": "Ulic",
+    "hero_slot": 1,
+    "line": 76,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 2,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 3,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 4,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 5,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 6,
+      "ability": "DEATH_DECAY",
+      "code": "AUdd"
+     },
+     {
+      "level": 7,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 8,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 9,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 10,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     }
+    ],
+    "order_names": [
+     "FROST_NOVA",
+     "FROST_ARMOR",
+     "FROST_NOVA",
+     "DARK_RITUAL",
+     "FROST_NOVA",
+     "DEATH_DECAY",
+     "FROST_ARMOR",
+     "DARK_RITUAL",
+     "FROST_ARMOR",
+     "DARK_RITUAL"
+    ]
+   },
+   {
+    "hero": "LICH",
+    "hero_code": "Ulic",
+    "hero_slot": 2,
+    "line": 77,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 2,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 3,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 4,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 5,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 6,
+      "ability": "DEATH_DECAY",
+      "code": "AUdd"
+     },
+     {
+      "level": 7,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 8,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 9,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 10,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     }
+    ],
+    "order_names": [
+     "FROST_NOVA",
+     "FROST_ARMOR",
+     "FROST_NOVA",
+     "DARK_RITUAL",
+     "FROST_NOVA",
+     "DEATH_DECAY",
+     "FROST_ARMOR",
+     "DARK_RITUAL",
+     "FROST_ARMOR",
+     "DARK_RITUAL"
+    ]
+   },
+   {
+    "hero": "LICH",
+    "hero_code": "Ulic",
+    "hero_slot": 3,
+    "line": 78,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 2,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 3,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 4,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 5,
+      "ability": "FROST_NOVA",
+      "code": "AUfn"
+     },
+     {
+      "level": 6,
+      "ability": "DEATH_DECAY",
+      "code": "AUdd"
+     },
+     {
+      "level": 7,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 8,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     },
+     {
+      "level": 9,
+      "ability": "FROST_ARMOR",
+      "code": "AUfu"
+     },
+     {
+      "level": 10,
+      "ability": "DARK_RITUAL",
+      "code": "AUdr"
+     }
+    ],
+    "order_names": [
+     "FROST_NOVA",
+     "FROST_ARMOR",
+     "FROST_NOVA",
+     "DARK_RITUAL",
+     "FROST_NOVA",
+     "DEATH_DECAY",
+     "FROST_ARMOR",
+     "DARK_RITUAL",
+     "FROST_ARMOR",
+     "DARK_RITUAL"
+    ]
+   },
+   {
+    "hero": "DREAD_LORD",
+    "hero_code": "Udre",
+    "hero_slot": 1,
+    "line": 91,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 2,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 3,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 4,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 5,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 6,
+      "ability": "INFERNO",
+      "code": "AUin"
+     },
+     {
+      "level": 7,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 8,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 9,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 10,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     }
+    ],
+    "order_names": [
+     "SLEEP",
+     "VAMP_AURA",
+     "SLEEP",
+     "CARRION_SWARM",
+     "SLEEP",
+     "INFERNO",
+     "CARRION_SWARM",
+     "VAMP_AURA",
+     "CARRION_SWARM",
+     "VAMP_AURA"
+    ]
+   },
+   {
+    "hero": "DREAD_LORD",
+    "hero_code": "Udre",
+    "hero_slot": 2,
+    "line": 104,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 2,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 3,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 4,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 5,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 6,
+      "ability": "INFERNO",
+      "code": "AUin"
+     },
+     {
+      "level": 7,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 8,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 9,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 10,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     }
+    ],
+    "order_names": [
+     "CARRION_SWARM",
+     "SLEEP",
+     "CARRION_SWARM",
+     "VAMP_AURA",
+     "CARRION_SWARM",
+     "INFERNO",
+     "VAMP_AURA",
+     "VAMP_AURA",
+     "SLEEP",
+     "SLEEP"
+    ]
+   },
+   {
+    "hero": "DREAD_LORD",
+    "hero_code": "Udre",
+    "hero_slot": 3,
+    "line": 105,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 2,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 3,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 4,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 5,
+      "ability": "CARRION_SWARM",
+      "code": "AUcs"
+     },
+     {
+      "level": 6,
+      "ability": "INFERNO",
+      "code": "AUin"
+     },
+     {
+      "level": 7,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 8,
+      "ability": "VAMP_AURA",
+      "code": "AUav"
+     },
+     {
+      "level": 9,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     },
+     {
+      "level": 10,
+      "ability": "SLEEP",
+      "code": "AUsl"
+     }
+    ],
+    "order_names": [
+     "CARRION_SWARM",
+     "SLEEP",
+     "CARRION_SWARM",
+     "VAMP_AURA",
+     "CARRION_SWARM",
+     "INFERNO",
+     "VAMP_AURA",
+     "VAMP_AURA",
+     "SLEEP",
+     "SLEEP"
+    ]
+   },
+   {
+    "hero": "DEATH_KNIGHT",
+    "hero_code": "Udea",
+    "hero_slot": 1,
+    "line": 118,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 2,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 3,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 4,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 5,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 6,
+      "ability": "ANIM_DEAD",
+      "code": "AUan"
+     },
+     {
+      "level": 7,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 8,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 9,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 10,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     }
+    ],
+    "order_names": [
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "ANIM_DEAD",
+     "UNHOLY_AURA",
+     "DEATH_PACT",
+     "DEATH_PACT",
+     "DEATH_PACT"
+    ]
+   },
+   {
+    "hero": "DEATH_KNIGHT",
+    "hero_code": "Udea",
+    "hero_slot": 2,
+    "line": 119,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 2,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 3,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 4,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 5,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 6,
+      "ability": "ANIM_DEAD",
+      "code": "AUan"
+     },
+     {
+      "level": 7,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 8,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 9,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 10,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     }
+    ],
+    "order_names": [
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "ANIM_DEAD",
+     "UNHOLY_AURA",
+     "DEATH_PACT",
+     "DEATH_PACT",
+     "DEATH_PACT"
+    ]
+   },
+   {
+    "hero": "DEATH_KNIGHT",
+    "hero_code": "Udea",
+    "hero_slot": 3,
+    "line": 120,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 2,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 3,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 4,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 5,
+      "ability": "DEATH_COIL",
+      "code": "AUdc"
+     },
+     {
+      "level": 6,
+      "ability": "ANIM_DEAD",
+      "code": "AUan"
+     },
+     {
+      "level": 7,
+      "ability": "UNHOLY_AURA",
+      "code": "AUau"
+     },
+     {
+      "level": 8,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 9,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     },
+     {
+      "level": 10,
+      "ability": "DEATH_PACT",
+      "code": "AUdp"
+     }
+    ],
+    "order_names": [
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "UNHOLY_AURA",
+     "DEATH_COIL",
+     "ANIM_DEAD",
+     "UNHOLY_AURA",
+     "DEATH_PACT",
+     "DEATH_PACT",
+     "DEATH_PACT"
+    ]
+   },
+   {
+    "hero": "CRYPT_LORD",
+    "hero_code": "Ucrl",
+    "hero_slot": 1,
+    "line": 133,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 2,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 3,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 4,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 5,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 6,
+      "ability": "LOCUST_SWARM",
+      "code": "AUls"
+     },
+     {
+      "level": 7,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 8,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 9,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 10,
+      "ability": "IMPALE",
+      "code": "AUim"
+     }
+    ],
+    "order_names": [
+     "CARRION_SCARAB",
+     "THORNY_SHIELD",
+     "CARRION_SCARAB",
+     "IMPALE",
+     "CARRION_SCARAB",
+     "LOCUST_SWARM",
+     "THORNY_SHIELD",
+     "IMPALE",
+     "THORNY_SHIELD",
+     "IMPALE"
+    ]
+   },
+   {
+    "hero": "CRYPT_LORD",
+    "hero_code": "Ucrl",
+    "hero_slot": 2,
+    "line": 146,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 2,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 3,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 4,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 5,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 6,
+      "ability": "LOCUST_SWARM",
+      "code": "AUls"
+     },
+     {
+      "level": 7,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 8,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 9,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 10,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     }
+    ],
+    "order_names": [
+     "IMPALE",
+     "THORNY_SHIELD",
+     "IMPALE",
+     "THORNY_SHIELD",
+     "IMPALE",
+     "LOCUST_SWARM",
+     "THORNY_SHIELD",
+     "CARRION_SCARAB",
+     "CARRION_SCARAB",
+     "CARRION_SCARAB"
+    ]
+   },
+   {
+    "hero": "CRYPT_LORD",
+    "hero_code": "Ucrl",
+    "hero_slot": 3,
+    "line": 147,
+    "learn_order": [
+     {
+      "level": 1,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 2,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 3,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 4,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 5,
+      "ability": "IMPALE",
+      "code": "AUim"
+     },
+     {
+      "level": 6,
+      "ability": "LOCUST_SWARM",
+      "code": "AUls"
+     },
+     {
+      "level": 7,
+      "ability": "THORNY_SHIELD",
+      "code": "AUts"
+     },
+     {
+      "level": 8,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 9,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     },
+     {
+      "level": 10,
+      "ability": "CARRION_SCARAB",
+      "code": "AUcb"
+     }
+    ],
+    "order_names": [
+     "IMPALE",
+     "THORNY_SHIELD",
+     "IMPALE",
+     "THORNY_SHIELD",
+     "IMPALE",
+     "LOCUST_SWARM",
+     "THORNY_SHIELD",
+     "CARRION_SCARAB",
+     "CARRION_SCARAB",
+     "CARRION_SCARAB"
+    ]
+   }
+  ],
+  "二英雄条件": "MeleeDifficulty() != MELEE_NEWBIE；简单电脑永远只有一个英雄"
+ },
+ "attack": {
+  "first_wave_gate": {
+   "src": "c_hero1_done >= 1",
+   "line": 200
+  },
+  "newbie_first_delay_s": 240,
+  "newbie_between_waves_s": 60,
+  "normal_insane_between_waves_s": "无固定冷却；重组时间 0~72 秒（见 common.json.attack_loop）",
+  "melee_group": [
+   {
+    "unit": "hero_id",
+    "code": null,
+    "line": 159
+   },
+   {
+    "unit": "hero_id2",
+    "code": null,
+    "line": 160
+   },
+   {
+    "unit": "hero_id3",
+    "code": null,
+    "line": 161
+   },
+   {
+    "unit": "CRYPT_FIEND",
+    "code": "ucry",
+    "line": 162
+   },
+   {
+    "unit": "ABOMINATION",
+    "code": "uabo",
+    "line": 163
+   },
+   {
+    "unit": "NECRO",
+    "code": "unec",
+    "line": 164
+   },
+   {
+    "unit": "BANSHEE",
+    "code": "uban",
+    "line": 165
+   },
+   {
+    "unit": "GARGOYLE",
+    "code": "ugar",
+    "line": 166
+   },
+   {
+    "unit": "FROST_WYRM",
+    "code": "ufro",
+    "line": 167
+   },
+   {
+    "unit": "OBS_STATUE",
+    "code": "uobs",
+    "line": 168
+   },
+   {
+    "unit": "BLK_SPHINX",
+    "code": "ubsp",
+    "line": 171
+   }
+  ],
+  "force_level": {
+   "base": 4,
+   "terms": [
+    {
+     "line": 182,
+     "src": "set level = level + 2 * (AG + c_necro_done + c_banshee_done + c_statue_done)"
+    },
+    {
+     "line": 183,
+     "src": "set level = level + 3 * (c_fiend_done + c_garg_done + c_sphinx_done)"
+    },
+    {
+     "line": 184,
+     "src": "set level = level + 4 *  c_abom_done"
+    },
+    {
+     "line": 185,
+     "src": "set level = level + 5 *  c_hero3_done"
+    },
+    {
+     "line": 186,
+     "src": "set level = level + 6 * (c_hero2_done + c_wyrm_done)"
+    }
+   ],
+   "用途": "max_creeps = level*4/5，min_creeps = max(0, max_creeps-10)，以及 needs_exp/has_siege 的门槛"
+  },
+  "flags": [
+   {
+    "line": 240,
+    "src": "set needs_exp        = take_exp and (level >= 9 or c_gold_owned < 2000)"
+   },
+   {
+    "line": 241,
+    "src": "set has_siege        = level >= 40 or c_wagon_done > 0 or c_wyrm_done > 0"
+   },
+   {
+    "line": 242,
+    "src": "set air_units        = c_garg_done > 0 or c_sphinx_done > 0 or c_wyrm_done > 0"
+   },
+   {
+    "line": 243,
+    "src": "set allow_air_creeps = (3*c_garg_done + 6*c_wyrm_done + 2*c_web_fiend_done) >= 6"
+   }
+  ],
+  "extra_gate": [
+   {
+    "line": 217,
+    "src": "exitwhen c_ghoul_done >= 6"
+   },
+   {
+    "line": 220,
+    "src": "set AG = 6"
+   },
+   {
+    "line": 221,
+    "src": "set WG = c_ghoul_done - AG"
+   },
+   {
+    "line": 224,
+    "src": "set WG = Max(0,Min(10 - c_wood / 120,c_ghoul_done))"
+   },
+   {
+    "line": 225,
+    "src": "set AG = c_ghoul_done - WG"
+   },
+   {
+    "line": 226,
+    "src": "exitwhen (AG + 2*c_abom_done) >= 4"
+   },
+   {
+    "line": 247,
+    "src": "set AG = 0"
+   },
+   {
+    "line": 248,
+    "src": "set WG = c_ghoul_done"
+   }
+  ]
+ },
+ "opening_build": [
+  {
+   "line": 427,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "town": "0"
+  },
+  {
+   "line": 429,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ACOLYTE",
+   "code": "uaco"
+  },
+  {
+   "line": 430,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "UNDEAD_MINE",
+   "code": "ugol"
+  },
+  {
+   "line": 431,
+   "call": "SetBuildNext",
+   "qty": "5",
+   "unit": "ACOLYTE",
+   "code": "uaco"
+  },
+  {
+   "line": 432,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CRYPT",
+   "code": "usep"
+  },
+  {
+   "line": 433,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 434,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig"
+  },
+  {
+   "line": 435,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "UNDEAD_ALTAR",
+   "code": "uaod"
+  },
+  {
+   "line": 436,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 437,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig"
+  },
+  {
+   "line": 438,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 439,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>"
+  },
+  {
+   "line": 440,
+   "call": "SetBuildUnit",
+   "qty": "6",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 441,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CANNIBALIZE",
+   "code": "Ruac"
+  },
+  {
+   "line": 442,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "GRAVEYARD",
+   "code": "ugrv"
+  },
+  {
+   "line": 443,
+   "call": "SetBuildUnit",
+   "qty": "7",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 444,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_2",
+   "code": "unp1"
+  },
+  {
+   "line": 445,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig"
+  },
+  {
+   "line": 446,
+   "call": "SetBuildUnit",
+   "qty": "8",
+   "unit": "GHOUL",
+   "code": "ugho"
+  },
+  {
+   "line": 447,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "CRYPT_FIEND",
+   "code": "ucry"
+  },
+  {
+   "line": 448,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TOMB_OF_RELICS",
+   "code": "utom"
+  },
+  {
+   "line": 449,
+   "call": "SetBuildUnit",
+   "qty": "3",
+   "unit": "CRYPT_FIEND",
+   "code": "ucry"
+  },
+  {
+   "line": 450,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_FIEND_WEB",
+   "code": "Ruwb"
+  },
+  {
+   "line": 453,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 456,
+   "call": "undead_mine"
+  },
+  {
+   "line": 457,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "UNDEAD_MINE",
+   "code": "ugol"
+  }
+ ],
+ "steady_build": [
+  {
+   "line": 465,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "ACOLYTE",
+   "code": "uaco",
+   "conditions": [
+    "c_neclis_done >= 1"
+   ]
+  },
+  {
+   "line": 470,
+   "call": "undead_mine"
+  },
+  {
+   "line": 471,
+   "call": "undead_mine"
+  },
+  {
+   "line": 474,
+   "call": "SetBuildNext",
+   "qty": "10",
+   "unit": "ACOLYTE",
+   "code": "uaco",
+   "conditions": [
+    "c_undead_mines >= 2"
+   ]
+  },
+  {
+   "line": 476,
+   "call": "SetBuildNext",
+   "qty": "5",
+   "unit": "ACOLYTE",
+   "code": "uaco",
+   "conditions": [
+    "NOT(prev) and c_undead_mines == 1"
+   ]
+  },
+  {
+   "line": 481,
+   "call": "set",
+   "src": "set WG2 = Max(0,10 - c_wood / 120)"
+  },
+  {
+   "line": 483,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CRYPT",
+   "code": "usep",
+   "conditions": [
+    "WG2 > 0"
+   ]
+  },
+  {
+   "line": 484,
+   "call": "SetBuildNext",
+   "qty": "WG2",
+   "unit": "GHOUL",
+   "code": "ugho",
+   "conditions": [
+    "WG2 > 0"
+   ]
+  },
+  {
+   "line": 490,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "UNDEAD_MINE",
+   "code": "ugol",
+   "conditions": [
+    "c_gold_owned < 2000 or (c_mines < 2 and c_acolyte > 5)"
+   ]
+  },
+  {
+   "line": 493,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000 or (c_mines < 2 and c_acolyte > 5)",
+    "MeleeDifficulty() != MELEE_NEWBIE"
+   ]
+  },
+  {
+   "line": 495,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ZIGGURAT_2",
+   "code": "uzg1",
+   "town": "1",
+   "conditions": [
+    "c_gold_owned < 2000 or (c_mines < 2 and c_acolyte > 5)",
+    "MeleeDifficulty() != MELEE_NEWBIE",
+    "c_grave_done >= 1"
+   ]
+  },
+  {
+   "line": 503,
+   "call": "SetBuildUnit",
+   "qty": "c_zig_done + 1",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig",
+   "conditions": [
+    "c_food_used + 7 >= c_food_made"
+   ]
+  },
+  {
+   "line": 512,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id3",
+   "code": "<随机英雄 hero_id3>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE",
+    "b_hero2_done",
+    "b_hero3_done or c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 515,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id2",
+   "code": "<随机英雄 hero_id2>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE",
+    "NOT(b_hero2_done)"
+   ]
+  },
+  {
+   "line": 518,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "hero_id",
+   "code": "<随机英雄 hero_id>",
+   "conditions": [
+    "c_altar_done >= 1",
+    "NOT(b_hero1_done and MeleeDifficulty() != MELEE_NEWBIE)"
+   ]
+  },
+  {
+   "line": 521,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "UNDEAD_ALTAR",
+   "code": "uaod",
+   "conditions": [
+    "NOT(c_altar_done >= 1)"
+   ]
+  },
+  {
+   "line": 527,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "ABOMINATION",
+   "code": "uabo",
+   "conditions": [
+    "c_slaughter_done >= 1 and c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 529,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CRYPT",
+   "code": "usep",
+   "conditions": [
+    "NOT(c_slaughter_done >= 1 and c_citadel_done >= 1)"
+   ]
+  },
+  {
+   "line": 530,
+   "call": "SetBuildNext",
+   "qty": "WG2+6",
+   "unit": "GHOUL",
+   "code": "ugho",
+   "conditions": [
+    "NOT(c_slaughter_done >= 1 and c_citadel_done >= 1)"
+   ]
+  },
+  {
+   "line": 535,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "GRAVEYARD",
+   "code": "ugrv"
+  },
+  {
+   "line": 537,
+   "call": "SetBuildNext",
+   "qty": "4",
+   "unit": "GARGOYLE",
+   "code": "ugar",
+   "conditions": [
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 539,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CRYPT",
+   "code": "usep",
+   "conditions": [
+    "NOT(c_citadel_done >= 1)"
+   ]
+  },
+  {
+   "line": 540,
+   "call": "SetBuildNext",
+   "qty": "3",
+   "unit": "CRYPT_FIEND",
+   "code": "ucry",
+   "conditions": [
+    "NOT(c_citadel_done >= 1)"
+   ]
+  },
+  {
+   "line": 546,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "FROST_WYRM",
+   "code": "ufro",
+   "conditions": [
+    "c_boneyard_done >= 1"
+   ]
+  },
+  {
+   "line": 549,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "MEAT_WAGON",
+   "code": "umtw",
+   "conditions": [
+    "NOT(prev) and c_slaughter_done >= 1"
+   ]
+  },
+  {
+   "line": 551,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "town": "0",
+   "conditions": [
+    "NOT(NOT(prev) and c_slaughter_done >= 1)"
+   ]
+  },
+  {
+   "line": 552,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "conditions": [
+    "NOT(NOT(prev) and c_slaughter_done >= 1)"
+   ]
+  },
+  {
+   "line": 554,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_2",
+   "code": "unp1",
+   "conditions": [
+    "NOT(NOT(prev) and c_slaughter_done >= 1)"
+   ]
+  },
+  {
+   "line": 555,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SLAUGHTERHOUSE",
+   "code": "uslh",
+   "conditions": [
+    "NOT(NOT(prev) and c_slaughter_done >= 1)"
+   ]
+  },
+  {
+   "line": 556,
+   "call": "SetBuildNext",
+   "qty": "2",
+   "unit": "MEAT_WAGON",
+   "code": "umtw",
+   "conditions": [
+    "NOT(NOT(prev) and c_slaughter_done >= 1)"
+   ]
+  },
+  {
+   "line": 563,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "town": "0",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 565,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 566,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "CRYPT",
+   "code": "usep",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 567,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "GRAVEYARD",
+   "code": "ugrv",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 568,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "TOMB_OF_RELICS",
+   "code": "utom",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 569,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_2",
+   "code": "unp1",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 571,
+   "call": "SetBuildNext",
+   "qty": "Min(c_neclis_done,c_halls_done+1)",
+   "unit": "NECROPOLIS_2",
+   "code": "unp1",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 572,
+   "call": "SetBuildNext",
+   "qty": "Min(c_zig_done,c_spirit_done+1)",
+   "unit": "ZIGGURAT_2",
+   "code": "uzg1",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 574,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SLAUGHTERHOUSE",
+   "code": "uslh",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 575,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "DAMNED_TEMPLE",
+   "code": "utod",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 576,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "NECROPOLIS_3",
+   "code": "unp2",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 577,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "SAC_PIT",
+   "code": "usap",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 578,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BONEYARD",
+   "code": "ubon",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 580,
+   "call": "do_upgrades",
+   "conditions": [
+    "c_gold > 1000"
+   ]
+  },
+  {
+   "line": 583,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "CRYPT",
+   "code": "usep",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 584,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "DAMNED_TEMPLE",
+   "code": "utod",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 585,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "SLAUGHTERHOUSE",
+   "code": "uslh",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 586,
+   "call": "BuildFactory",
+   "qty": "1..2",
+   "unit": "BONEYARD",
+   "code": "ubon",
+   "conditions": [
+    "c_gold > 1000",
+    "c_gold > 2000"
+   ]
+  },
+  {
+   "line": 590,
+   "call": "do_upgrades",
+   "conditions": [
+    "NOT(prev) and c_food_used >= UPKEEP_TIER1"
+   ]
+  },
+  {
+   "line": 593,
+   "call": "undead_mine"
+  },
+  {
+   "line": 594,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 2",
+   "unit": "UNDEAD_MINE",
+   "code": "ugol"
+  },
+  {
+   "line": 595,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "town": "1"
+  },
+  {
+   "line": 604,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "OBS_STATUE",
+   "code": "uobs",
+   "conditions": [
+    "c_citadel_done >= 1 and c_tomb_done >= 1"
+   ]
+  },
+  {
+   "line": 606,
+   "call": "SetBuildUnit",
+   "qty": "1",
+   "unit": "BLK_SPHINX",
+   "code": "ubsp",
+   "conditions": [
+    "c_citadel_done >= 1 and c_tomb_done >= 1",
+    "b_sphinx_ok"
+   ]
+  },
+  {
+   "line": 611,
+   "call": "SetBuildUnit",
+   "qty": "4",
+   "unit": "NECRO",
+   "code": "unec",
+   "conditions": [
+    "c_temple_done >= 1"
+   ]
+  },
+  {
+   "line": 612,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "BANSHEE",
+   "code": "uban",
+   "conditions": [
+    "c_temple_done >= 1"
+   ]
+  },
+  {
+   "line": 616,
+   "call": "SetBuildUnit",
+   "qty": "2",
+   "unit": "BLK_SPHINX",
+   "code": "ubsp",
+   "conditions": [
+    "c_citadel_done >= 1 and c_tomb_done >= 1 and b_sphinx_ok"
+   ]
+  },
+  {
+   "line": 620,
+   "call": "undead_mine",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 621,
+   "call": "BasicExpansion",
+   "qty": "c_mines < 3",
+   "unit": "UNDEAD_MINE",
+   "code": "ugol",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 622,
+   "call": "MeleeTownHall",
+   "qty": "1",
+   "unit": "NECROPOLIS_1",
+   "code": "unpl",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 623,
+   "call": "GuardSecondary",
+   "qty": "2",
+   "unit": "ZIGGURAT_1",
+   "code": "uzig",
+   "town": "2",
+   "conditions": [
+    "c_gold_owned < 10000"
+   ]
+  },
+  {
+   "line": 627,
+   "call": "GetZeppelin",
+   "conditions": [
+    "c_food_used >= 60 and c_zep < 3"
+   ]
+  }
+ ],
+ "upgrade_rules": [
+  {
+   "line": 347,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BURROWING",
+   "code": "Rubu",
+   "conditions": [
+    "c_halls_done >= 1 and c_fiend >= 1"
+   ]
+  },
+  {
+   "line": 352,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_STONE_FORM",
+   "code": "Rusf",
+   "conditions": [
+    "c_grave_done >= 1 and c_citadel_done >= 1",
+    "c_garg >= 1"
+   ]
+  },
+  {
+   "line": 355,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_GHOUL_FRENZY",
+   "code": "Rugf",
+   "conditions": [
+    "c_grave_done >= 1 and c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 359,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_WYRM_BREATH",
+   "code": "Rufb",
+   "conditions": [
+    "c_boneyard_done >= 1"
+   ]
+  },
+  {
+   "line": 364,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_NECROS",
+   "code": "Rune",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_necro >= 1"
+   ]
+  },
+  {
+   "line": 366,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_NECROS",
+   "code": "Rune",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_necro >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 367,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_SKEL_MASTERY",
+   "code": "Rusm",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_necro >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 372,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BANSHEE",
+   "code": "Ruba",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_banshee >= 1"
+   ]
+  },
+  {
+   "line": 374,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_BANSHEE",
+   "code": "Ruba",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_banshee >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 379,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_SKEL_LIFE",
+   "code": "Rusl",
+   "conditions": [
+    "c_temple_done >= 1",
+    "c_necro >= 1"
+   ]
+  },
+  {
+   "line": 384,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CR_ATTACK",
+   "code": "Rura",
+   "conditions": [
+    "c_grave_done >= 1"
+   ]
+  },
+  {
+   "line": 385,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_CR_ARMOR",
+   "code": "Rucr",
+   "conditions": [
+    "c_grave_done >= 1"
+   ]
+  },
+  {
+   "line": 386,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_UNHOLY_STR",
+   "code": "Rume",
+   "conditions": [
+    "c_grave_done >= 1"
+   ]
+  },
+  {
+   "line": 387,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_UNHOLY_ARMOR",
+   "code": "Ruar",
+   "conditions": [
+    "c_grave_done >= 1"
+   ]
+  },
+  {
+   "line": 390,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_CR_ATTACK",
+   "code": "Rura",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1"
+   ]
+  },
+  {
+   "line": 391,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_CR_ARMOR",
+   "code": "Rucr",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1"
+   ]
+  },
+  {
+   "line": 392,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_UNHOLY_STR",
+   "code": "Rume",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1"
+   ]
+  },
+  {
+   "line": 393,
+   "call": "SetBuildUpgr",
+   "qty": "2",
+   "unit": "UPG_UNHOLY_ARMOR",
+   "code": "Ruar",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1"
+   ]
+  },
+  {
+   "line": 396,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_CR_ATTACK",
+   "code": "Rura",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 397,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_CR_ARMOR",
+   "code": "Rucr",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 398,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_UNHOLY_STR",
+   "code": "Rume",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 399,
+   "call": "SetBuildUpgr",
+   "qty": "3",
+   "unit": "UPG_UNHOLY_ARMOR",
+   "code": "Ruar",
+   "conditions": [
+    "c_grave_done >= 1",
+    "c_halls_done >= 1",
+    "c_citadel_done >= 1"
+   ]
+  },
+  {
+   "line": 406,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_PLAGUE",
+   "code": "Rupc",
+   "conditions": [
+    "c_slaughter_done >= 1 and c_citadel_done >= 1",
+    "c_abom >= 1"
+   ]
+  },
+  {
+   "line": 409,
+   "call": "SetBuildUpgr",
+   "qty": "1",
+   "unit": "UPG_BLK_SPHINX",
+   "code": "Rusp",
+   "conditions": [
+    "c_slaughter_done >= 1 and c_citadel_done >= 1",
+    "c_statue >= 1 and c_tomb_done >= 1"
+   ]
+  }
+ ],
+ "workers": {
+  "src": [
+   {
+    "line": 652,
+    "src": "call HarvestWood(0,WG)"
+   }
+  ],
+  "说明": "HarvestGold(town, n) / HarvestWood(town, n) 是累加式配额；每 1~3 秒 ClearHarvestAI 后重下一遍"
+ },
+ "basic_opening_exit": [
+  {
+   "line": 317,
+   "src": "if basic_opening and (b_hero2_done or (MeleeDifficulty() == MELEE_NEWBIE and c_tomb_done >= 1)) then"
+  },
+  {
+   "line": 318,
+   "src": "set basic_opening = false"
+  }
+ ],
+ "ranges": {
+  "build_sequence": [
+   421,
+   629
+  ],
+  "attack_sequence": [
+   193,
+   254
+  ],
+  "init_vars": [
+   259,
+   320
+  ],
+  "do_upgrades": [
+   344,
+   416
+  ],
+  "set_skills": [
+   63,
+   148
+  ],
+  "force_level": [
+   180,
+   188
+  ],
+  "setup_force": [
+   153,
+   175
+  ],
+  "peon_assignment": [
+   643,
+   658
+  ]
+ }
+}

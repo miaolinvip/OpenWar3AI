@@ -1,0 +1,11 @@
+{
+  "_说明": "本机配置的默认值。openwar3.json 不进 git，由 start.bat 和远见自动写；只需写和这里不同的项。game_dir（魔兽争霸 III 目录）在远见「控制中心」或「设置」里设，地图等游戏相关的相对路径都相对它。",
+  "game_dir": "",
+  "maps_dir": "",
+  "default_map": "FrozenThrone\\(2)EchoIsles.w3x",
+  "python": "",
+  "ports": {"console": 8866, "speech": 8872, "gateway": 8870},
+  "llm_base": "http://127.0.0.1:1234/v1",
+  "llm_model": "",
+  "service_url": "https://war3ai.com"
+}

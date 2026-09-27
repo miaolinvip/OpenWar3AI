@@ -1,0 +1,20 @@
+{
+  "_说明": "注入运行时的发布版二进制（native\\ 源码不开源）。setup.ps1 / start.bat 按 sha256 核对后同步到 bin\\。由 native\\build.ps1 -Publish 生成，别手改。",
+  "version": "2026.09.26.1644",
+  "published": "2026-09-26T16:45:01.7695276+08:00",
+  "game": "1.27.0.52240",
+  "files": {
+    "render_hook.dll": {
+      "sha256": "92bb7e6b75e56f91e7eb905844b9a28085e88d4d991a547522c7da8c2907da97",
+      "size": 500736
+    },
+    "war3_launch.exe": {
+      "sha256": "c86eb9239355a097a53a1da5b21243f64d956d338f68aeb639b54485369a716b",
+      "size": 203264
+    },
+    "war3_ui_command.exe": {
+      "sha256": "fd63df069d017ba68977823a609799235e5b9e96c7124eb5540906f8ade667d0",
+      "size": 174592
+    }
+  }
+}
