@@ -134,4 +134,5 @@ python tools/run_tests.py gateway  # 只跑名字里带 gateway 的；名字打�
 
 ## 许可
 
-还没选定。在仓库里加上 `LICENSE` 文件之前，保留所有权利。
+源码按 [Apache License 2.0](LICENSE) 授权。`prebuilt/` 里的运行时二进制不在这个许可范围内：可以免费使用，也可以随本项目原样分发，
+但不附带源码。见 [NOTICE](NOTICE)。

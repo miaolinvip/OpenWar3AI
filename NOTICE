@@ -1,0 +1,13 @@
+OpenWar3
+Copyright 2026 War3AI
+
+本仓库的源码按 Apache License 2.0 授权，全文见 LICENSE。
+The source code in this repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+prebuilt/ 目录里的运行时二进制（render_hook.dll、war3_launch.exe、war3_ui_command.exe）不在 Apache License 2.0 的范围内：
+可以免费使用，也可以随本项目原样分发；不附带源码。
+The runtime binaries in prebuilt/ (render_hook.dll, war3_launch.exe, war3_ui_command.exe) are not covered by the
+Apache License 2.0: they are free to use and may be redistributed unmodified together with this project; no source code is provided.
+
+魔兽争霸（Warcraft）是暴雪娱乐（Blizzard Entertainment）的商标。本项目与暴雪没有关联，也未获其认可。
+Warcraft III is a trademark of Blizzard Entertainment. This project is not affiliated with or endorsed by Blizzard.

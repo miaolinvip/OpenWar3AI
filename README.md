@@ -155,4 +155,5 @@ None of these needs the game.
 
 ## License
 
-Not chosen yet. Until a `LICENSE` file is added, all rights are reserved.
+The source code is licensed under the [Apache License 2.0](LICENSE). The runtime binaries in `prebuilt/` are not covered by it:
+they are free to use and may be redistributed unmodified together with this project, but no source code is provided. See [NOTICE](NOTICE).
