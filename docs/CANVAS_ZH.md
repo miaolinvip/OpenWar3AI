@@ -72,7 +72,7 @@ GET  /api/instances/20/canvas              -> 现在有哪些东西 + 画了几�
 
 ## 3. 直接写共享内存（不经过 Python / 远见）
 
-协议在 `native/src/ui_control_protocol.h` 的 `War3CanvasBlock`：`Local\War3Canvas_<pid>`，头 64 字节 + 256 条 × 112 字节 + 64 KB 文字/点池。
+布局见 `sdk/python/w3canvas.py`（`War3CanvasBlock`）：`Local\War3Canvas_<pid>`，头 64 字节 + 256 条 × 112 字节 + 64 KB 文字/点池。
 先发一次语义命令 `canvas_enable`（W3P 操作码 73，装绘制钩子、建块），然后按 seqlock 写（seq 变奇数 -> 写条目、池、count -> seq 变偶数）。
 运行时每帧读一次，读到写一半的沿用上一帧（seq 没变就不重读）；回写 `drawnFrames / itemsDrawn / faults / lastUs / torn`。Python 实现在 `sdk/python/w3canvas.py`。
 

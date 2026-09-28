@@ -5,10 +5,10 @@
 
 | 组件 | 位置 | 作用 |
 |---|---|---|
-| DLL 动作 56 | 运行时里；协议在 `native/src/ui_control_protocol.h` | 在游戏画面里画气泡 |
+| DLL 动作 56 | 运行时里；打包格式见 `sdk/python/w3speak.py` | 在游戏画面里画气泡 |
 | Python 客户端 | `sdk/python/w3speak.py` | 打包批量请求、发给 DLL |
 | HTTP 接口 | `speech/speak_api.py`，启动 `speech/start_speak_api.ps1`，默认 `http://127.0.0.1:8872/`（端口在 `openwar3.json` 的 `ports.speech`） | 给任何程序调用；界面在远见「头顶气泡」页（8872 根地址跳过去） |
-| 测试 | `sdk/python/tests/test_w3speak.py` | 打包格式和 C 头文件逐字段对照 |
+| 测试 | `sdk/python/tests/test_w3speak.py` | 打包格式逐字段核对 |
 | 农民茶话会 | `speech/banter.py`，测试 `speech/tests/test_banter.py` | 家里的工人按人设互相吐槽、开局报幕 |
 | 镜头对白 | `speech/camtalk.py`，测试 `speech/tests/test_camtalk.py` | 镜头里的英雄（首领口吻）和随从（随从口吻）说话，不显示名字 |
 | 战况触发 | `speech/eventtalk.py`，测试 `speech/tests/test_eventtalk.py` | 开战/打完/英雄阵亡/升本/被拆……出事了才说 |

@@ -1,8 +1,7 @@
 # W3P v2 协议（开放层唯一要认的契约）
 
 运行时（闭源 DLL）和外部程序之间只通过**共享内存**交换数据，下面这些就是全部。
-权威定义是 `native/src/ui_control_protocol.h`（每个结构都有 `static_assert` 钉住大小和偏移）；
-Python 参考实现是 `sdk/python/w3world.py`（读）和 `sdk/python/w3fast.py`（写），`sdk/python/tests/test_w3world.py` 从头文件解析核对两边一致。
+参考实现是 Python 的 `sdk/python/w3world.py`（读）和 `sdk/python/w3fast.py`（写），每个结构的大小和偏移都写在里面，有测试钉住。
 **这里没有任何游戏内存地址**：换游戏版本时运行时自己适配，协议不变。
 
 ## 1. 共享内存（`<pid>` = 游戏进程号）
@@ -162,7 +161,7 @@ args 下标：`0..2` 单位（地址、句柄 lo、句柄 hi；句柄给 0 表�
 | 70 | jass | **只给 dev 车道**（09-24，RPG 辅助 / 玩伴）。按名字调 JASS native（1291 个，名字表在运行时里）：scratch+64 起 `名字\0 字符串1\0 字符串2\0…`（≤190 字节、最多 4 个字符串）；`args[i]` = 第 i 个参数（I/B/H 原值，R 放 float 位、运行时转成 real*，S = 第几个字符串 1 起）；`argCount` 必须等于签名的参数个数（不等 = 5）。value[0] = 返回值（R 是 float 位；S 返回字符串表编号，读不回文字），value[1] = 签名的参数个数。code 参数只收 0（null，`TimerStart(t, 60, false, null)` 这类），给别的值、会挂起脚本线程的（*Sleep* / *Sync* / ExecuteFunc / *WaitForSound* / *WaitOnSleeps*）= 6。签名表（没有地址）在 `sdk/python/openwar3/jass_signatures.json`。⚠ 本机单方面改世界，多人局会不同步：SDK 在多人局里只放行只读的（Get*/Is*/Count*…，Issue* 除外） |
 | 71 | jass_handle_of | target = 单位（地址 + 句柄 lo/hi）或物品地址 -> value[0] = 它的 **JASS 句柄**（快照里的 handle_lo/hi 不是 JASS 句柄，native 要的是这个） |
 | 72 | jass_unit_of | code = JASS 单位句柄 -> value[0] = 单位对象地址（对得上快照的 addr），0 = 不是活着的单位 |
-| 73 | canvas_enable | 画板（09-25）：建共享内存 `Local\War3Canvas_<pid>`、起 GDI+，开始在游戏画面上绘制（画板画在鼠标指针下面）；value[0] = 1 成功。任何车道都能发（观战车道也行）—— 画板只画在本机画面上。第一次要初始化，客户端超时给 ≥ 2 秒。块的布局（`War3CanvasBlock`：头 64 字节、256 条 × 112 字节、64 KB 池，seqlock 写）见头文件和 `docs/CANVAS_ZH.md` |
+| 73 | canvas_enable | 画板（09-25）：建共享内存 `Local\War3Canvas_<pid>`、起 GDI+，开始在游戏画面上绘制（画板画在鼠标指针下面）；value[0] = 1 成功。任何车道都能发（观战车道也行）—— 画板只画在本机画面上。第一次要初始化，客户端超时给 ≥ 2 秒。块的布局（`War3CanvasBlock`：头 64 字节、256 条 × 112 字节、64 KB 池，seqlock 写）见 `sdk/python/w3canvas.py` 和 `docs/CANVAS_ZH.md` |
 | 74 | input_enable | 界面与输入（09-25）：`extra` = 1 开始接收游戏窗口的输入（画板点击 / 悬停、热键、地面点击，见 §1 输入块），0 = 停止；value[0] = 1 已开始。任何车道都能发（只影响本机输入）。第一次会顺带起画板，客户端超时给 ≥ 2 秒 |
 
 回执（52 字节）：`status`（0 接下 / 1 被拒 / 2 单位不存在或句柄对不上 / 3 不是你的 / 4 异常 / 5 参数错 / 6 不支持 / 7 目标无效 /
