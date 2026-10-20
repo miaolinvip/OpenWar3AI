@@ -49,13 +49,14 @@ export interface InstanceStatus {
   farm: { pid: number; cmd: string; withAi: boolean; keep: boolean; range: [number, number]; started: number | null }[];
   launcher: { pid: number; started: number | null } | null;
   held: { why?: string; at?: number } | null;   // 停止牌 inst<N>/hold.json：停了，不会自己再开（开始测试时摘掉）
-  brain: { pid: number; started: number }[];
+  brain: { pid: number; started: number; matchMode?: string }[];
   oldAi: { pid: number; started: number | null }[];
   director: { pid: number; started: number | null }[];
   modules: { name: string; pid: number; parent: number }[];
   speed: number | null;
   match: { name: string; finalized: boolean; outcome: string | null; mtime: number } | null;
-  nextGame: { map?: string; race?: number; enemyRace?: number; difficulty?: number; speed?: number; director?: boolean; scheme?: string };
+  nextGame: { map?: string; race?: number; enemyRace?: number; difficulty?: number; speed?: number; director?: boolean; scheme?: string; matchMode?: "ai_vs_builtin" | "human_vs_openwar3ai" };
+  takeover?: { pid: number; phase: string; player: number; fair: boolean; error?: string | null; at: number } | null;
   brainLive: boolean;
   bot?: { pid: number; started: number | null; scheme: string | null }[];   // 方案运行器（玩家方案）
   scheme?: string;                  // 这个实例选的 AI 方案（来源/id）

@@ -39,6 +39,8 @@ from brain.engagement import POLICY as COMBAT_POLICY
 
 # mod_worker 不拉：09-17 实机它走的动作 28 采金令返回成功但农民不动，还会按陈旧的采集目标判「矿满 5 人」；采金由大脑 job_gold 派
 MODULES = ("mod_combat", "mod_scavenge", "mod_spy", "mod_fight")
+HUMAN_MODE = "human_vs_openwar3ai"
+DEFAULT_MODE = "ai_vs_builtin"
 _k32 = ctypes.WinDLL("kernel32", use_last_error=True)
 _psapi = ctypes.WinDLL("psapi")
 
@@ -69,8 +71,13 @@ def read_pid(inst: int) -> int | None:
     return int(m[-1]) if m else None
 
 
-def set_env(inst_dir: str, pid: int) -> dict:
+def set_env(inst_dir: str, pid: int, player: int | None = None) -> dict:
     env = dict(os.environ)
+    if player is None:
+        env.pop("WAR3_CONTROL_PLAYER", None)
+        os.environ.pop("WAR3_CONTROL_PLAYER", None)
+    else:
+        env["WAR3_CONTROL_PLAYER"] = str(player)
     env.update({
         "WAR3_PID": str(pid), "WAR3_INST_DIR": inst_dir, "WAR3_BUILD_DIR": inst_dir, "WAR3_UNATTENDED": "1",
         "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1",
@@ -310,7 +317,22 @@ def operator_ended(inst_dir: str, since_wall: float) -> bool:
     return end_request(inst_dir, since_wall) is not None
 
 
-def wait_game_start(ses, clock, deadline_s: float = 90.0, alive=None):
+def human_game_active(pid: int) -> bool:
+    from w3window import game_active
+    return game_active(pid)
+
+
+def confirmed_human_end(last: dict | None) -> str | None:
+    """时钟停住不是结束证据；玩家模式只允许明确的建筑归零触发局末兜底。"""
+    if last:
+        if last["my_buildings"] == 0:
+            return "defeated"
+        if last["enemy_buildings"] == 0:
+            return "victory"
+    return None
+
+
+def wait_game_start(ses, clock, deadline_s: float = 90.0, alive=None, suspended=None):
     """alive()：游戏还是不是这一个 —— 09-18 01:12:50 接管的 pid 34000 七秒后被 farm 重开掉，这里照等满 90 秒，
     新局（31688）开打 75 秒墙钟（约 225 游戏秒）没人指挥。每秒问一次，不是了立刻放弃、回主循环重新接管。"""
     t_end = time.monotonic() + deadline_s
@@ -321,6 +343,10 @@ def wait_game_start(ses, clock, deadline_s: float = 90.0, alive=None):
             if not alive():
                 log("等开局时游戏进程已经换了，放弃这一个")
                 return None, None
+        if suspended is not None and suspended():
+            t_end = time.monotonic() + deadline_s
+            time.sleep(0.12)
+            continue
         snap = ses.read()
         t = clock.read() if clock else None
         if snap is not None and snap.in_game and t is not None and t >= 1.5:
@@ -330,7 +356,62 @@ def wait_game_start(ses, clock, deadline_s: float = 90.0, alive=None):
     return None, None
 
 
-def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
+def takeover_status(inst: int, pid: int, phase: str, error: str | None = None) -> None:
+    d = w3paths.inst_dir(inst)
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, "takeover.json")
+    with open(path + ".tmp", "w", encoding="utf-8") as fh:
+        json.dump({"pid": pid, "supervisorPid": os.getpid(), "phase": phase, "player": 1, "fair": False, "error": error,
+                   "at": time.time()}, fh, ensure_ascii=False)
+    os.replace(path + ".tmp", path)
+
+
+def prepare_human_match(inst: int, pid: int, timeout: float = 120.0) -> None:
+    """每局暂停原生 AI；此函数成功返回前，策略层和 reflex 都不能下令。"""
+    from openwar3 import Game
+    from w3fast import FastLaneUnavailable
+    from w3world import WorldUnavailable
+    takeover_status(inst, pid, "waiting")
+    log(f"[human-vs-xwar3] inst={inst} pid={pid} human=0 ai=1 fair=false，等待开局")
+    deadline = time.monotonic() + timeout
+    dev = None
+    try:
+        while time.monotonic() < deadline:
+            if os.path.exists(os.path.join(w3paths.inst_dir(inst), "hold.json")):
+                raise RuntimeError("实例已停止，取消接管")
+            if not pid_alive(pid) or read_pid(inst) != pid:
+                raise RuntimeError("游戏已退出或 PID 已更换，取消接管")
+            if not human_game_active(pid):
+                deadline = time.monotonic() + timeout
+                time.sleep(0.2)
+                continue
+            if dev is None:
+                try:
+                    dev = Game(pid=pid)
+                except (FastLaneUnavailable, WorldUnavailable):
+                    time.sleep(0.2)
+                    continue
+            snap = dev.snapshot(max_age=0)
+            if snap and snap.in_game and snap.clock >= 1.5:
+                slots = dev.player_slots()
+                human, computer = slots[0], slots[1]
+                if (not human["me"] or not human["human"] or human["state"] != "playing"
+                        or computer["controller"] != "computer" or computer["state"] != "playing"
+                        or computer["ally"] or sum(s["human"] and s["state"] == "playing" for s in slots) != 1):
+                    raise RuntimeError("需要本机真人 P0 对战敌对 Computer P1；请使用标准对战地图")
+                takeover_status(inst, pid, "pausing")
+                dev.jass.PauseCompAI(dev.jass.Player(1), True)
+                takeover_status(inst, pid, "paused")
+                log("[human-vs-xwar3] PauseCompAI(Player(1), true) OK")
+                return
+            time.sleep(0.2)
+        raise RuntimeError(f"等待 Runtime / 游戏进入对局超时（{timeout:g} 秒）")
+    finally:
+        if dev is not None:
+            dev.close()
+
+
+def play_match(inst: int, pid: int, game_no: int, max_minutes: float, match_mode: str = DEFAULT_MODE) -> str:
     from brain.act import Actuator
     from brain.recorder import MatchRecorder
     from brain.runtime import Brain
@@ -345,9 +426,10 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
     from brain.world import build_world
 
     inst_dir = os.path.join(BIN, f"inst{inst}")
-    env = set_env(inst_dir, pid)
+    human_mode = match_mode == HUMAN_MODE
+    env = set_env(inst_dir, pid, player=1) if human_mode else set_env(inst_dir, pid)
     ops = OPS.load(inst_dir)
-    procs = start_modules(env, inst_dir, ops)
+    procs = [] if human_mode else start_modules(env, inst_dir, ops)
     outcome = "crash"
     rec = None
     brain = None
@@ -358,19 +440,28 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
             modlog.tee_stdout("brain")
         except Exception:  # noqa: BLE001
             pass
+        if human_mode:
+            prepare_human_match(inst, pid)
         ses = Session()
         for _ in range(100):
             if ses.read() is not None and ses.cmd is not None:
                 break
             time.sleep(0.2)
         if ses.cmd is None:
+            if human_mode:
+                raise RuntimeError("P1 快照 / 命令车道连接失败")
             log("连不上游戏（快照/通道）")
             return "crash"
         clock = GameClock(ses.cmd)
-        snap, t = wait_game_start(ses, clock, alive=lambda: pid_alive(pid) and read_pid(inst) in (None, pid))
+        start_args = {"suspended": lambda: not human_game_active(pid)} if human_mode else {}
+        snap, t = wait_game_start(ses, clock, alive=lambda: pid_alive(pid) and read_pid(inst) in (None, pid), **start_args)
         if snap is None:
+            if human_mode:
+                raise RuntimeError("P1 快照、资源或大厅 90 秒内未就绪")
             log("开局判据 90 秒内没成立")
             return "crash"
+        if human_mode:
+            procs = start_modules(env, inst_dir, ops)
         claims = Claims("strategy")
         brain = Brain(ses.cmd, claims, inst_dir)
         rec = MatchRecorder(os.path.join(inst_dir, "matches"), game=game_no)
@@ -388,8 +479,12 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
         kv.update(combat_version())
         kv["powercal"] = power_calibration()
         rec.experiment(instance=f"inst{inst}", pid=pid, exe=exe, supervisorPid=os.getpid(),
-                       config=dict(brain.config.overrides), setup=match_setup(inst_dir, inst), **kv,
+                       config=dict(brain.config.overrides), setup=match_setup(inst_dir, inst),
+                       matchMode=match_mode, controlledPlayer=1 if human_mode else snap.me, fair=False, **kv,
                        **({"tuning": tuning} if tuning else {}))
+        if human_mode:
+            takeover_status(inst, pid, "running")
+            log(f"[human-vs-xwar3] xwar3 策略层和 reflex 已接管 P1，pid={pid}")
         log(f"第 {game_no} 局开始：{rec.name}")
         # 09-18 左上角「任务」显示 War3AI-实例号-对局号、「盟友」显示游戏时间 mm:ss，点任务按钮看本局日志（brain/hud.py）
         hud = HUD.Hud(ses.cmd.lane) if ops["hud_labels"] else None
@@ -412,9 +507,26 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
         weak_since = None
         last_beat = time.monotonic()
         watch = EndWatch(time.monotonic())          # 游戏时钟多久没走、坏快照连续多久 —— 都按读数时刻量（见 EndWatch）
+        background_waiting = False
         while True:
             tm.begin()                              # 一轮从这里算到 sleep 0.2 之前（steptime：各段只记自己那部分）
             ops = OPS.load(inst_dir)
+            if human_mode:
+                if not pid_alive(pid):
+                    outcome = classify_end(operator_ended(inst_dir, wall0), last_good)
+                    break
+                if not human_game_active(pid):
+                    if not background_waiting:
+                        log("[human-vs-xwar3] 游戏在后台或最小化，等待恢复，不按卡局超时重开")
+                    background_waiting = True
+                    watch = EndWatch(time.monotonic())
+                    tm.end(t - t0)
+                    time.sleep(0.2)
+                    continue
+                if background_waiting:
+                    log("[human-vs-xwar3] 游戏回到前台，继续当前对局")
+                    watch = EndWatch(time.monotonic())
+                    background_waiting = False
             # ★ 09-18：单人局打开任务面板游戏会暂停 —— 人在看日志，不是结算画面，时钟停了不算这局结束
             issue.configure(ops["issue_hotkey"])
             if panels.poll_pause():
@@ -428,17 +540,20 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
             # ★ 09-18 对局画面：打赢了停在「胜利！继续游戏/退出游戏」对话框，下一局不开。
             #   那时候快照是好的、只有**游戏时钟冻住**，而「对面没建筑满 20 秒」「打不过满 45 秒」这些判据全按游戏时间算，
             #   永远等不到；坏快照计时也不会涨（读数不算坏）。所以时钟不走够久也算这一局结束。
-            if ops["auto_end_stuck"] and watch.clock_stopped() > ops["end_stuck_s"] and pid_alive(pid):
-                outcome = classify_end(operator_ended(inst_dir, wall0), last_good)
+            can_end_stalled = not human_mode or confirmed_human_end(last_good) is not None
+            if can_end_stalled and ops["auto_end_stuck"] and watch.clock_stopped() > ops["end_stuck_s"] and pid_alive(pid):
+                outcome = (confirmed_human_end(last_good) if human_mode else
+                           classify_end(operator_ended(inst_dir, wall0), last_good))
                 if outcome == "crash":
                     outcome = "victory" if no_enemy_bld_since is not None else "ended-stuck"
                 log(f"游戏时钟停了 {int(watch.clock_stopped())} 秒（多半是胜负结算画面），按最后一份正常快照判：{outcome}")
                 break
-            if ops["auto_end_stuck"] and watch.bad_for() > ops["end_stuck_s"] and pid_alive(pid):
+            if can_end_stalled and ops["auto_end_stuck"] and watch.bad_for() > ops["end_stuck_s"] and pid_alive(pid):
                 # ★ 09-18 游戏胜负结算后不能自动结束 —— 011447 局 01:22:12 起快照是空的（结算画面），
                 #   shrunk 快照不判局末、时钟倒退的读数直接 continue，这个循环就一直空转到有人手动关游戏（01:24:06）。
                 #   有效快照断了这么久 = 这局已经结束：按最后一份正常快照判，finally 里发结束令（不退就按开关强关）
-                outcome = classify_end(operator_ended(inst_dir, wall0), last_good)
+                outcome = (confirmed_human_end(last_good) if human_mode else
+                           classify_end(operator_ended(inst_dir, wall0), last_good))
                 if outcome == "crash":
                     outcome = "victory" if no_enemy_bld_since is not None else "ended-stuck"
                 log(f"读不到对局 {int(watch.bad_for())} 秒（结算画面或游戏在收尾），按最后一份正常快照判：{outcome}")
@@ -574,11 +689,14 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
         import traceback
         log("一局中途出错：" + traceback.format_exc())
         outcome = "crash"
+        if human_mode:
+            takeover_status(inst, pid, "failed", str(exc))
     finally:
         if rec is not None and brain is not None:
             tk = max(0, int((t - t0) // 10))
             rec.result(tk, outcome, max(0.0, t - t0) / 60.0, peakArmy=brain.peak["army"],
-                       peakGold=brain.peak["gold"], peakWorkers=brain.peak["workers"], peakHeroes=brain.peak["heroes"], enemy="computer")
+                       peakGold=brain.peak["gold"], peakWorkers=brain.peak["workers"], peakHeroes=brain.peak["heroes"],
+                       enemy="human" if human_mode else "computer")
             rec.lesson(tk, dict(brain.lesson(), outcome=outcome,
                                 **({"steptime": json.dumps(tm.lesson(), ensure_ascii=False)} if tm is not None else {})))
             rec.finalize(tk)
@@ -586,14 +704,16 @@ def play_match(inst: int, pid: int, game_no: int, max_minutes: float) -> str:
             mark = end_request_text(end_request(inst_dir, wall0)) if outcome == "ended-by-operator" else ""
             log(f"第 {game_no} 局结束：{outcome}{mark}｜{rec.path}")
         try:
-            if brain is not None and pid_alive(pid):
+            if brain is not None and pid_alive(pid) and (not human_mode or outcome != "crash"):
                 brain.act.end_game()
         except Exception:  # noqa: BLE001
             pass
         stop_modules(procs)
+        if human_mode and outcome != "crash":
+            takeover_status(inst, pid, "ended")
         try:
             ops = OPS.load(inst_dir)
-            if ops["kill_game_after_end"] and pid_alive(pid):
+            if (not human_mode or (brain is not None and outcome != "crash")) and ops["kill_game_after_end"] and pid_alive(pid):
                 t_kill = time.monotonic() + ops["kill_wait_s"]
                 while pid_alive(pid) and time.monotonic() < t_kill:
                     time.sleep(0.5)
@@ -655,6 +775,7 @@ def held_since(inst: int, since: float) -> bool:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--inst", type=int, required=True)
+    ap.add_argument("--match-mode", choices=(DEFAULT_MODE, HUMAN_MODE), default=DEFAULT_MODE)
     ap.add_argument("--hours", type=float, default=6.0)
     ap.add_argument("--max-minutes", type=float, default=40.0)
     ap.add_argument("--game-no", type=int, default=0)       # 局间重载提示；0 也会从实例计数器和历史对局自动恢复
@@ -689,7 +810,7 @@ def main(argv=None) -> int:
             continue
         game_no = reserve_game_no(inst_dir, game_no)
         log(f"接管游戏 pid={pid}")
-        outcome = play_match(args.inst, pid, game_no, args.max_minutes)
+        outcome = play_match(args.inst, pid, game_no, args.max_minutes, args.match_mode)
         done_pids.add(pid)
         for _ in range(30):
             if not pid_alive(pid):
@@ -733,6 +854,7 @@ def respawn(mx, args, end_at: float, game_no: int, done_pid: int, since: float =
     cmd = [sys.executable, "-u", os.path.abspath(__file__), "--inst", str(args.inst), "--hours", f"{hours:.3f}",
            "--max-minutes", str(args.max_minutes), "--game-no", str(game_no), "--skip-pid", str(done_pid),
            "--hold-since", f"{since:.3f}"]
+    cmd += ["--match-mode", args.match_mode]
     subprocess.Popen(cmd, cwd=HERE, stdout=sys.__stdout__, stderr=sys.__stderr__, creationflags=0x00000008 | 0x00000200)   # sys.stdout 被 modlog.tee_stdout 换成了 DayTee
     return True
 

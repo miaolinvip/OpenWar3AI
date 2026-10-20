@@ -35,9 +35,10 @@ from __future__ import annotations
 import ctypes
 import ctypes.wintypes as wt
 import mmap
+import os
 import struct
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 # ── 必须和 ui_control_protocol.h 里的 War3UiStateBlock 严格一致 ──────────
 # ⚠ 这是整个文件最危险的地方：字段错位**不会报错**，只会读出垃圾数字，
@@ -335,7 +336,11 @@ class Session:
     和窗口句柄，只换一个等于没换）。
     """
 
-    def __init__(self, stale_seconds: float = 8.0):
+    def __init__(self, stale_seconds: float = 8.0, player: int | None = None):
+        configured = os.environ.get("WAR3_CONTROL_PLAYER", "").strip()
+        self.player = player if player is not None else (int(configured) if configured else None)
+        if self.player is not None and not 0 <= self.player < 12:
+            raise ValueError("控制玩家号必须在 0~11")
         self.stale_seconds = stale_seconds
         self.state: State | None = None
         self.cmd = None
@@ -350,7 +355,7 @@ class Session:
         from w3cmd import Cmd            # 延迟导入，避免循环依赖
         try:
             self.state = State()
-            self.cmd = Cmd(self.state.pid)
+            self.cmd = Cmd(self.state.pid) if self.player is None else Cmd(self.state.pid, player=self.player)
             self._blank_since = 0.0
             return True
         except Exception:                # noqa: BLE001
@@ -367,6 +372,8 @@ class Session:
             return None
         try:
             snap = self.state.read()
+            if snap is not None and self.player is not None:
+                snap = self._player_view(snap)
         except Exception:                # noqa: BLE001
             snap = None
         now = time.monotonic()
@@ -386,6 +393,14 @@ class Session:
             self.cmd = None
             self._blank_since = 0.0
         return None
+
+    def _player_view(self, snap: Snapshot) -> Snapshot | None:
+        """旧快照的资源只属于本机；从同一局的 W3P 玩家表取控制方资源，保留全图。"""
+        world = self.cmd.snapshot(fresh=True)
+        if world is None or world.epoch != snap.epoch or not world.in_game or not world.resources_known:
+            return None
+        return replace(snap, me=self.player, gold=world.gold, lumber=world.lumber,
+                       food_used=world.food_used, food_cap=world.food_cap, resources_known=True)
 
 
 def _now_ms() -> int:

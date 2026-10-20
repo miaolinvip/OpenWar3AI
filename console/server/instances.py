@@ -12,6 +12,7 @@ import os
 import re
 import threading
 import time
+from functools import wraps
 
 import psutil
 
@@ -34,6 +35,20 @@ HOLD_FILE = "hold.json"
 WAR3_EXE = re.compile(r"^war3(-\d+)?\.exe$", re.I)
 RACES = {1: "人族", 2: "兽族", 3: "亡灵", 4: "暗夜"}
 DIFFICULTY = {2: "简单", 3: "普通", 4: "疯狂"}
+DEFAULT_MODE = "ai_vs_builtin"
+HUMAN_MODE = "human_vs_openwar3ai"
+_instance_locks: dict[int, threading.RLock] = {}
+_instance_locks_guard = threading.Lock()
+
+
+def _instance_locked(fn):
+    @wraps(fn)
+    def run(n, *args, **kwargs):
+        with _instance_locks_guard:
+            lock = _instance_locks.setdefault(n, threading.RLock())
+        with lock:
+            return fn(n, *args, **kwargs)
+    return run
 
 
 _PROCS_TTL = 1.5
@@ -233,7 +248,8 @@ def status(n: int | None = None, procs: list | None = None) -> list[dict]:
                       "range": list(_farm_range(p["cmd"]) or (k, k)), "started": p["started"]} for p in farms],
             "launcher": {"pid": launcher["pid"], "started": launcher["started"]} if launcher else None,
             "held": (C.load_json(hold_path(k), None) or {"why": "?"}) if os.path.exists(hold_path(k)) else None,
-            "brain": [{"pid": p["pid"], "started": p["started"]} for p in brains],
+            "brain": [{"pid": p["pid"], "started": p["started"],
+                       "matchMode": HUMAN_MODE if f"--match-mode {HUMAN_MODE}" in p["cmd"] else DEFAULT_MODE} for p in brains],
             "bot": [{"pid": p["pid"], "started": p["started"],
                      "scheme": (re.search(r"--scheme\s+(\S+)", p["cmd"]) or [None, None])[1]} for p in bots],
             # 这个实例选的方案（next_game.json 的 scheme；没选过 = 参考大脑）和现在实际在跑的
@@ -250,6 +266,7 @@ def status(n: int | None = None, procs: list | None = None) -> list[dict]:
             "map": cur_map,
             "match": latest_match(k),
             "nextGame": ng,
+            "takeover": _takeover(k, game_pid, [p["pid"] for p in brains]) if game else None,
             "brainLive": os.path.exists(os.path.join(C.inst_dir(k), "brain_live.json")),
         })
     return out
@@ -294,9 +311,35 @@ def game_problem() -> str | None:
     return GD.version_problem()
 
 
+def _takeover(n: int, pid: int, supervisors: list[int] | None = None) -> dict | None:
+    state = C.load_json(os.path.join(C.inst_dir(n), "takeover.json"), {}) or {}
+    if supervisors is not None and state.get("supervisorPid") not in supervisors:
+        return None
+    return state if state.get("pid") == pid else None
+
+
+def match_mode_of(n: int) -> str:
+    return next_game(n).get("matchMode") or DEFAULT_MODE
+
+
+def mode_problem(n: int, st: dict | None = None) -> str | None:
+    mode = match_mode_of(n)
+    if mode not in (DEFAULT_MODE, HUMAN_MODE):
+        return "未知对局模式"
+    if mode != HUMAN_MODE:
+        return None
+    if scheme_of(n) != S.DEFAULT_REF:
+        return "玩家对战模式目前仅支持 builtin/xwar3"
+    st = st or status(n)[0]
+    if st["oldAi"] or st.get("bot") or any(b.get("matchMode", DEFAULT_MODE) != HUMAN_MODE for b in st["brain"]):
+        return "当前有其他模式的 AI 在跑，请先停止实例再开始陪练"
+    return None
+
+
+@_instance_locked
 def start_farm(n: int, hours: float = 6.0, speed: int | None = None, difficulty: int | None = None, race: int | None = None,
                enemy_race: int | None = None, map_path: str | None = None) -> dict:
-    problem = game_problem()
+    problem = game_problem() or mode_problem(n)
     if problem:
         return {"ok": False, "error": problem}
     clear_hold(n)
@@ -370,6 +413,7 @@ def _kill_game(n: int, pid: int) -> list[int]:
     return killed
 
 
+@_instance_locked
 def stop_instance(n: int, keep_farm: bool = False, who: str = "unknown") -> dict:
     """停一个实例，停完不会再自己开起来：先挂停止牌 → farm 守护 → 大脑/老 AI 和它们的模块 → 游戏。
     按范围起的 farm（一个进程管好几个号）不杀 —— 杀了会把它名下别的号的游戏一起带走（启动器守护是它的子进程）；
@@ -406,11 +450,14 @@ def stop_all() -> dict:
     return {"ok": True, "stopped": [r["inst"] for r in res], "results": res}
 
 
+@_instance_locked
 def start_test(n: int, hours: float = 24.0, director: bool | None = None) -> dict:
     """开始测试 = 摘停止牌 + farm 守护（打完按下一局设置自动重开）+ 新大脑监督器 + 导演台（按开关）。已经在跑的不重复起。
     director：True / False = 这次顺手把这个实例的导演台开关设成开 / 关（记在 next_game.json，以后每次开始测试照这个）；
     None = 照这个实例原来的开关。导播真正的拉起在 app.py（要先停掉 Farsight 导播台页托管的那份）。"""
-    problem = game_problem()
+    problem = game_problem() or mode_problem(n)
+    if match_mode_of(n) == HUMAN_MODE and director:
+        problem = "玩家对战模式关闭自动导播，请选择不带导演台"
     if problem:                                      # 游戏目录没设 / 版本不支持：AI 也别起（起了也没游戏可接）
         return {"ok": False, "inst": n, "error": problem, "farm": {"ok": False, "error": problem}, "brain": None,
                 "scheme": scheme_of(n), "director": False}
@@ -419,6 +466,8 @@ def start_test(n: int, hours: float = 24.0, director: bool | None = None) -> dic
         write_next_game(n, {"director": bool(director)})
     st = status(n)[0]
     farm = start_farm(n, hours)
+    if not farm.get("ok"):
+        return {"ok": False, "inst": n, "farm": farm, "brain": None, "scheme": scheme_of(n), "director": False}
     if st["oldAi"]:
         brain = {"ok": True, "note": f"实例 {n} 在跑老 AI，不起新大脑（两个大脑会同时指挥）"}
     elif st["brain"] or st.get("bot"):
@@ -447,8 +496,12 @@ def start_scheme(n: int, ref: str, hours: float = 24.0) -> dict:
     return {"ok": r.get("rc") == 0, **r}
 
 
+@_instance_locked
 def start_ai(n: int, hours: float = 24.0) -> dict:
     """按这个实例选的方案起 AI：参考大脑 -> run_brain.py；玩家方案 -> run_scheme.py（没被信任的拒绝）。"""
+    problem = mode_problem(n)
+    if problem:
+        return {"ok": False, "error": problem}
     ref = scheme_of(n)
     try:
         s = S.get(ref)
@@ -470,6 +523,7 @@ def stop_ai(n: int) -> list[int]:
     return killed
 
 
+@_instance_locked
 def switch_scheme(n: int, ref: str, now: bool = True, hours: float = 24.0) -> dict:
     """给实例换方案。now=True 且实例在跑：停掉当前 AI、新方案立刻接管这一局（当前这局不重开）；
     now=False：只记下来，下次「开始测试」/ AI 重起时生效。"""
@@ -575,7 +629,9 @@ def start_brain(n: int, hours: float = 6.0) -> dict:
     if status(n)[0]["brain"]:
         return {"ok": False, "error": f"实例 {n} 的新大脑已经在跑"}
     d = C.inst_dir(n)
-    cmd = (f'cmd.exe /c "set PYTHONIOENCODING=utf-8&& "{C.PYTHON}" -u "{RUN_BRAIN}" --inst {n} --hours {hours} '
+    os.makedirs(d, exist_ok=True)
+    mode_args = f" --match-mode {HUMAN_MODE}" if match_mode_of(n) == HUMAN_MODE else ""
+    cmd = (f'cmd.exe /c "set PYTHONIOENCODING=utf-8&& "{C.PYTHON}" -u "{RUN_BRAIN}" --inst {n} --hours {hours}{mode_args} '
            f'>> "{os.path.join(d, "brain_supervisor.out")}" 2>> "{os.path.join(d, "brain_supervisor.err")}""')
     r = spawn_detached(cmd, C.BRAIN)
     return {"ok": r.get("rc") == 0, **r}
@@ -589,9 +645,31 @@ def stop_brain(n: int) -> dict:
     return {"ok": True, "killed": killed, "note": "当前这局的对局文件不会写结局（监督器被强停）"}
 
 
+@_instance_locked
 def write_next_game(n: int, patch: dict) -> dict:
     path = os.path.join(C.inst_dir(n), "next_game.json")
     cur = next_game(n)
+    mode = patch.get("matchMode", cur.get("matchMode") or DEFAULT_MODE)
+    if mode not in (DEFAULT_MODE, HUMAN_MODE):
+        raise ValueError("未知对局模式")
+    if mode != (cur.get("matchMode") or DEFAULT_MODE):
+        st = status(n)[0]
+        if (st["game"]["alive"] or st.get("launcher") or st["brain"] or st.get("bot") or st["oldAi"]
+                or (st["farm"] and not os.path.exists(hold_path(n)))):
+            raise ValueError("请先停止实例，再切换对局模式")
+        if mode == HUMAN_MODE:
+            cur.update(matchMode=mode, speed=100, difficulty=2)
+            cur.pop("scheme", None)
+            cur.pop("director", None)
+        else:
+            cur.pop("matchMode", None)
+    if mode == HUMAN_MODE:
+        if patch.get("scheme") not in (None, "", S.DEFAULT_REF):
+            raise ValueError("玩家对战模式目前仅支持 builtin/xwar3")
+        if patch.get("director"):
+            raise ValueError("玩家对战模式关闭自动导播")
+        if "difficulty" in patch and patch["difficulty"] != 2:
+            raise ValueError("玩家对战模式使用基础电脑难度 2，开局后暂停原生 AI")
     if "director" in patch:
         # 这个实例带不带导演台（独立导播进程：自动运镜 + 头顶血条）。farm 不读这一项，Farsight 按它拉起 / 看护导播（start_director）
         if patch["director"]:

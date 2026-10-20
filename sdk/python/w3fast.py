@@ -111,19 +111,21 @@ def _pid_alive(pid: int) -> bool:
 
 _HELD: dict[int, set[int]] = {}        # 游戏 pid -> 本进程里活着的 FastLane 占着的车道号
 _HELD_LOCK = threading.Lock()
-_SHARED: dict[int, "FastLane"] = {}
+_SHARED: dict[object, "FastLane"] = {}
+_SHARED_LOCK = threading.Lock()
 
 
-def shared_lane(pid: int) -> "FastLane":
-    """本进程共用的一条 dev 车道（w3cmd.Cmd 用：一个进程里开再多 Cmd 也只占一条）。"""
-    with _HELD_LOCK:
-        lane = _SHARED.get(pid)
-    if lane is not None and getattr(lane, "_p", None):
+def shared_lane(pid: int, player: int | None = None) -> "FastLane":
+    """按游戏和控制身份共享车道；玩家车道绝不改写同进程里的 dev 车道。"""
+    if player is not None and not 0 <= player < 12:
+        raise ValueError("控制玩家号必须在 0~11")
+    key = pid if player is None else (pid, ROLE_PLAYER, player)
+    with _SHARED_LOCK:
+        lane = _SHARED.get(key)
+        if lane is None or not getattr(lane, "_p", None):
+            lane = FastLane(pid) if player is None else FastLane(pid, role=ROLE_PLAYER, player=player)
+            _SHARED[key] = lane
         return lane
-    lane = FastLane(pid)
-    with _HELD_LOCK:
-        _SHARED[pid] = lane
-    return lane
 
 
 class FastLane:

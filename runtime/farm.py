@@ -189,7 +189,7 @@ def next_game(inst_dir: str, base: dict, maps_dir: str) -> dict:
     try:
         with open(f, encoding="utf-8-sig") as fh:
             j = json.load(fh)
-        for k in ("map", "race", "enemyRace", "difficulty", "speed"):
+        for k in ("map", "race", "enemyRace", "difficulty", "speed", "matchMode"):
             if j.get(k) is not None and str(j[k]) != "":
                 g[k] = j[k]
     except (OSError, ValueError, AttributeError) as exc:
@@ -207,7 +207,8 @@ def launch_args(exe: str, n: int, g: dict, cam_distance: int, minimize: bool, wi
          "--speed", str(g["speed"]), "--inst", str(n), "--cam-distance", str(cam_distance)]
     if _int(g.get("enemyRace")) > 0:
         a += ["--enemy-race", str(g["enemyRace"])]
-    a += ["--minimize"] if minimize else ["--client", window]
+    if g.get("matchMode") != "human_vs_openwar3ai":
+        a += ["--minimize"] if minimize else ["--client", window]
     return a
 
 
@@ -218,13 +219,18 @@ def describe(n: int, g: dict) -> str:
 
 
 # ── 起进程 ───────────────────────────────────────────────────────────
-def start_launcher(args: list[str], out: str) -> int:
+def start_launcher(args: list[str], out: str, fullscreen: bool = False) -> int:
     """后台起启动器守护进程，输出进 inst<N>.out。
     只把 stdin / stdout / stderr 三个句柄交给它（Python 默认不继承别的句柄）：
     原来 farm.ps1 的守护进程会继承调用方的管道，管道永远不关，调用方一直卡住 —— 现在不会了。"""
+    launcher = w3paths.LAUNCH_EXE
+    if fullscreen:
+        from w3fullscreen import fullscreen_launcher
+        launcher = fullscreen_launcher(launcher)
+        log("  玩家模式：原生全屏（去掉启动器固定的 -window）")
     os.makedirs(FARM_DIR, exist_ok=True)
     with open(out, "wb") as fh:
-        p = subprocess.Popen([w3paths.LAUNCH_EXE, *args], cwd=BIN, stdin=subprocess.DEVNULL, stdout=fh,
+        p = subprocess.Popen([launcher, *args], cwd=BIN, stdin=subprocess.DEVNULL, stdout=fh,
                              stderr=subprocess.STDOUT, creationflags=NO_WINDOW)
     return p.pid
 
@@ -273,11 +279,12 @@ def _kill(p: psutil.Process, tree: bool) -> int:
 
 
 def _our_launchers() -> list[psutil.Process]:
-    want = os.path.normcase(w3paths.LAUNCH_EXE)
+    want = {os.path.normcase(w3paths.LAUNCH_EXE),
+            os.path.normcase(os.path.join(BIN, "human-fullscreen", "war3_launch.exe"))}
     out = []
     for p in psutil.process_iter(["name", "cmdline"]):
         cl = p.info["cmdline"] or []
-        if (p.info["name"] or "").lower() == "war3_launch.exe" and cl and os.path.normcase(os.path.abspath(cl[0])) == want:
+        if (p.info["name"] or "").lower() == "war3_launch.exe" and cl and os.path.normcase(os.path.abspath(cl[0])) in want:
             out.append(p)
     return out
 
@@ -390,7 +397,9 @@ class Farm:
             os.remove(out)
         except OSError:
             pass
-        return start_launcher(launch_args(exe, n, g, self.a.cam_distance, self.a.minimize, self.a.window), out)
+        launcher = start_launcher(launch_args(exe, n, g, self.a.cam_distance, self.a.minimize, self.a.window), out,
+                                  fullscreen=g.get("matchMode") == "human_vs_openwar3ai")
+        return launcher
 
     def start_all(self) -> None:
         for n in self.rng:

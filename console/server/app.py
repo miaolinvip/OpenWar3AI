@@ -479,7 +479,10 @@ async def director_keeper() -> None:
 async def api_instance_director(n: int, body: dict = Body(...)):
     """导演台开关：{on: true/false}。开 = 记下开关并马上起独立导播（实例没在跑就等开始测试时起）；关 = 记下并停掉这个实例的导播。"""
     on = bool(body.get("on"))
-    await asyncio.to_thread(I.write_next_game, n, {"director": on})
+    try:
+        await asyncio.to_thread(I.write_next_game, n, {"director": on})
+    except ValueError as exc:
+        raise HTTPException(409, str(exc))
     st = (await asyncio.to_thread(I.status, n))[0]
     if on:
         if st["game"]["alive"] or st["farm"]:
@@ -527,6 +530,8 @@ def _scheme_call(fn, *a, **k):
         raise HTTPException(409, str(exc))
     except S.SchemeError as exc:
         raise HTTPException(400, str(exc))
+    except ValueError as exc:
+        raise HTTPException(409, str(exc))
 
 
 @app.get("/api/schemes")
@@ -894,7 +899,10 @@ def api_next_game(n: int, body: dict = Body(...)):
             raise HTTPException(400, "地图不在游戏的 Maps 目录里")
         # 存相对 <游戏目录>\Maps 的路径（runtime/farm.py 按玩家设置的游戏目录补全）：换了游戏目录也不用重选地图
         body = dict(body, map=M.rel(full))
-    return I.write_next_game(n, body)
+    try:
+        return I.write_next_game(n, body)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc))
 
 
 _MAPS_WARM = {"done": 0, "total": 0, "running": False}

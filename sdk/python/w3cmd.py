@@ -22,6 +22,7 @@ import os
 import struct
 import sys
 import time
+from dataclasses import replace
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -66,17 +67,19 @@ class AbilityRef(tuple):
 
 
 class Cmd:
-    def __init__(self, pid: int):
+    def __init__(self, pid: int, player: int | None = None):
         self.pid = pid
-        self.lane = w3fast.shared_lane(pid)
+        self.player = player
+        self.lane = w3fast.shared_lane(pid) if player is None else w3fast.shared_lane(pid, player=player)
         self.world = w3world.shared_world(pid)
         self._init_state()
 
     @classmethod
-    def with_backends(cls, lane, world, pid: int = 0) -> "Cmd":
+    def with_backends(cls, lane, world, pid: int = 0, player: int | None = None) -> "Cmd":
         """测试 / 嵌入用：lane 要有 commands(list)->[Receipt]，world 要有 read()->WorldState。"""
         c = cls.__new__(cls)
         c.pid, c.lane, c.world = pid, lane, world
+        c.player = player
         c._init_state()
         return c
 
@@ -98,6 +101,8 @@ class Cmd:
         if fresh or self._snap is None or now - self._snap_t > SNAP_TTL:
             s = self.world.read()
             if s is not None:
+                if self.player is not None:
+                    s = replace(s, me=self.player)
                 self._snap, self._snap_t = s, now
                 self._items_by_addr = {i.addr: i for i in s.items}
         return self._snap

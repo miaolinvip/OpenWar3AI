@@ -13,6 +13,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch, Mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from server import common as C  # noqa: E402
@@ -108,6 +109,16 @@ class FarmLogicTest(unittest.TestCase):
         self.assertEqual(a[-1], "--minimize")
         self.assertNotIn("--client", a)
 
+    def test_human_mode_preserves_mode_and_does_not_force_window_size_or_minimize(self):
+        self.write_ng({"matchMode": "human_vs_openwar3ai"})
+        game = F.next_game(self.tmp, self.base, self.maps)
+        self.assertEqual(game["matchMode"], "human_vs_openwar3ai")
+        for minimize in (False, True):
+            args = F.launch_args("x.exe", 5, game, 2600, minimize, "0,0,1920,1080")
+            self.assertNotIn("--client", args)
+            self.assertNotIn("--window", args)
+            self.assertNotIn("--minimize", args)
+
     def test_instance_exe_copies_and_refreshes(self):
         src = os.path.join(self.tmp, "War3.exe")
         with open(src, "wb") as fh:
@@ -159,6 +170,19 @@ class FarmLogicTest(unittest.TestCase):
         text = F.read_text(out)
         self.assertEqual(F.war3_pid(text), 4242)
         self.assertIn("control channel: ok", text)
+
+    def test_fullscreen_launch_uses_separate_launcher_and_cleanup_recognizes_it(self):
+        separate = os.path.join(F.BIN, "human-fullscreen", "war3_launch.exe")
+        process = Mock(pid=123)
+        with patch("w3fullscreen.fullscreen_launcher", return_value=separate) as prepare, \
+                patch.object(F.subprocess, "Popen", return_value=process) as popen:
+            F.start_launcher(["--inst", "29"], os.path.join(self.tmp, "full.out"), fullscreen=True)
+            prepare.assert_called_once_with(F.w3paths.LAUNCH_EXE)
+            self.assertEqual(popen.call_args.args[0], [separate, "--inst", "29"])
+        paths = (F.w3paths.LAUNCH_EXE, separate, os.path.join(self.tmp, "war3_launch.exe"))
+        processes = [Mock(info={"name": "war3_launch.exe", "cmdline": [p]}) for p in paths]
+        with patch.object(F.psutil, "process_iter", return_value=processes):
+            self.assertEqual(F._our_launchers(), processes[:2])
 
 
 class WebStampTest(unittest.TestCase):

@@ -10,6 +10,17 @@ import { locale, localizeSchemes, tx } from "../lib/i18n";
 
 const SPEEDS = [100, 150, 200, 300, 400, 500];
 const HOURS = [6, 12, 24, 72];
+const HUMAN_MODE = "human_vs_openwar3ai";
+const TAKEOVER_PHASE: Record<string, string> = {
+  waiting: tx("等待对局就绪"), pausing: tx("正在暂停原生 AI"), paused: tx("原生 AI 已暂停，等待 xwar3"),
+  running: tx("xwar3 已接管 P1"), failed: tx("接管失败"), ended: tx("本局已结束"),
+};
+
+async function checkedStart(n: number, op: string) {
+  const r = await api.post<any>(`/api/instances/${n}/${op}`, { hours: 24 });
+  if (!r.ok) throw new Error(r.error ?? r.farm?.error ?? r.brain?.error ?? tx("启动失败"));
+  return r;
+}
 
 // 这个实例有没有东西在跑（游戏 / 启动器 / farm / AI）—— 全部停止、开始测试面板的圆点都按它
 function isRunning(i: InstanceStatus) {
@@ -66,9 +77,10 @@ function TestLauncher({ instances }: { instances: InstanceStatus[] }) {
     setBusy(false);
     if (!r) return;
     for (const x of r.results ?? []) {
-      const why = [x.farm, x.brain].map((v: any) => v?.error).filter(Boolean).join("；");
+      const why = [x.error, x.farm?.error, x.brain?.error].filter(Boolean).join("；");
       const dir = x.director ? (x.directorStart?.ok === false ? tx("，导演台没起来：{0}", x.directorStart.error) : tx("，带导演台")) : "";
-      toast(x.ok ? tx("实例 {0} 已开始测试（约 15 秒进局{1}）", x.inst, dir) : tx("实例 {0} 没起全：{1}", x.inst, why), x.ok ? "success" : "error", 6000);
+      const human = byInst.get(x.inst)?.nextGame.matchMode === HUMAN_MODE;
+      toast(x.ok ? human ? tx("实例 {0} 正在准备陪练，请查看接管状态", x.inst) : tx("实例 {0} 已开始测试（约 15 秒进局{1}）", x.inst, dir) : tx("实例 {0} 没起全：{1}", x.inst, why), x.ok ? "success" : "error", 6000);
     }
     setSel([]);
   };
@@ -136,6 +148,8 @@ function InstanceCard({ s, current }: { s: InstanceStatus; current: boolean }) {
   const procs = procRows(s);
   const needTest = !s.farm.length || !hasAi(s);
   const ng = s.nextGame;
+  const human = ng.matchMode === HUMAN_MODE;
+  const modeLocked = s.game.alive || !!s.launcher || hasAi(s) || (s.farm.length > 0 && !s.held);
   const map = ng.map ?? (s as any).map ?? DEFAULT_MAP;
   const race = ng.race ?? 1, enemy = ng.enemyRace ?? 0, diff = ng.difficulty ?? 2, speed = ng.speed ?? s.speed ?? 300;
   const setNext = (patch: Record<string, unknown>) => action(() => api.put(`/api/instances/${s.inst}/next-game`, patch), tx("下一局设置已保存"));
@@ -172,16 +186,22 @@ function InstanceCard({ s, current }: { s: InstanceStatus; current: boolean }) {
             <span>{tx("导播")}</span><span>{s.director.length ? tx("独立进程 {0}", s.director[0].pid) : "—"}</span>
           </div>
           <div className="section-label">{tx("操作")}</div>
+          {human && <div className="faint" style={{ marginBottom: 10 }}>
+            <Badge tone={s.takeover?.phase === "failed" ? "danger" : s.takeover?.phase === "running" ? "success" : "info"}>
+              {s.takeover ? TAKEOVER_PHASE[s.takeover.phase] ?? s.takeover.phase : tx("真人 P0 · xwar3 P1 · 全图感知")}
+            </Badge>
+            {s.takeover?.error && <div role="alert" style={{ marginTop: 6 }}>{s.takeover.error}</div>}
+          </div>}
           <div className="row wrap" style={{ gap: 6 }}>
-            {needTest && <BusyButton className="btn primary" title={tx("游戏 farm 守护 + 选中的 AI 方案，缺哪个起哪个")} onClick={() => action(() => api.post(`/api/instances/${s.inst}/test-start`, { hours: 24 }), tx("开始测试：约 15 秒进局"))}><Play size={14} />{tx("开始测试（游戏 + AI）")}</BusyButton>}
-            {!s.farm.length && <BusyButton className="btn" title={tx("只起游戏和 farm 守护，不起 AI")} onClick={() => action(() => api.post(`/api/instances/${s.inst}/farm-start`, { hours: 24 }), tx("farm 启动中，约 15 秒进局"))}><Gamepad2 size={14} />{tx("只起游戏")}</BusyButton>}
-            {!hasAi(s) && <BusyButton className="btn" title={tx("按下面选的 AI 方案起 AI")} onClick={() => action(() => api.post(`/api/instances/${s.inst}/brain-start`, { hours: 24 }), tx("AI 启动中"))}><Bot size={14} />{tx("只起 AI")}</BusyButton>}
+            {needTest && <BusyButton className="btn primary" title={tx("游戏 farm 守护 + 选中的 AI 方案，缺哪个起哪个")} onClick={() => action(() => checkedStart(s.inst, "test-start"), human ? tx("正在准备陪练，请查看接管状态") : tx("开始测试：约 15 秒进局"))}><Play size={14} />{human ? tx("开始陪练") : tx("开始测试（游戏 + AI）")}</BusyButton>}
+            {!s.farm.length && <BusyButton className="btn" title={tx("只起游戏和 farm 守护，不起 AI")} onClick={() => action(() => checkedStart(s.inst, "farm-start"), tx("farm 启动中，约 15 秒进局"))}><Gamepad2 size={14} />{tx("只起游戏")}</BusyButton>}
+            {!hasAi(s) && <BusyButton className="btn" title={tx("按下面选的 AI 方案起 AI")} onClick={() => action(() => checkedStart(s.inst, "brain-start"), tx("AI 启动中"))}><Bot size={14} />{tx("只起 AI")}</BusyButton>}
             {(s.brain.length > 0 || (s.bot?.length ?? 0) > 0) && <button className="btn" onClick={() => setConfirm("brainStop")}><CircleStop size={14} />{tx("停止 AI")}</button>}
             {s.game.alive && <button className="btn" onClick={() => setConfirm("end")}><Skull size={14} />{tx("结束这一局")}</button>}
             {isRunning(s) && <button className="btn danger" onClick={() => setConfirm("stop")}><Power size={14} />{tx("停止实例")}</button>}
           </div>
           <SchemePick key={`${s.inst}:${s.scheme ?? ""}`} s={s} />
-          <label className="row" style={{ gap: 10, marginTop: 12, alignItems: "flex-start", cursor: "pointer" }}>
+          {!human && <label className="row" style={{ gap: 10, marginTop: 12, alignItems: "flex-start", cursor: "pointer" }}>
             <Switch on={!!s.nextGame.director} onChange={(v) => action(() => api.post(`/api/instances/${s.inst}/director`, { on: v }),
               v ? tx("实例 {0} 带导演台{1}", s.inst, isRunning(s) ? tx("，导播几秒内就位") : tx("（开始测试时带上）")) : tx("实例 {0} 不带导演台，导播已停", s.inst))} />
             <span>
@@ -190,7 +210,7 @@ function InstanceCard({ s, current }: { s: InstanceStatus; current: boolean }) {
                 {tx("开关会记住：开着的实例每次开始测试都带上，每局换游戏自动跟上，导播意外退出 10 秒内补起。一般只给一个实例开。{0}", s.director.length ? tx(" 现在：导播 pid {0}", s.director[0].pid) : s.nextGame.director && isRunning(s) ? tx(" 现在：正在拉起…") : "")}
               </div>
             </span>
-          </label>
+          </label>}
           {procs.length > 0 && (
             <>
               <div className="section-label"><Cpu size={12} />{tx("进程（可以单独停）")}</div>
@@ -211,6 +231,13 @@ function InstanceCard({ s, current }: { s: InstanceStatus; current: boolean }) {
           )}
         </div>
         <div>
+          <Field label={tx("对局模式")}>
+            <fieldset disabled={!!modeLocked} style={{ border: 0, padding: 0, margin: "0 0 8px" }}>
+              <Seg value={ng.matchMode ?? "ai_vs_builtin"} onChange={(v) => setNext({ matchMode: v })}
+                options={[{ value: "ai_vs_builtin", label: tx("AI 测试") }, { value: HUMAN_MODE, label: tx("玩家 vs xwar3") }]} />
+            </fieldset>
+          </Field>
+          <div className="faint" style={{ fontSize: 12, marginBottom: 14 }}>{human ? tx("真人控制 P0，完整 xwar3 控制 P1；全图感知，正常资源消耗。切换模式前请停止实例。") : tx("切换对局模式前请停止实例。")}</div>
           <div className="section-label" style={{ marginTop: 0 }}><MapIcon size={12} />{tx("下一局设置")} <span className="faint" style={{ textTransform: "none", letterSpacing: 0 }}>{tx("（结束当前局后生效）")}</span></div>
           <div className="row" style={{ gap: 14, alignItems: "stretch" }}>
             <button className="map-card" style={{ width: 150, flex: "none", padding: 0, textAlign: "left" }} onClick={() => setPick(true)}>
@@ -223,15 +250,15 @@ function InstanceCard({ s, current }: { s: InstanceStatus; current: boolean }) {
               </div>
             </button>
             <div className="grow col gap12">
-              <Field label={tx("我方种族")}>
+              <Field label={human ? tx("真人种族（P0）") : tx("我方种族")}>
                 <RacePick value={race} onChange={(v) => setNext({ race: v })} />
               </Field>
               <div className="faint" style={{ fontSize: 12 }}><TriangleAlert size={12} /> {tx("四个种族都有建造表（照 AMAI Normal 战略）；多战略切换和反制兵种还在移植中")}</div>
-              <Field label={tx("对手种族")}>
+              <Field label={human ? tx("xwar3 种族（P1）") : tx("对手种族")}>
                 <RacePick value={enemy} onChange={(v) => setNext({ enemyRace: v })} allowMirror />
               </Field>
               <div className="row" style={{ gap: 16 }}>
-                <Field label={tx("电脑难度")}><Seg value={diff} onChange={(v) => setNext({ difficulty: v })} options={[2, 3, 4].map((d) => ({ value: d, label: DIFFICULTY[d] }))} /></Field>
+                {!human && <Field label={tx("电脑难度")}><Seg value={diff} onChange={(v) => setNext({ difficulty: v })} options={[2, 3, 4].map((d) => ({ value: d, label: DIFFICULTY[d] }))} /></Field>}
                 <Field label={tx("倍速")}><Seg value={speed} onChange={(v) => setNext({ speed: v })} options={SPEEDS.map((x) => ({ value: x, label: `${x / 100}×` }))} /></Field>
               </div>
               <div><button className="btn primary" disabled={!s.game.alive} onClick={() => setConfirm("end")}><Check size={14} />{tx("立即按新设置重开")}</button></div>
@@ -271,6 +298,9 @@ function SchemePick({ s }: { s: InstanceStatus }) {
     if (r && !r.ok) toast(r.error ?? r.start?.error ?? tx("没切成"), "error", 8000);
     else if (r) toast(r.applied === "now" ? tx("实例 {0} 换成「{1}」，接管当前这一局", s.inst, cur?.name ?? pick) : tx("实例 {0} 下次开始测试用「{1}」", s.inst, cur?.name ?? pick), "success", 5000);
   };
+  if (s.nextGame.matchMode === HUMAN_MODE) return <div className="faint" style={{ marginTop: 12 }}>
+    <b>{tx("AI 方案")}: builtin/xwar3</b><div>{tx("完整参考大脑：策略层 + 战斗微操 + 捡装备 + 侦察与战斗记录")}</div>
+  </div>;
   return (
     <div style={{ marginTop: 12 }}>
       <div className="section-label"><Package size={12} />{tx("AI 方案")}</div>
